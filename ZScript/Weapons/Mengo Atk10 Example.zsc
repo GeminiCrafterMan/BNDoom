@@ -1,0 +1,33 @@
+Class The big fucky wucky : Actor
+{
+  actor victim;
+  Default
+{
+  Radius 9;
+  Height 9;
+  Speed 40;
+  Damagefunction (30);
+  Projectile;
+  Scale 1.5;
+  +FORCEXYBILLBOARD;
+  Speed 45;
+  Damagetype "Ice";
+}
+override int SpecialMissileHit(actor victim)
+    {
+        if (target.checkinventory("Atk10Flag")
+        {
+            victim.DamageMobj(self,target,10,'Normal');
+         }
+        return -1;
+    }
+
+  States
+  {
+  Spawn:
+    TRST A 2 BRIGHT;
+    Loop;
+    Death:
+    stop;
+  }
+}
