@@ -5,11 +5,10 @@ class NetNaviPlayer : PlayerPawn
 		Speed 1;
 		Health 100;
 		Radius 16;
-		Height 56;
+		Height 38;
 		Mass 100;
 		PainChance 256;
-		Player.DisplayName "NormalNavi";
-		Player.CrouchSprite "PLYC";
+		Player.DisplayName "MegaMan";
 		Player.StartItem "Buster";
 		Player.WeaponSlot 1, "Buster";
 		
@@ -31,14 +30,13 @@ class NetNaviPlayer : PlayerPawn
 		PLAY A -1;
 		Loop;
 	See:
-		PLAY ABCD 4;
+		PLAY BCDEFG 4;
 		Loop;
 	Missile:
-		PLAY E 12;
+		PLAY H 4;
+		PLAY IJ 4 Bright;
+		PLAY H 4;
 		Goto Spawn;
-	Melee:
-		PLAY F 6 BRIGHT;
-		Goto Missile;
 	Pain:
 		PLAY G 4;
 		PLAY G 4 A_Pain;
