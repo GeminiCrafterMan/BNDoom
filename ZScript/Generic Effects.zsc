@@ -1,0 +1,19 @@
+class BNExplosion : Actor
+{
+	Default
+	{
+		SeeSound "weapons/hit";
+		DeathSound "effects/explode";
+		+NOBLOCKMAP
+		+NOGRAVITY
+		+ALLOWPARTICLES
+		+PUFFONACTORS
+	}
+	States
+	{
+		Spawn:
+			BNEX ABC 1 Bright;
+			BNEX DEFGHIJ 2 Bright;
+			Stop;
+	}
+}

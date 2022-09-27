@@ -1,2 +1,4 @@
 #include "ZScript/Player.zsc"
 #include "ZScript/Weapons/Buster.zsc"
+
+#include "ZScript/Generic Effects.zsc"
