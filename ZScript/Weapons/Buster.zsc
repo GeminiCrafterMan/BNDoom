@@ -61,33 +61,36 @@ class Buster : Weapon
 			Goto FireNormalShot;
 		AltFire:
 		FireNormalShot:
-			MBUS A 2;
-			MBUS B 6 Bright {
+			MBUS A 1;
+			MBUS B 1 Bright {
 				A_FireBullets(2.85, 2.85, 1, 3, "UnchargedBusterPuff");
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
 			}
-			MBUS C 4 Bright;
-			MBUS D 4; 
+			MBUS C 1 Bright;
+			MBUS D 1 Bright;
+			MBUS E 1;
 			Goto Ready;
 		FireMidChargeShot:
 			MBUS A 0 A_TakeInventory("PrimaryCharge", 100);
-		    MBUS A 2;
-			MBUS B 6 Bright {
+		    MBUS A 1;
+			MBUS B 1 Bright {
 				A_FireBullets(2.85, 2.85, 1, 15, "MidChargeBusterPuff");
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
 			}
-			MBUS C 4 Bright;
-			MBUS D 4; 
+			MBUS C 1 Bright;
+			MBUS D 1 Bright;
+			MBUS E 1;
 			Goto Ready;
 		FireChargeShot:
 			MBUS A 0 A_TakeInventory("PrimaryCharge", 100);
-		    MBUS A 2;
-			MBUS B 6 Bright {
+		    MBUS A 1;
+			MBUS B 1 Bright {
 				A_FireBullets(2.85, 2.85, 1, 30, "ChargedBusterPuff");
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
 			}
-			MBUS C 4 Bright;
-			MBUS D 4; 
+			MBUS C 1 Bright;
+			MBUS D 1 Bright;
+			MBUS E 1;
 			Goto Ready;
 		Spawn:
 			SHTG A -1;
