@@ -3,5 +3,5 @@
 
 script "SetPlayerHeight" ENTER
 {
-	SetActorProperty(0, APROP_VIEWHEIGHT, 36.0);
+	SetActorProperty(0, APROP_VIEWHEIGHT, 30.0);
 }

@@ -2,6 +2,7 @@ class NetNaviPlayer : PlayerPawn
 {
 	Default
 	{
+		+NOBLOOD
 		Speed 1;
 		Health 100;
 		Radius 16;
@@ -33,38 +34,35 @@ class NetNaviPlayer : PlayerPawn
 			PLAY BCDEFG 4;
 			Loop;
 		Missile:
-			PLAY H 4;
-			PLAY IJ 4 Bright;
-			PLAY H 4;
+			PLAY H 2;
+			PLAY IJ 2 Bright;
+			PLAY H 1;
 			Goto Spawn;
 		Pain:
-			PLAY K 2;
-			PLAY L 2 A_Pain;
-			PLAY K 2;
-			PLAY L 2;
-			PLAY K 2;
-			PLAY L 2;
+			PLAY K 3 Bright;
+			PLAY L 3 A_Pain;
+			PLAY M 3;
 			Goto Spawn;
 		Death:
-			PLAY M 7;
-			PLAY O 7 A_NoBlocking;
-			PLAY P 2 Bright;
-			PLAY O 2;
-			PLAY P 2 Bright;
-			PLAY O 2;
-			PLAY P 2 Bright;
-			PLAY O 30 A_SpawnItem("DeathEffect", 0, 27, 0);
-			PLAY P 10 Bright A_PlayerScream;
-			PLAY P 3 Bright A_SetTranslucent(0.90);
-			PLAY P 3 Bright A_SetTranslucent(0.80);
-			PLAY P 3 Bright A_SetTranslucent(0.70);
-			PLAY P 3 Bright A_SetTranslucent(0.60);
-			PLAY P 3 Bright A_SetTranslucent(0.50);
-			PLAY P 3 Bright A_SetTranslucent(0.40);
-			PLAY P 3 Bright A_SetTranslucent(0.30);
-			PLAY P 3 Bright A_SetTranslucent(0.20);
-			PLAY P 3 Bright A_SetTranslucent(0.10);
-			PLAY P 3 Bright A_SetTranslucent(0.00);
+			PLAY O 7;
+			PLAY P 7 A_NoBlocking;
+			PLAY Q 2 Bright;
+			PLAY P 2;
+			PLAY Q 2 Bright;
+			PLAY P 2;
+			PLAY Q 2 Bright;
+			PLAY P 30 A_SpawnItem("DeathEffect", 0, 27, 0); // I had to make this an object instead of an overlay because overlays just... weren't working.
+			PLAY Q 10 Bright A_PlayerScream;
+			PLAY Q 3 Bright A_SetTranslucent(0.90);
+			PLAY Q 3 Bright A_SetTranslucent(0.80);
+			PLAY Q 3 Bright A_SetTranslucent(0.70);
+			PLAY Q 3 Bright A_SetTranslucent(0.60);
+			PLAY Q 3 Bright A_SetTranslucent(0.50);
+			PLAY Q 3 Bright A_SetTranslucent(0.40);
+			PLAY Q 3 Bright A_SetTranslucent(0.30);
+			PLAY Q 3 Bright A_SetTranslucent(0.20);
+			PLAY Q 3 Bright A_SetTranslucent(0.10);
+			PLAY Q 3 Bright A_SetTranslucent(0.00);
 			TNT1 A -1;
 			Stop;
 	}
