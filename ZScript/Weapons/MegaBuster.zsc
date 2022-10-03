@@ -179,7 +179,6 @@ class BusterPuffBase : Actor
 {
 	Default
 	{
-		SeeSound "weapons/hit";
 		+NOBLOCKMAP
 		+NOGRAVITY
 		+ALLOWPARTICLES

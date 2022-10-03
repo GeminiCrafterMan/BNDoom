@@ -110,6 +110,10 @@ class ShanghaiBuster : MegaBuster
 
 class UnchargedBusterTracerSH : UnchargedBusterTracer
 {
+	Default
+	{
+		DeathSound "weapons/shanghit";
+	}
 	States
 	{
 		Spawn:
@@ -121,7 +125,7 @@ class UnchargedBusterTracerSH : UnchargedBusterTracer
 	}
 }
 
-class MaxChargeBusterTracerSH : MaxChargeBusterTracer
+class MaxChargeBusterTracerSH : UnchargedBusterTracerSH
 {
 	States
 	{
@@ -134,15 +138,7 @@ class MaxChargeBusterTracerSH : MaxChargeBusterTracer
 	}
 }
 
-class BusterPuffBaseSH : BusterPuffBase
-{
-	Default
-	{
-		SeeSound "weapons/shanghit";
-	}
-}
-
-class UnchargedBusterPuffSH : BusterPuffBaseSH
+class UnchargedBusterPuffSH : BusterPuffBase
 {
 	States
 	{
@@ -152,7 +148,7 @@ class UnchargedBusterPuffSH : BusterPuffBaseSH
 	}
 }
 
-class MaxChargeBusterPuffSH : BusterPuffBaseSH
+class MaxChargeBusterPuffSH : BusterPuffBase
 {
 	States
 	{
