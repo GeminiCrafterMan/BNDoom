@@ -120,7 +120,7 @@ class UnchargedBusterTracerSH : UnchargedBusterTracer
 			BNTR D 1 Bright;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem("UnchargedBusterPuffSH");
+			TNT1 A 0 A_SpawnItemEx("UnchargedBusterPuffSH");
 			Stop;
 	}
 }
@@ -133,7 +133,7 @@ class MaxChargeBusterTracerSH : UnchargedBusterTracerSH
 			BNTR E 1 Bright;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem("MaxChargeBusterPuffSH");
+			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuffSH");
 			Stop;
 	}
 }

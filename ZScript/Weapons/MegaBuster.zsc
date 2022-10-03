@@ -250,7 +250,7 @@ class UnchargedBusterTracer : FastProjectile
 			BNTR A 1 Bright;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem("UnchargedBusterPuff");
+			TNT1 A 0 A_SpawnItemEx("UnchargedBusterPuff");
 			Stop;
 	}
 }
@@ -271,7 +271,7 @@ class MidChargeBusterTracer : UnchargedBusterTracer
 			BNTR B 1 Bright;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem("MidChargeBusterPuff");
+			TNT1 A 0 A_SpawnItemEx("MidChargeBusterPuff");
 			Stop;
 	}
 }
@@ -292,7 +292,7 @@ class MaxChargeBusterTracer : UnchargedBusterTracer
 			BNTR C 1 Bright;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem("MaxChargeBusterPuff");
+			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuff");
 			Stop;
 	}
 }
