@@ -30,3 +30,24 @@ Model MaxChargeBusterTracer // Name of actor in DECORATE
    
    FrameIndex BNTR C 0 0 // The sprite lump, sprite frame, model index, frame number
 }
+
+Model UnchargedBusterTracerSH // Name of actor in DECORATE
+{ 
+   Path "Models/Projectiles" // Path to model in PK3
+   SKIN 0 "tracer4.png" // Model index, model file
+   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+   Scale 4.5 5 5 // Scale values
+   PITCHFROMMOMENTUM // A flag that will fix the model pitch for projectiles
+   
+   FrameIndex BNTR D 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model MaxChargeBusterTracerSH // Name of actor in DECORATE
+{ 
+   Path "Models/Projectiles" // Path to model in PK3
+   SKIN 0 "tracer5.png" // Model index, model file
+   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+   Scale 4.5 5 5 // Scale values
+   PITCHFROMMOMENTUM // A flag that will fix the model pitch for projectiles
+   
+   FrameIndex BNTR E 0 0 // The sprite lump, sprite frame, model index, frame number
+}

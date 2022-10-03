@@ -1,0 +1,55 @@
+// =========================================================================================
+// Player sounds (technically unnecessary but shhhh~)
+// -----------------------------------------------------------------------------------------
+// MegaMan
+$playersound	megaman		male	*death		"Sounds/Players/mm-deleted.ogg"
+$playersounddup	megaman		male	*xdeath		*death
+$playersound	megaman		male	*gibbed		dsslop
+$playersound	megaman		male	*pain100	"Sounds/Players/mm-hurt.ogg"
+$playersounddup	megaman		male	*pain75		*pain100
+$playersounddup	megaman		male	*pain50		*pain100
+$playersounddup	megaman		male	*pain25		*pain100
+$playersound	megaman		male	*grunt		dsoof
+$playersounddup	megaman		male	*land		*grunt
+$playersound	megaman		male	*jump		dsjump
+$playersound	megaman		male	*fist		dspunch
+$playersound	megaman		male	*usefail	"Sounds/Players/mm-noway.ogg"
+
+// Shanghai
+$playersound	shanghai	male	*death		"Sounds/Players/sh-deleted.wav"
+$playersounddup	shanghai	male	*xdeath		*death
+$playersound	shanghai	male	*gibbed		dsslop
+$playersound	shanghai	male	*pain100	"Sounds/Players/sh-hurt.wav"
+$playersounddup	shanghai	male	*pain75		*pain100
+$playersounddup	shanghai	male	*pain50		*pain100
+$playersounddup	shanghai	male	*pain25		*pain100
+$playersound	shanghai	male	*grunt		dsoof
+$playersounddup	shanghai	male	*land		*grunt
+$playersound	shanghai	male	*jump		dsjump
+$playersound	shanghai	male	*fist		dspunch
+$playersound	shanghai	male	*usefail	"Sounds/Players/sh-noway.wav"
+
+// =========================================================================================
+// Weapon sounds
+// -----------------------------------------------------------------------------------------
+// Generic
+weapons/hit			"Sounds/Weapons/MMDSDamage.wav"	// Hit opponent (replace with GBA version later...)
+weapons/shanghit	"Sounds/Weapons/SHDamage.wav"		// Hit opponent
+
+$limit	weapons/hit			0
+$limit	weapons/shanghit	0
+// -----------------------------------------------------------------------------------------
+// Busters
+weapons/buster/pew		    "Sounds/Weapons/Buster/mm-pew.ogg"					// Buster shot
+weapons/buster/sh-pew	    "Sounds/Weapons/Buster/sh-pew.wav"					// Buster shot
+weapons/buster/charging	    "Sounds/Weapons/Buster/mm-buster_charging.ogg"		// Buster charging
+weapons/buster/sh-charging	"Sounds/Weapons/Buster/sh-buster_charging.wav"		// Buster charging
+weapons/buster/charged	    "Sounds/Weapons/Buster/mm-buster_charged.ogg"		// Buster charged
+weapons/buster/sh-charged	"Sounds/Weapons/Buster/sh-buster_charged.wav"		// Buster charged
+
+$limit	weapons/buster/pew		    0
+$limit	weapons/buster/sh-pew		0
+$limit	weapons/buster/charging	    0
+$limit	weapons/buster/sh-charging	0
+$limit	weapons/buster/charged	    0
+$limit	weapons/buster/sh-charged	0

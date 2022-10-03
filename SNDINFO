@@ -1,5 +1,5 @@
 // =========================================================================================
-// BNDOOM by Gemini0 - SNDINFO - Generic things
+// BNDOOM by Gemini0, Mengo, Inkticious, and KCEXE - SNDINFO - Generic things
 // =========================================================================================
 // Menu sounds
 menu/activate		"Sounds/Menus/card_screen_open.ogg"		// activate a new menu
@@ -21,11 +21,3 @@ $limit	menu/invalid	0
 $limit	menu/dismiss	0
 $limit	menu/choose		0
 $limit	menu/clear		0
-
-// =========================================================================================
-// Weapon sounds
-// -----------------------------------------------------------------------------------------
-// Generic
-weapons/hit	"Sounds/Weapons/MM-DS-Damage.wav"	// Hit opponent (replace with GBA version later...)
-
-$limit	weapons/hit	0

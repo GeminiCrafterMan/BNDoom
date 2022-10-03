@@ -1,7 +1,6 @@
-#include "ZScript/MegaManPlayer.zsc"
-#include "ZScript/Weapons/MegaBuster.zsc"
+#include "ZScript/Players.zsc"
 
-#include "ZScript/ShanghaiPlayer.zsc"
+#include "ZScript/Weapons/MegaBuster.zsc"
 #include "ZScript/Weapons/ShanghaiBuster.zsc"
 
 #include "ZScript/Generic Effects.zsc"
