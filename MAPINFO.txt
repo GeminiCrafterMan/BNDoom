@@ -1,4 +1,4 @@
 gameinfo
 {
-    PlayerClasses = "NetNaviPlayer"
+    PlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
 }

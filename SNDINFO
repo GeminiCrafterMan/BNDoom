@@ -1,0 +1,31 @@
+// =========================================================================================
+// BNDOOM by Gemini0 - SNDINFO - Generic things
+// =========================================================================================
+// Menu sounds
+menu/activate		"Sounds/Menus/card_screen_open.ogg"		// activate a new menu
+menu/backup			"Sounds/Menus/card_cancel.ogg"			// backup to previous menu
+menu/prompt			"Sounds/Menus/card_desc.ogg"			// activate a prompt "menu" (what)
+menu/cursor			"Sounds/Menus/card_select.ogg"			// move cursor up/down
+menu/change			"Sounds/Menus/card_select.ogg"			// select new value for option
+menu/invalid		"Sounds/Menus/card_error.ogg"			// menu not available
+menu/dismiss		"Sounds/Menus/card_desc_close.ogg"		// dismiss a prompt message
+menu/choose			"Sounds/Menus/card_choose.ogg"			// choose a menu item
+menu/clear			"Sounds/Menus/card_desc_close.ogg"		// close top menu
+
+$limit	menu/activate	0
+$limit	menu/backup		0
+$limit	menu/prompt		0
+$limit	menu/cursor		0
+$limit	menu/change		0
+$limit	menu/invalid	0
+$limit	menu/dismiss	0
+$limit	menu/choose		0
+$limit	menu/clear		0
+
+// =========================================================================================
+// Weapon sounds
+// -----------------------------------------------------------------------------------------
+// Generic
+weapons/hit	"Sounds/Weapons/MM-DS-Damage.wav"	// Hit opponent (replace with GBA version later...)
+
+$limit	weapons/hit	0

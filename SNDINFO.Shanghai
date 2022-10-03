@@ -1,0 +1,22 @@
+// =========================================================================================
+// Player sounds (technically unnecessary but shhhh~)
+// -----------------------------------------------------------------------------------------
+$playersound	ShanghaiPlayer	male	*death		"Sounds/Players/sh-deleted.wav"
+$playersounddup	ShanghaiPlayer	male	*xdeath		*death
+$playersound	ShanghaiPlayer	male	*gibbed		dsslop
+$playersound	ShanghaiPlayer	male	*pain100	"Sounds/Players/sh-hurt.wav"
+$playersound	ShanghaiPlayer	male	*grunt		dsoof
+$playersounddup	ShanghaiPlayer	male	*land		*grunt
+$playersound	ShanghaiPlayer	male	*jump		dsjump
+$playersound	ShanghaiPlayer	male	*fist		dspunch
+$playersound	ShanghaiPlayer	male	*usefail	dsnoway
+
+// -----------------------------------------------------------------------------------------
+// Buster
+weapons/buster/sh-pew		"Sounds/Weapons/Buster/sh-pew.wav"					// Buster shot
+weapons/buster/sh-charging	"Sounds/Weapons/Buster/sh-buster_charging.wav"		// Buster charging
+weapons/buster/sh-charged	"Sounds/Weapons/Buster/sh-buster_charged.wav"		// Buster charged
+
+$limit	weapons/buster/sh-pew		0
+$limit	weapons/buster/sh-charging	0
+$limit	weapons/buster/sh-charged	0

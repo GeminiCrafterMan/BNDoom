@@ -1,0 +1,22 @@
+// =========================================================================================
+// Player sounds (technically unnecessary but shhhh~)
+// -----------------------------------------------------------------------------------------
+$playersound	MegaManPlayer	male	*death		"Sounds/Players/mm-deleted.ogg"
+$playersounddup	MegaManPlayer	male	*xdeath		*death
+$playersound	MegaManPlayer	male	*gibbed		dsslop
+$playersound	MegaManPlayer	male	*pain100	"Sounds/Players/mm-hurt.ogg"
+$playersound	MegaManPlayer	male	*grunt		dsoof
+$playersounddup	MegaManPlayer	male	*land		*grunt
+$playersound	MegaManPlayer	male	*jump		dsjump
+$playersound	MegaManPlayer	male	*fist		dspunch
+$playersound	MegaManPlayer	male	*usefail	dsnoway
+
+// -----------------------------------------------------------------------------------------
+// Buster
+weapons/buster/pew		"Sounds/Weapons/Buster/mm-pew.ogg"					// Buster shot
+weapons/buster/charging	"Sounds/Weapons/Buster/mm-buster_charging.ogg"		// Buster charging
+weapons/buster/charged	"Sounds/Weapons/Buster/mm-buster_charged.ogg"		// Buster charged
+
+$limit	weapons/buster/pew		0
+$limit	weapons/buster/charging	0
+$limit	weapons/buster/charged	0
