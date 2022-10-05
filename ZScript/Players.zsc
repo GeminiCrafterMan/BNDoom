@@ -1,5 +1,7 @@
 class MegaManPlayer : PlayerPawn
 {
+	bool FullSynchro;
+	bool DarkSoul;
 	Default
 	{
 		+NOBLOOD

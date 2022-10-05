@@ -59,6 +59,7 @@ class MegaBuster : Weapon
 			NBST A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
 			Goto FireNormalShot;
 		AltFire:
+			TNT1 A 0 A_Overlay(1000,"DarkSoul");
 		FireNormalShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
 			NBST B 1 Bright {
@@ -173,6 +174,14 @@ class MegaBuster : Weapon
 			StartChargeAnim:
 				BCH0 ABCDEFGH 2 Bright;
 				goto ChargeEffectFunction;
+		DarkSoul:
+			TNT1 A 0 {
+				A_OverlayFlags(OverlayID(), PSPF_ALPHA|PSPF_RENDERSTYLE, true);
+				A_OverlayRenderStyle(OverlayID(), STYLE_SHADOW);
+				A_OverlayAlpha(OverlayID(), 0.75);
+				SetShade("220022");
+			}
+			Stop;
 	}
 }
 
