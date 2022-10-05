@@ -15,6 +15,7 @@ class MegaManPlayer : PlayerPawn
 		Player.WeaponSlot 1, "MegaBuster";
 		Player.WeaponSlot 2, "MegaBusterTest";
 		Player.SoundClass "megaman";
+		Player.Portrait "MEGAFAC1";
 		
 		Player.ColorRange 112, 127;
 		Player.Colorset 0, "Green",			0x70, 0x7F,  0x72;
@@ -98,6 +99,7 @@ class ShanghaiPlayer : MegaManPlayer
 		Player.StartItem "ShanghaiBuster";
 		Player.WeaponSlot 1, "ShanghaiBuster";
 		Player.SoundClass "shanghai";
+		Player.Portrait "SHNGFAC1";
 	}
 
 	States

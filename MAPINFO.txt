@@ -1,4 +1,6 @@
 gameinfo
 {
     PlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
+	ChatSound = "menu/text"
+	AddEventHandlers = "PauseSoundHandler"
 }

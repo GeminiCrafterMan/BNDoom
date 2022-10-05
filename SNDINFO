@@ -1,5 +1,5 @@
 // =========================================================================================
-// BNDOOM by Gemini0, Mengo, Inkticious, and KCEXE - SNDINFO - Generic things
+// BNDOOM by Gemini0, Mengo, Inkticious, and KCEXE - SNDINFO - Generic things, mostly menu
 // =========================================================================================
 // Menu sounds
 menu/activate		"Sounds/Menus/card_screen_open.ogg"		// activate a new menu
@@ -11,6 +11,8 @@ menu/invalid		"Sounds/Menus/card_error.ogg"			// menu not available
 menu/dismiss		"Sounds/Menus/card_desc_close.ogg"		// dismiss a prompt message
 menu/choose			"Sounds/Menus/card_choose.ogg"			// choose a menu item
 menu/clear			"Sounds/Menus/card_desc_close.ogg"		// close top menu
+menu/pause			"Sounds/Menus/pause.ogg"				// pause game
+menu/text			"Sounds/Menus/text.ogg"					// text beep
 
 $limit	menu/activate	0
 $limit	menu/backup		0

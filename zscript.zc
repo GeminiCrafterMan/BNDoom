@@ -1,4 +1,6 @@
+version "2.4.0" // don't wanna alienate the "descargar para android" kiddos, so old-ass zscript it is
 #include "ZScript/Players.zsc"
+#include "ZScript/EventHandlers.zsc"
 
 #include "ZScript/Weapons/MegaBuster.zsc"
 #include "ZScript/Weapons/ShanghaiBuster.zsc"

@@ -1,0 +1,25 @@
+texture optional M_SKULL1
+	pic MENUARW1 tics 3
+	pic MENUARW2 tics 3
+	pic MENUARW3 tics 3
+	pic MENUARW2 tics 3
+
+texture optional SHNGFAC1
+	pic	SHNGFAC1 tics 40
+	pic SHNGFAC2 tics 1
+	pic SHNGFAC3 tics 5
+	pic SHNGFAC2 tics 2
+	pic SHNGFAC1 tics 100
+	pic SHNGFAC2 tics 1
+	pic SHNGFAC3 tics 5
+	pic SHNGFAC2 tics 2
+
+texture optional MEGAFAC1
+	pic	MEGAFAC1 tics 40
+	pic MEGAFAC2 tics 1
+	pic MEGAFAC3 tics 5
+	pic MEGAFAC2 tics 2
+	pic MEGAFAC1 tics 100
+	pic MEGAFAC2 tics 1
+	pic MEGAFAC3 tics 5
+	pic MEGAFAC2 tics 2

@@ -31,37 +31,37 @@ class MegaBuster : Weapon
 		+WEAPON.WIMPY_WEAPON;
 		Inventory.Pickupmessage "You shouldn't be seeing this.";
 		Tag "MegaBuster";
-//		Translation "MMNormStyl";
 //		AttackSound "weapons/buster/pew";
 	}
 	States
 	{
 		Ready:
-			NNMB A 1 A_WeaponReady;
+			NBST A 1 A_WeaponReady;
 			Loop;
 		Deselect:
-			NNMB A 1 A_Lower;
+			NBST A 1 A_Lower;
 			Loop;
 		Select:
-			NNMB A 1 A_Raise;
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMNormStyl");	// Set translation
+			NBST A 1 A_Raise;
 			Loop;
 		Fire:
-			NNMB A 0 {
+			NBST A 0 {
 				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
 				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
 				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
 				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
 			}
 			Charge:
-			NNMB A 1 A_GiveInventory("PrimaryCharge", 1);
-			NNMB A 0 A_Refire("Charge");
-			NNMB A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
-			NNMB A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
+			NBST A 1 A_GiveInventory("PrimaryCharge", 1);
+			NBST A 0 A_Refire("Charge");
+			NBST A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
+			NBST A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
 			Goto FireNormalShot;
 		AltFire:
 		FireNormalShot:
-			NNMB A 1 A_SetInventory("PrimaryCharge", 0);
-			NNMB B 1 Bright {
+			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST B 1 Bright {
 				//A_FireBullets(2.85, 2.85, 1, 3, "UnchargedBusterPuff", FBF_NORANDOM, 8192, "UnchargedBusterTracer", 0, 4);
 				A_FireProjectile("UnchargedBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
@@ -72,13 +72,13 @@ class MegaBuster : Weapon
 				A_SetInventory("ChargingSoundPlayed", 0);
 				A_SetInventory("ChargedSoundPlayed", 0);
 			}
-			NNMB C 1 Bright;
-			NNMB D 1 Bright;
-			NNMB E 1;
+			NBST C 1 Bright;
+			NBST D 1 Bright;
+			NBST E 1;
 			Goto Ready;
 		FireMidChargeShot:
-			NNMB A 1 A_SetInventory("PrimaryCharge", 0);
-			NNMB B 1 Bright {
+			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST B 1 Bright {
 //				A_FireBullets(2.85, 2.85, 1, 15, "MidChargeBusterPuff", FBF_NORANDOM, 8192, "MidChargeBusterTracer", 0, 4);
 				A_FireProjectile("MidChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
@@ -89,13 +89,13 @@ class MegaBuster : Weapon
 				A_SetInventory("ChargingSoundPlayed", 0);
 				A_SetInventory("ChargedSoundPlayed", 0);
 			}
-			NNMB C 1 Bright;
-			NNMB D 1 Bright;
-			NNMB E 1;
+			NBST C 1 Bright;
+			NBST D 1 Bright;
+			NBST E 1;
 			Goto Ready;
 		FireChargeShot:
-			NNMB A 1 A_SetInventory("PrimaryCharge", 0);
-			NNMB B 1 Bright {
+			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST B 1 Bright {
 //				A_FireBullets(2.85, 2.85, 1, 30, "MaxChargeBusterPuff", FBF_NORANDOM, 8192, "MaxChargeBusterTracer", 0, 4);
 				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
@@ -106,9 +106,9 @@ class MegaBuster : Weapon
 				A_SetInventory("ChargingSoundPlayed", 0);
 				A_SetInventory("ChargedSoundPlayed", 0);
 			}
-			NNMB C 1 Bright;
-			NNMB D 1 Bright;
-			NNMB E 1;
+			NBST C 1 Bright;
+			NBST D 1 Bright;
+			NBST E 1;
 			Goto Ready;
 		Spawn:
 			SHTG A -1;
@@ -176,7 +176,7 @@ class MegaBuster : Weapon
 	}
 }
 
-class MegaBusterTest : MegaBuster // my hatred is immense. oh well, these will all do their own thing anyway...
+class MegaBusterTest : MegaBuster
 {
 	Default
 	{
@@ -184,143 +184,10 @@ class MegaBusterTest : MegaBuster // my hatred is immense. oh well, these will a
 	}
 	States
 	{
-			Ready:
-			HNMB A 1 A_WeaponReady;
-			Loop;
-		Deselect:
-			HNMB A 1 A_Lower;
-			Loop;
 		Select:
-			HNMB A 1 A_Raise;
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMHeatStyl");	// Set translation
+			NBST A 1 A_Raise;
 			Loop;
-		Fire:
-			HNMB A 0 {
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-			}
-			Charge:
-			HNMB A 1 A_GiveInventory("PrimaryCharge", 1);
-			HNMB A 0 A_Refire("Charge");
-			HNMB A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
-			HNMB A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
-			Goto FireNormalShot;
-		AltFire:
-		FireNormalShot:
-			HNMB A 1 A_SetInventory("PrimaryCharge", 0);
-			HNMB B 1 Bright {
-				//A_FireBullets(2.85, 2.85, 1, 3, "UnchargedBusterPuff", FBF_NORANDOM, 8192, "UnchargedBusterTracer", 0, 4);
-				A_FireProjectile("UnchargedBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-				A_SetInventory("ChargingSoundPlayed", 0);
-				A_SetInventory("ChargedSoundPlayed", 0);
-			}
-			HNMB C 1 Bright;
-			HNMB D 1 Bright;
-			HNMB E 1;
-			Goto Ready;
-		FireMidChargeShot:
-			HNMB A 1 A_SetInventory("PrimaryCharge", 0);
-			HNMB B 1 Bright {
-//				A_FireBullets(2.85, 2.85, 1, 15, "MidChargeBusterPuff", FBF_NORANDOM, 8192, "MidChargeBusterTracer", 0, 4);
-				A_FireProjectile("MidChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-				A_SetInventory("ChargingSoundPlayed", 0);
-				A_SetInventory("ChargedSoundPlayed", 0);
-			}
-			HNMB C 1 Bright;
-			HNMB D 1 Bright;
-			HNMB E 1;
-			Goto Ready;
-		FireChargeShot:
-			HNMB A 1 A_SetInventory("PrimaryCharge", 0);
-			HNMB B 1 Bright {
-//				A_FireBullets(2.85, 2.85, 1, 30, "MaxChargeBusterPuff", FBF_NORANDOM, 8192, "MaxChargeBusterTracer", 0, 4);
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-				A_SetInventory("ChargingSoundPlayed", 0);
-				A_SetInventory("ChargedSoundPlayed", 0);
-			}
-			HNMB C 1 Bright;
-			HNMB D 1 Bright;
-			HNMB E 1;
-			Goto Ready;
-		Spawn:
-			SHTG A -1;
-			Stop;
-			
-			//Subroutine for charge sound
-		ChargeSoundFunction:
-			TNT1 A 1;
-			//If charge is full, don't play any sound
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",100,"ChargeSoundFunction");
-			//Upon reaching 99 charge, play the charged sound
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",99,"ChargeSound2");
-			//With 5 or more, stay silent.
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",4,"ChargeSoundFunction");
-			//Upon reaching 3 charge, play chargesound1
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",3,"ChargeSound1");
-			//If there's any charge, restart.
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",1,"ChargeSoundFunction");
-			stop;
-			
-			ChargeSound1:
-				TNT1 A 0 A_PlaySound("weapons/buster/charging", CHAN_WEAPON);
-				goto ChargeSoundFunction;
-			
-			ChargeSound2:
-				TNT1 A 0 A_PlaySound("weapons/buster/charged", CHAN_WEAPON);
-				goto ChargeSoundFunction;
-		
-			// Subroutine for charge effect
-		ChargeEffectFunction:
-			TNT1 A 1;
-			// if charge is full, play fully-charged animation
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",100,"FullChargeAnim");
-			// if charge is half, play half-charged animation
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",50,"HalfChargeAnim");
-			// if charge is starting, play not-charged animation
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",1,"StartChargeAnim");
-			stop;
-
-			FullChargeAnim:
-				BCH0 UV 1 Bright;
-				BCH0 W 2 Bright;
-				BCH0 XY 1 Bright;
-				BCH0 Z 2 Bright;
-				BCH1 AB 1 Bright;
-				BCH1 C 2 Bright;
-				BCH1 DE 1 Bright;
-				BCH1 F 2 Bright;
-				goto ChargeEffectFunction;
-
-			HalfChargeAnim:
-				BCH0 IJ 1 Bright;
-				BCH0 K 2 Bright;
-				BCH0 LM 1 Bright;
-				BCH0 N 2 Bright;
-				BCH0 OP 1 Bright;
-				BCH0 Q 2 Bright;
-				BCH0 RS 1 Bright;
-				BCH0 T 2 Bright;
-				goto ChargeEffectFunction;
-
-			StartChargeAnim:
-				BCH0 ABCDEFGH 2 Bright;
-				goto ChargeEffectFunction;
 	}
 }
 

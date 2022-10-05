@@ -1,0 +1,23 @@
+// Pause sound handler
+class PauseSoundHandler : EventHandler
+{
+	override bool InputProcess (InputEvent e)
+	{
+		if (e.Type == InputEvent.Type_KeyDown)
+			SendNetworkEvent("MYKEYPRESS", e.KeyScan);
+		return false;
+	}
+	
+	override void NetworkProcess (ConsoleEvent e)
+	{
+		if (e.Name == "MYKEYPRESS")
+		{
+			int key1, key2;
+			[key1, key2] = Bindings.GetKeysForCommand("pause");
+			if ((key1 && key1 == e.Args[0]) || (key2 && key2 == e.Args[0]))
+			{
+				S_StartSound("menu/pause", CHAN_AUTO, CHANF_UI|CHANF_NOPAUSE, 0.50, ATTN_NONE);	// I accidentally made the sound too loud, so I'm lowering the volume in-engine.
+			}
+		}
+	}
+}
