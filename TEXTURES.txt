@@ -1,0 +1,1 @@
+sprite NMBSA0, 315, 225 {Sprite MBUSA0, 65, -15 {Translation "fuck"}}

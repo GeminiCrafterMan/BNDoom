@@ -1,5 +1,5 @@
 // =========================================================================================
-// Player sounds (technically unnecessary but shhhh~)
+// Player sounds
 // -----------------------------------------------------------------------------------------
 // MegaMan
 $playersound	megaman		male	*death		"Sounds/Players/mm-deleted.ogg"
