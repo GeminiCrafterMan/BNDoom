@@ -59,7 +59,7 @@ class UnchargedBusterTracer : FastProjectile
 		+DONTSPLASH
 		//+BLOODSPLATTER 
 		+NOEXTREMEDEATH
-		Damage 1;
+		DamageFunction 1;
 		Radius 2;
 		Height 2;
 		Speed 140;
@@ -85,7 +85,7 @@ class MidChargeBusterTracer : UnchargedBusterTracer
 	Default
 	{
 		Scale .30;
-		Damage 5;
+		DamageFunction 5;
 		Radius 4;
 		Height 4;
 		Obituary "%o was sniped by %k's half-charged buster shot.";
@@ -106,7 +106,7 @@ class MaxChargeBusterTracer : UnchargedBusterTracer
 	Default
 	{
 		Scale .45;
-		Damage 10;
+		DamageFunction 10;
 		Radius 8;
 		Height 8;
 		Obituary "%o was blasted by %k's fully-charged buster shot.";
@@ -140,8 +140,12 @@ class UnchargedBusterTracerSH : UnchargedBusterTracer
 	}
 }
 
-class MaxChargeBusterTracerSH : UnchargedBusterTracerSH
+class MaxChargeBusterTracerSH : MaxChargeBusterTracer
 {
+	Default
+	{
+		DeathSound "weapons/shanghit";
+	}
 	States
 	{
 		Spawn:
@@ -193,12 +197,13 @@ class ThunderBall : Actor
 {
 	Default
 	{
+		+FORCEXYBILLBOARD
 		Radius 8;
 		Height 8;
 		Speed 2;
-		Damage 40;
+		DamageFunction 40;
 		Projectile;
-		DamageType "Electricity";
+		DamageType "Electric";
 	}
 	States
 	{
