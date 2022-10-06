@@ -1,3 +1,7 @@
+//////////////////
+//BUSTER TRACERS//
+//////////////////
+
 Model UnchargedBusterTracer // Name of actor in DECORATE
 { 
    Path "Models/Projectiles" // Path to model in PK3
@@ -41,6 +45,7 @@ Model UnchargedBusterTracerSH // Name of actor in DECORATE
    
    FrameIndex BNTR D 0 0 // The sprite lump, sprite frame, model index, frame number
 }
+
 Model MaxChargeBusterTracerSH // Name of actor in DECORATE
 { 
    Path "Models/Projectiles" // Path to model in PK3
@@ -50,4 +55,17 @@ Model MaxChargeBusterTracerSH // Name of actor in DECORATE
    PITCHFROMMOMENTUM // A flag that will fix the model pitch for projectiles
    
    FrameIndex BNTR E 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+/////////////
+//OBSTACLES//
+/////////////
+
+Model RockCube // Name of actor
+{
+   Path "Models/Objects" // path to model
+   Skin 0 "RockCube.png" // model index, model file
+   Model 0 "Cube.md2" // model index
+   Scale 3 3 3 // Scale values
+   FrameIndex BNOB A 0 0 // Sprite lump, sprite frame, model index
 }

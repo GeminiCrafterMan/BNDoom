@@ -62,25 +62,25 @@ class MegaBuster : Weapon
 				TNT1 A 0 A_JumpIfInventory("PoisElement",1,"PoisBug");
 				TNT1 A 0 A_JumpIfInventory("HubStyle",1,"YouGoiBug");
 				NullBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Null");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Null");
 					Goto Ready;
 				HeatBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Heat");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Heat");
 					Goto Ready;
 				AquaBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Aqua");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Aqua");
 					Goto Ready;
 				ElecBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Elec");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Elec");
 					Goto Ready;
 				WoodBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Wood");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Wood");
 					Goto Ready;
 				GrndBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Grnd");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Grnd");
 					Goto Ready;
 				PoisBug:
-//					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Pois");
+					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Pois");
 					Goto Ready;
 				YouGoiBug: // joke bug style element, probably will not happen... unless?
 					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_YouGoi");
@@ -226,7 +226,8 @@ class MegaBuster : Weapon
 		
 		FullSynchroLayer:
 		NBST A 0 {
-				A_OverlayRenderStyle(99, STYLE_ADDSTENCIL);
+				A_OverlayTranslation(99, "FullSynchro");
+				A_OverlayRenderStyle(99, STYLE_ADD);
 				A_OverlayAlpha(99, 0.25);
 			}
 			
@@ -247,6 +248,7 @@ class BusterPuffBase : Actor
 {
 	Default
 	{
+		+FORCEXYBILLBOARD
 		+NOBLOCKMAP
 		+NOGRAVITY
 		+ALLOWPARTICLES

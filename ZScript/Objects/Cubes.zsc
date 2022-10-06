@@ -1,0 +1,14 @@
+class RockCube : ExplosiveBarrel
+{
+	Default
+	{
+		+DONTTHRUST
+		Obituary "%o got a RockCube shoved in %p face by %o.";
+	}
+	States
+	{
+		Spawn:
+			BNOB A 1;
+			Loop;
+	}
+}
