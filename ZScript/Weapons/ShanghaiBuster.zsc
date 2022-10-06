@@ -1,3 +1,7 @@
+//STYLE ELEMENT
+class GrndElement : Inventory {Default {Inventory.MaxAmount 1;}}
+class PoisElement : Inventory {Default {Inventory.MaxAmount 1;}}
+
 class ShanghaiBuster : MegaBuster
 {
 	Default
@@ -6,9 +10,40 @@ class ShanghaiBuster : MegaBuster
 	}
 	States
 	{
-		Select:
+		Ready:
+			NBST A 1 A_WeaponReady;
+		// Spaghetti, but no regretti. It works.
+			TNT1 A 0 A_JumpIfInventory("AquaElement",1,"StyleAqua");
+			TNT1 A 0 A_JumpIfInventory("GrndElement",1,"StyleGrnd");
+			TNT1 A 0 A_JumpIfInventory("ElecElement",1,"StyleElec");
+			TNT1 A 0 A_JumpIfInventory("HeatElement",1,"StyleHeat");
+			TNT1 A 0 A_JumpIfInventory("WoodElement",1,"StyleWood");
+			TNT1 A 0 A_JumpIfInventory("PoisElement",1,"StylePois");
 			TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHNormStyl");	// Set translation
+			Loop;
+
+			StyleAqua:
+				TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHAquaStyl");	// Set translation
+				goto Ready;
+			StyleGrnd:
+				TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHGrndStyl");	// Set translation
+				goto Ready;
+			StyleElec:
+				TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHElecStyl");	// Set translation
+				goto Ready;
+			StyleHeat:
+				TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHHeatStyl");	// Set translation
+				goto Ready;
+			StyleWood:
+				TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHWoodStyl");	// Set translation
+				goto Ready;
+			StylePois:
+				TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHPoisStyl");	// Set translation
+				goto Ready;
+
+		Select:
 			TNT1 A 0 A_Overlay(99,"LayerChecker");
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "SHNormStyl");	// Set translation
 			NBST A 1 A_Raise;
 			Loop;
 		Fire:
@@ -26,14 +61,25 @@ class ShanghaiBuster : MegaBuster
 		AltFire:
 		FireNormalShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
 			NBST B 1 Bright {
 				//A_FireBullets(2.85, 2.85, 1, 3, "UnchargedBusterPuff", FBF_NORANDOM, 8192, "UnchargedBusterTracerSH", 0, 4);
 				A_FireProjectile("UnchargedBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/sh-pew", CHAN_WEAPON);
 			}
-			Goto Fired;
+			Fired:	// This is the same as Mega's.
+				NBST A 0 {
+					A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+					A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+					A_TakeInventory("Firing", 1);
+				}
+				NBST C 1 Bright;
+				NBST D 1 Bright;
+				NBST E 1;
+			Goto Ready;
 		FireChargeShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
 			NBST B 1 Bright {
 //				A_FireBullets(2.85, 2.85, 1, 30, "MaxChargeBusterPuff", FBF_NORANDOM, 8192, "MaxChargeBusterTracerSH", 0, 4);
 				A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
@@ -45,15 +91,15 @@ class ShanghaiBuster : MegaBuster
 		ChargeSoundFunction:
 			TNT1 A 1;
 			//If charge is full, don't play any sound
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",50,"ChargeSoundFunction");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",50,"ChargeSoundFunction");
 			//Upon reaching 99 charge, play the charged sound
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",49,"ChargeSound2");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",49,"ChargeSound2");
 			//With 5 or more, stay silent.
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",4,"ChargeSoundFunction");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",4,"ChargeSoundFunction");
 			//Upon reaching 3 charge, play chargesound1
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",3,"ChargeSound1");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",3,"ChargeSound1");
 			//If there's any charge, restart.
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",1,"ChargeSoundFunction");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",1,"ChargeSoundFunction");
 			stop;
 			
 			ChargeSound1:
@@ -68,9 +114,9 @@ class ShanghaiBuster : MegaBuster
 		ChargeEffectFunction:
 			TNT1 A 1;
 			// if charge is full, play fully-charged animation
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",50,"FullChargeAnim");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",50,"FullChargeAnim");
 			// if charge is starting, play not-charged animation
-			TNT1 A 0 A_Jumpifinventory("PrimaryCharge",1,"StartChargeAnim");
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",1,"StartChargeAnim");
 			stop;
 
 			FullChargeAnim:
@@ -80,37 +126,6 @@ class ShanghaiBuster : MegaBuster
 			StartChargeAnim:
 				BCH2 ABCDEFGH 2 Bright;
 				goto ChargeEffectFunction;
-				
-				LayerChecker:
-		TNT1 A 0 A_OverlayFlags(99, PSPF_ALPHA|PSPF_RENDERSTYLE, true);
-		TNT1 A 0 A_Jumpif(Countinv("DarkSoul"),"DarkSoulLayer");
-		TNT1 A 0 A_Jumpif(Countinv("FullSynchro"),"FullSynchroLayer");
-		TNT1 A 1;
-		loop;
-			
-		DarkSoulLayer:
-		NBST A 0 {
-				A_OverlayRenderStyle(99, STYLE_STENCIL);
-				A_OverlayAlpha(99, 0.75);
-			}
-		TNT1 A 0 SetShade("550055");
-		goto TopLayer;
-		
-		FullSynchroLayer:
-		NBST A 0 {
-				A_OverlayRenderStyle(99, STYLE_AddStencil);
-				A_OverlayAlpha(99, 0.25);
-			}
-			
-		TopLayer:
-		NBST A 1 A_Jumpifinventory("Firing",1,"LayerFire");
-		NBST A 0 A_Jumpifinventory("DarkSoul",1,"DarkSoulLayer");
-		NBST A 0 A_Jumpifinventory("FullSynchro",1,"TopLayer");
-		stop;
-		
-		LayerFire:
-		NBST BCDE 1;
-		goto TopLayer;
 	}
 }
 

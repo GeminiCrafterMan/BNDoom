@@ -13,9 +13,7 @@ class MegaManPlayer : PlayerPawn
 		PainChance 256;
 		Player.DisplayName "MegaMan";
 		Player.StartItem "MegaBuster";
-		Player.StartItem "MegaBusterTest";
 		Player.WeaponSlot 1, "MegaBuster";
-		Player.WeaponSlot 2, "MegaBusterTest";
 		Player.SoundClass "megaman";
 		Player.Portrait "MEGAFAC1";
 		
