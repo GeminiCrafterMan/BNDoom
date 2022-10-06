@@ -1,0 +1,220 @@
+// Buster shots and puffs
+class BusterPuffBase : Actor
+{
+	Default
+	{
+		+FORCEXYBILLBOARD
+		+NOBLOCKMAP
+		+NOGRAVITY
+		+ALLOWPARTICLES
+		+PUFFONACTORS
+	}
+	States
+	{
+		Spawn:
+			PUFF ABCD 4 Bright;
+			Stop;
+	}
+}
+
+class UnchargedBusterPuff : BusterPuffBase
+{
+	States
+	{
+		Spawn:
+			BNP0 ABCD 1 Bright;
+			Stop;
+	}
+}
+
+class MidChargeBusterPuff : BusterPuffBase
+{
+	States
+	{
+		Spawn:
+			BNP1 AB 1 Bright;
+			BNP1 CDEFG 2 Bright;
+			Stop;
+	}
+}
+
+class MaxChargeBusterPuff : BusterPuffBase
+{
+	States
+	{
+		Spawn:
+			BNP2 AB 1 Bright;
+			BNP2 CDEFG 2 Bright;
+			Stop;
+	}
+}
+
+class UnchargedBusterTracer : FastProjectile
+{
+	Default
+	{
+		Projectile;
+		+RANDOMIZE
+		+FORCEXYBILLBOARD
+		+DONTSPLASH
+		//+BLOODSPLATTER 
+		+NOEXTREMEDEATH
+		Damage 1;
+		Radius 2;
+		Height 2;
+		Speed 140;
+		RenderStyle "Translucent";
+		Alpha 0.75;
+		Scale .15;
+		Obituary "%o was tickled to death by %k's uncharged buster shot.";
+		DeathSound "weapons/hit";
+	}
+	States
+	{
+		Spawn:
+			BNTR A 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("UnchargedBusterPuff");
+			Stop;
+	}
+}
+
+class MidChargeBusterTracer : UnchargedBusterTracer
+{
+	Default
+	{
+		Scale .30;
+		Damage 5;
+		Radius 4;
+		Height 4;
+		Obituary "%o was sniped by %k's half-charged buster shot.";
+	}
+	States
+	{
+		Spawn:
+			BNTR B 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("MidChargeBusterPuff");
+			Stop;
+	}
+}
+
+class MaxChargeBusterTracer : UnchargedBusterTracer
+{
+	Default
+	{
+		Scale .45;
+		Damage 10;
+		Radius 8;
+		Height 8;
+		Obituary "%o was blasted by %k's fully-charged buster shot.";
+	}
+	States
+	{
+		Spawn:
+			BNTR C 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuff");
+			Stop;
+	}
+}
+
+
+class UnchargedBusterTracerSH : UnchargedBusterTracer
+{
+	Default
+	{
+		DeathSound "weapons/shanghit";
+	}
+	States
+	{
+		Spawn:
+			BNTR D 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("UnchargedBusterPuffSH");
+			Stop;
+	}
+}
+
+class MaxChargeBusterTracerSH : UnchargedBusterTracerSH
+{
+	States
+	{
+		Spawn:
+			BNTR E 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuffSH");
+			Stop;
+	}
+}
+
+class UnchargedBusterPuffSH : BusterPuffBase
+{
+	States
+	{
+		Spawn:
+			BNP3 ABCD 1 Bright;
+			Stop;
+	}
+}
+
+class MaxChargeBusterPuffSH : BusterPuffBase
+{
+	States
+	{
+		Spawn:
+			BNP4 AB 1 Bright;
+			BNP4 CDEF 2 Bright;
+			Stop;
+	}
+}
+
+// Elemental puffs
+class ElecPuff : BusterPuffBase
+{
+	States
+	{
+		Spawn:
+			BNP5 KLM 2 Bright;
+			BNP5 NOP 3 Bright;
+			Stop;
+	}
+}
+
+class DeathTimer : Inventory {Default {Inventory.MaxAmount 300;}}
+
+// Chip attacks
+class ThunderBall : Actor
+{
+	Default
+	{
+		Radius 8;
+		Height 8;
+		Speed 2;
+		Damage 40;
+		Projectile;
+		DamageType "Electricity";
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIfInventory("DeathTimer", 300, "Dissipate");
+			BNTH ABCDEFGH 2 Bright {
+				A_GiveInventory("DeathTimer", 2);
+				A_SeekerMissile(0, 45, SMF_LOOK|SMF_PRECISE);
+			}
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("ElecPuff");
+			Stop;
+		Dissipate:
+			BNTH ABCD 2 Bright;
+			BNTH IJK 1 Bright;
+			Stop;
+	}
+}

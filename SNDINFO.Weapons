@@ -22,3 +22,6 @@ $limit	weapons/buster/charging	    0
 $limit	weapons/buster/sh-charging	0
 $limit	weapons/buster/charged	    0
 $limit	weapons/buster/sh-charged	0
+// -----------------------------------------------------------------------------------------
+// Chip attacks
+weapons/thunder				"Sounds/Weapons/thunder.ogg"						// Thunder ball
