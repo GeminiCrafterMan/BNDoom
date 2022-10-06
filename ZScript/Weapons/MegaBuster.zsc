@@ -1,26 +1,17 @@
-class PrimaryCharge : Inventory
-{
-	Default
-	{
-		Inventory.MaxAmount 100;
-	}
-}
 
-class ChargingSoundPlayed : Inventory
-{
-	Default
-	{
-		Inventory.MaxAmount 1;
-	}
-}
-
-class ChargedSoundPlayed : Inventory
-{
-	Default
-	{
-		Inventory.MaxAmount 1;
-	}
-}
+//FLAGS
+class PrimaryCharge : Inventory {Default {Inventory.MaxAmount 100;}}
+class Firing : Inventory {Default {Inventory.MaxAmount 1;}}
+//STATES
+class FullSynchro : Inventory {Default {Inventory.MaxAmount 1;}}
+class DarkSoul : Inventory {Default {Inventory.MaxAmount 1;}}
+//STYLE ELEMENT
+class HeatElement : Inventory {Default {Inventory.MaxAmount 1;}}
+class AquaElement : Inventory {Default {Inventory.MaxAmount 1;}}
+class ElecElement : Inventory {Default {Inventory.MaxAmount 1;}}
+class WoodElement : Inventory {Default {Inventory.MaxAmount 1;}}
+//STYLE CHANGE
+class HubStyle : Inventory {Default {Inventory.MaxAmount 1;}}
 
 class MegaBuster : Weapon
 {
@@ -37,11 +28,35 @@ class MegaBuster : Weapon
 	{
 		Ready:
 			NBST A 1 A_WeaponReady;
+			TNT1 A 0 A_Jumpifinventory("HeatElement",1,"StyleHeat");
+			TNT1 A 0 A_Jumpifinventory("AquaElement",1,"StyleAqua");
+			TNT1 A 0 A_Jumpifinventory("ElecElement",1,"StyleElec");
+			TNT1 A 0 A_Jumpifinventory("WoodElement",1,"StyleWood");
+			TNT1 A 0 A_Jumpifinventory("HubStyle",1,"StyleHub");
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMNormStyl");	// Set translation
 			Loop;
+			
+			StyleHeat:
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMHeatStyl");	// Set translation
+			goto Ready;
+			StyleAqua:
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMAquaStyl");	// Set translation
+			goto Ready;
+			StyleElec:
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMElecStyl");	// Set translation
+			goto Ready;
+			StyleWood:
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMWoodStyl");	// Set translation
+			goto Ready;
+			StyleHub:
+			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMHubStyl");	// Set translation
+			goto Ready;
+			
 		Deselect:
 			NBST A 1 A_Lower;
 			Loop;
 		Select:
+			TNT1 A 0 A_Overlay(99,"LayerChecker");
 			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMNormStyl");	// Set translation
 			NBST A 1 A_Raise;
 			Loop;
@@ -62,55 +77,36 @@ class MegaBuster : Weapon
 			TNT1 A 0 A_Overlay(1000,"DarkSoul");
 		FireNormalShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
 			NBST B 1 Bright {
 				//A_FireBullets(2.85, 2.85, 1, 3, "UnchargedBusterPuff", FBF_NORANDOM, 8192, "UnchargedBusterTracer", 0, 4);
 				A_FireProjectile("UnchargedBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-				A_SetInventory("ChargingSoundPlayed", 0);
-				A_SetInventory("ChargedSoundPlayed", 0);
 			}
+			Fired:
+			NBST A 0 A_TakeInventory("Firing", 1);
 			NBST C 1 Bright;
 			NBST D 1 Bright;
 			NBST E 1;
 			Goto Ready;
 		FireMidChargeShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
 			NBST B 1 Bright {
 //				A_FireBullets(2.85, 2.85, 1, 15, "MidChargeBusterPuff", FBF_NORANDOM, 8192, "MidChargeBusterTracer", 0, 4);
 				A_FireProjectile("MidChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-				A_SetInventory("ChargingSoundPlayed", 0);
-				A_SetInventory("ChargedSoundPlayed", 0);
 			}
-			NBST C 1 Bright;
-			NBST D 1 Bright;
-			NBST E 1;
-			Goto Ready;
+			Goto Fired;
 		FireChargeShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
 			NBST B 1 Bright {
 //				A_FireBullets(2.85, 2.85, 1, 30, "MaxChargeBusterPuff", FBF_NORANDOM, 8192, "MaxChargeBusterTracer", 0, 4);
 				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
-				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-				A_SetInventory("ChargingSoundPlayed", 0);
-				A_SetInventory("ChargedSoundPlayed", 0);
 			}
-			NBST C 1 Bright;
-			NBST D 1 Bright;
-			NBST E 1;
-			Goto Ready;
+			Goto Fired;
 		Spawn:
 			SHTG A -1;
 			Stop;
@@ -174,14 +170,38 @@ class MegaBuster : Weapon
 			StartChargeAnim:
 				BCH0 ABCDEFGH 2 Bright;
 				goto ChargeEffectFunction;
-		DarkSoul:
-			TNT1 A 0 {
-				A_OverlayFlags(OverlayID(), PSPF_ALPHA|PSPF_RENDERSTYLE, true);
-				A_OverlayRenderStyle(OverlayID(), STYLE_SHADOW);
-				A_OverlayAlpha(OverlayID(), 0.75);
-				SetShade("220022");
+		
+		LayerChecker:
+		TNT1 A 0 A_OverlayFlags(99, PSPF_ALPHA|PSPF_RENDERSTYLE, true);
+		TNT1 A 0 A_Jumpif(Countinv("DarkSoul"),"DarkSoulLayer");
+		TNT1 A 0 A_Jumpif(Countinv("FullSynchro"),"FullSynchroLayer");
+		TNT1 A 1;
+		loop;
+			
+		DarkSoulLayer:
+		NBST A 0 {
+				A_OverlayRenderStyle(99, STYLE_STENCIL);
+				A_OverlayAlpha(99, 0.75);
 			}
-			Stop;
+		TNT1 A 0 SetShade("550055");
+		goto TopLayer;
+		
+		FullSynchroLayer:
+		NBST A 0 {
+				A_OverlayRenderStyle(99, STYLE_AddStencil);
+				A_OverlayAlpha(99, 0.25);
+			}
+			
+		TopLayer:
+		NBST A 1 A_Jumpifinventory("Firing",1,"LayerFire");
+		NBST A 0 A_Jumpifinventory("DarkSoul",1,"DarkSoulLayer");
+		NBST A 0 A_Jumpifinventory("FullSynchro",1,"TopLayer");
+		stop;
+		
+		LayerFire:
+		NBST BCDE 1;
+		goto TopLayer;
+		
 	}
 }
 
