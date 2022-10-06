@@ -220,6 +220,7 @@ class MegaBuster : Weapon
 				A_OverlayTranslation(99, "DarkSoul");
 				A_OverlayRenderStyle(99, STYLE_SUBTRACT);
 				A_OverlayAlpha(99, 0.50);
+				A_TakeInventory("FullSynchro", 1);
 			}
 		goto TopLayer;
 		
