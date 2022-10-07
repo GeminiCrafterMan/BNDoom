@@ -1,7 +1,73 @@
 class MegaManPlayer : PlayerPawn
 {
-	bool FullSynchro;
-	bool DarkSoul;
+	int curElement; 	// field containing current element
+	int curStyleType;	// field containing current style type
+	int curEmotion;		// field containing current emotion
+	// an array containing translation names as defined in TRNSLATE
+	// Redefine this for Shanghai
+	static const name ElementTranslations[] =
+	{
+		"MMNormStyl",
+		"MMHeatStyl",
+		"MMWoodStyl",
+		"MMElecStyl",
+		"MMAquaStyl",
+	// these are for placeholder purposes
+		"MMNormStyl",
+		"MMNormStyl",
+		"MMNormStyl"
+	};
+	// the same thing, but for bug style
+	static const name BugElementTranslations[] =
+	{
+		"MMBugStyl_Null",
+		"MMBugStyl_Heat",
+		"MMBugStyl_Wood",
+		"MMBugStyl_Elec",
+		"MMBugStyl_Aqua",
+		"MMBugStyle_Grnd",
+		"MMBugStyle_Pois",
+		"MMBugStyle_YouGoi"
+	};
+	// An enum where each number corresponds to a position in the array above
+	enum ElemTransValues
+	{
+		Elem_Normal,
+		Elem_Heat,
+		Elem_Wood,
+		Elem_Electric,
+		Elem_Aqua,
+	// bugstyle and shanghai exclusive
+		Elem_Ground,
+		Elem_Poison,
+		Elem_Extra // currently only used for you goi
+	}
+	// An enum where each number corresponds to a type of style
+	enum StyleTypeValues
+	{
+		Style_None,
+		Style_Guts,
+		Style_Custom,
+		Style_Team,
+		Style_Shield,
+		Style_Hub,
+		Style_Ground,
+		Style_Shadow,
+		Style_Bug
+	}
+	enum EmotionValues
+	{
+		Emotion_Normal,
+		Emotion_FullSynchro,
+		Emotion_Angry,
+		Emotion_Evil,
+		Emotion_Anxious,
+		Emotion_Tired,
+		Emotion_Exhausted,
+		Emotion_Pinch,
+		Emotion_PerfectSynchro,
+		Emotion_Happy
+	}
 	Default
 	{
 		+NOBLOOD
@@ -93,6 +159,31 @@ class BN6DeathEffect : Actor
 
 class ShanghaiPlayer : MegaManPlayer
 {
+	static const name ElementTranslations[] =
+	{
+		"SHNormStyl",
+		"SHHeatStyl",
+		"SHWoodStyl",
+		"SHElecStyl",
+		"SHAquaStyl",
+	// these are for placeholder purposes
+		"SHGrndStyl",
+		"SHPoisStyl",
+		"SHNormStyl"
+	};
+	// An enum where each number corresponds to a type of style
+	enum StyleTypeValues
+	{
+		Style_None,
+		Style_Guts,
+		Style_Custom,
+		Style_Team,
+		Style_Shield,
+		Style_Hub,
+		Style_Ground,
+		Style_Shadow,
+		Style_Bug
+	}
 	Default
 	{
 		Player.DisplayName "Shanghai";

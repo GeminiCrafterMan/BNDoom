@@ -1,20 +1,85 @@
 //FLAGS
 class PrimaryCharge : Inventory {Default {Inventory.MaxAmount 100;}}
 class Firing : Inventory {Default {Inventory.MaxAmount 1;}}
-//STATES
-class FullSynchro : Inventory {Default {Inventory.MaxAmount 1;}}
-class DarkSoul : Inventory {Default {Inventory.MaxAmount 1;}}
-//STYLE ELEMENT
-class HeatElement : Inventory {Default {Inventory.MaxAmount 1;}}
-class AquaElement : Inventory {Default {Inventory.MaxAmount 1;}}
-class ElecElement : Inventory {Default {Inventory.MaxAmount 1;}}
-class WoodElement : Inventory {Default {Inventory.MaxAmount 1;}}
-//STYLE CHANGE
-class HubStyle : Inventory {Default {Inventory.MaxAmount 1;}}
-class BugStyle : Inventory {Default {Inventory.MaxAmount 1;}}
 
 class MegaBuster : Weapon
 {
+    action void A_SetElementTranslation(int flags = 0) 
+    {
+        A_WeaponReady(flags);
+        
+        // Cast and null-check the class:
+        let mman = MegaManPlayer(self);
+        if (!mman)
+            return;
+        
+        if (mman.curStyleType == MegaManPlayer.Style_Bug)
+        {
+            A_OverlayTranslation(OverlayID(), MegaManPlayer.ElementTranslations[mman.curElement]);
+            return;
+        }
+        
+        if (mman.curStyleType == MegaManPlayer.Style_Hub) 
+        {
+            A_OverlayTranslation(OverlayID(), "MMHubStyl"); // Set translation
+            return;
+        }
+        
+        A_OverlayTranslation(OverlayID(), MegaManPlayer.ElementTranslations[mman.curElement]);
+    }
+	action void A_EmotionCheck(int flags = 0)
+	{
+        // Cast and null-check the class:
+        let mman = MegaManPlayer(self);
+        if (!mman)
+            return;
+
+		switch (mman.curEmotion) {
+			case MegaManPlayer.Emotion_Evil:
+			{
+				if (mman.curStyleType == MegaManPlayer.Style_Hub)
+					break;
+				else
+				{
+					A_OverlayTranslation(99, "DarkSoul");
+					A_OverlayRenderStyle(99, STYLE_SUBTRACT);
+					A_OverlayAlpha(99, 0.50);
+					break;
+				}
+			}
+			case MegaManPlayer.Emotion_FullSynchro:
+			{
+				A_OverlayTranslation(99, "FullSynchro");
+				A_OverlayRenderStyle(99, STYLE_ADD);
+				A_OverlayAlpha(99, 0.25);
+				break;
+			}
+			default:
+				break;
+		}
+	}
+	action void A_FireChargeShot(int flags = 0)
+	{
+        // Cast and null-check the class:
+        let mman = MegaManPlayer(self);
+        if (!mman)
+            return;
+		
+		switch (mman.curElement) {
+			case MegaManPlayer.Elem_Electric:
+			{
+				A_FireProjectile("ThunderBall");
+				A_PlaySound("weapons/thunder", CHAN_WEAPON);
+				break;
+			}
+			default:
+			{
+				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
+				break;
+			}
+		}
+	}
 	Default
 	{
 		Weapon.SelectionOrder 3700;
@@ -22,75 +87,22 @@ class MegaBuster : Weapon
 		+WEAPON.WIMPY_WEAPON;
 		Inventory.Pickupmessage "You shouldn't be seeing this.";
 		Tag "MegaBuster";
-//		AttackSound "weapons/buster/pew";
 	}
 	States
 	{
 		Ready:
-			NBST A 1 A_WeaponReady;
-			TNT1 A 0 A_JumpIfInventory("BugStyle",1,"StyleBug");
-			TNT1 A 0 A_Jumpifinventory("HubStyle",1,"StyleHub");
-			TNT1 A 0 A_Jumpifinventory("HeatElement",1,"StyleHeat");
-			TNT1 A 0 A_Jumpifinventory("AquaElement",1,"StyleAqua");
-			TNT1 A 0 A_Jumpifinventory("ElecElement",1,"StyleElec");
-			TNT1 A 0 A_Jumpifinventory("WoodElement",1,"StyleWood");
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMNormStyl");	// Set translation
+			NBST A 1 {
+				A_WeaponReady();
+				A_SetElementTranslation();
+			}
 			Loop;
-			
-			StyleHeat:
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMHeatStyl");	// Set translation
-			goto Ready;
-			StyleAqua:
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMAquaStyl");	// Set translation
-			goto Ready;
-			StyleElec:
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMElecStyl");	// Set translation
-			goto Ready;
-			StyleWood:
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMWoodStyl");	// Set translation
-			goto Ready;
-			StyleHub:
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMHubStyl");	// Set translation
-			goto Ready;
-			StyleBug:
-				TNT1 A 0 A_Jumpifinventory("HeatElement",1,"HeatBug");
-				TNT1 A 0 A_Jumpifinventory("AquaElement",1,"AquaBug");
-				TNT1 A 0 A_Jumpifinventory("ElecElement",1,"ElecBug");
-				TNT1 A 0 A_Jumpifinventory("WoodElement",1,"WoodBug");
-				TNT1 A 0 A_JumpIfInventory("GrndElement",1,"GrndBug");
-				TNT1 A 0 A_JumpIfInventory("PoisElement",1,"PoisBug");
-				TNT1 A 0 A_JumpIfInventory("HubStyle",1,"YouGoiBug");
-				NullBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Null");
-					Goto Ready;
-				HeatBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Heat");
-					Goto Ready;
-				AquaBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Aqua");
-					Goto Ready;
-				ElecBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Elec");
-					Goto Ready;
-				WoodBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Wood");
-					Goto Ready;
-				GrndBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Grnd");
-					Goto Ready;
-				PoisBug:
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_Pois");
-					Goto Ready;
-				YouGoiBug: // joke bug style element, probably will not happen... unless?
-					TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMBugStyl_YouGoi");
-					Goto Ready;
-			
+
 		Deselect:
 			NBST A 1 A_Lower;
 			Loop;
 		Select:
 			TNT1 A 0 A_Overlay(99,"LayerChecker");
-			TNT1 A 0 A_OverlayTranslation(OverlayID(), "MMNormStyl");	// Set translation
+			TNT1 A 0 A_SetElementTranslation();	// Set translation
 			NBST A 1 A_Raise;
 			Loop;
 		Fire:
@@ -133,13 +145,11 @@ class MegaBuster : Weapon
 			}
 			Goto Fired;
 		FireChargeShot:
-			NBST A 1 A_SetInventory("PrimaryCharge", 0);
-			NBST A 0 A_GiveInventory("Firing", 1);
-			NBST A 0 A_JumpIfInventory("ElecElement", 1, "FireThunder");
-			NBST B 1 Bright {
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_PlaySound("weapons/buster/pew", CHAN_WEAPON);
+			NBST A 1 {
+				A_SetInventory("PrimaryCharge", 0);
+				A_GiveInventory("Firing", 1);
 			}
+			NBST B 1 Bright A_FireChargeShot;
 			Goto Fired;
 		Spawn:
 			SHTG A -1;
@@ -204,45 +214,17 @@ class MegaBuster : Weapon
 			StartChargeAnim:
 				BCH0 ABCDEFGH 2 Bright;
 				goto ChargeEffectFunction;
-		
-		LayerChecker:
-			TNT1 A 0 A_OverlayFlags(99, PSPF_ALPHA|PSPF_RENDERSTYLE, true);
-			TNT1 A 0 A_Jumpif(Countinv("DarkSoul"),"DarkSoulLayer");
-			TNT1 A 0 A_Jumpif(Countinv("FullSynchro"),"FullSynchroLayer");
-			TNT1 A 1;
-			loop;
-			
-		DarkSoulLayer:
-			NBST A 0 {
-					A_OverlayTranslation(99, "DarkSoul");
-					A_OverlayRenderStyle(99, STYLE_SUBTRACT);
-					A_OverlayAlpha(99, 0.50);
-					A_TakeInventory("FullSynchro", 1);
-			}
-		goto TopLayer;
-		
-		FullSynchroLayer:
-			NBST A 0 {
-					A_OverlayTranslation(99, "FullSynchro");
-					A_OverlayRenderStyle(99, STYLE_ADD);
-					A_OverlayAlpha(99, 0.25);
-			}
-			
+
 		TopLayer:
-			NBST A 1 A_JumpIfInventory("Firing",1,"LayerFire");
-			NBST A 0 A_JumpIfInventory("DarkSoul",1,"DarkSoulLayer");
-			NBST A 0 A_JumpIfInventory("FullSynchro",1,"FullSynchroLayer");
-			goto LayerChecker;
-		
+			NBST A 1 {
+				A_JumpIfInventory("Firing",1,"LayerFire");
+				A_OverlayFlags(99, PSPF_ALPHA|PSPF_RENDERSTYLE, true);
+				A_EmotionCheck();
+				}
+			loop;
+
 		LayerFire:
 			NBST BCDE 1;
 			goto TopLayer;
-
-		FireThunder:
-			NBST B 1 Bright {
-				A_FireProjectile("ThunderBall");
-				A_PlaySound("weapons/thunder", CHAN_WEAPON);
-			}
-			Goto Fired;
 	}
 }
