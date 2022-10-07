@@ -195,6 +195,7 @@ class DeathTimer : Inventory {Default {Inventory.MaxAmount 300;}}
 // Chip attacks
 class ThunderBall : Actor
 {
+	actor victim;
 	Default
 	{
 		+FORCEXYBILLBOARD
@@ -204,7 +205,22 @@ class ThunderBall : Actor
 		DamageFunction 40;
 		Projectile;
 		DamageType "Electric";
+		DeathSound "weapons/hit";
 	}
+	override int SpecialMissileHit(actor victim) // An actor it hits is labelled "victim".
+    {
+        if (!self.victim && victim.bSHOOTABLE && victim != target && victim.bDORMANT == 0)
+		{
+		if (victim.health <= Damage)
+			{
+				victim.A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
+				victim.A_Die("electric");
+				return 1;
+			}
+		victim.A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
+		}
+        return -1; // 1 to keep going on, -1 to die the appropriate death (XDeath in this case, since ideally it hit a bleeding actor)
+    }
 	States
 	{
 		Spawn:

@@ -17,3 +17,57 @@ class BNExplosion : Actor
 			Stop;
 	}
 }
+
+class ElectricDamage : Custominventory
+{
+	States
+	{
+		Pickup:
+			TNT1 A 0 A_Jumpifhealthlower(1,"Stopit");
+			TNT1 A 0 A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
+		Stopit:
+			TNT1 A 0;
+			stop;
+	}
+}
+
+class ElectricDamageEffect : Actor
+{
+	Default
+	{
+		Projectile;
+		Scale 1.75;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_Jumpifinventory("Primarycharge",8,"Death");
+			TNT1 AAAAAAAAAA 1 Bright //hi, this has no sprites and i'm dumb, so fuck
+			{
+				if (master != null && master.Health > 0 && master.Findstate("Pain"))
+					{
+						master.SetStateLabel("pain");
+						master.A_Pain();
+						if (self.GetAge() % 2 == 0) {master.A_SetTranslation("Paralyzed");} // Set paralysis translation on even tics
+						else {master.A_SetTranslation("None");}	// Set no translation on odd tics
+					}
+				else {}
+			}
+			TNT1 A 0 A_Giveinventory("Primarycharge",1);
+			loop;
+		
+		Death:
+			TNT1 AAAAAAAAAA 1 Bright
+			{
+				if (master != null && master.Health > 0 && master.Findstate("Pain"))
+					{
+						master.SetStateLabel("pain");
+						master.A_Pain();
+						if (self.GetAge() % 2 == 0) {master.A_SetTranslation("Paralyzed");} // Set paralysis translation on even tics
+						else {master.A_SetTranslation("None");}	// Set no translation on odd tics
+					}
+				else {}
+			}
+			stop;
+	}
+}
