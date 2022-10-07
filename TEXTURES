@@ -1,0 +1,5 @@
+graphic M_DOOM, 688, 278 {
+    XScale 4
+    YScale 4.8
+    Graphic M_LOGO, 0, 10
+}
