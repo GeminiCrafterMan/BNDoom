@@ -1,3 +1,4 @@
+![BNDoom logo](Graphics/Menu/Generic/M_LOGO.png)
 # BNDoom
 Doom "character" mod based on MegaMan Battle Network
 
