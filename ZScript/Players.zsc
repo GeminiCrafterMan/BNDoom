@@ -82,6 +82,7 @@ class MegaManPlayer : PlayerPawn
 		Player.WeaponSlot 1, "MegaBuster";
 		Player.SoundClass "megaman";
 		Player.Portrait "MEGAFAC1";
+		Player.ViewHeight 30;
 		
 		Player.ColorRange 112, 127;
 		Player.Colorset 0, "Green",			0x70, 0x7F,  0x72;

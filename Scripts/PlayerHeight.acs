@@ -1,7 +1,0 @@
-#library "PlayerHeight"
-#include "zcommon.acs"
-
-script "SetPlayerHeight" ENTER
-{
-	SetActorProperty(0, APROP_VIEWHEIGHT, 30.0);
-}
