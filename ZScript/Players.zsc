@@ -25,9 +25,9 @@ class MegaManPlayer : PlayerPawn
 		"MMBugStyl_Wood",
 		"MMBugStyl_Elec",
 		"MMBugStyl_Aqua",
-		"MMBugStyle_Grnd",
-		"MMBugStyle_Pois",
-		"MMBugStyle_YouGoi"
+		"MMBugStyl_Grnd",
+		"MMBugStyl_Pois",
+		"MMBugStyl_YouGoi"
 	};
 	// An enum where each number corresponds to a position in the array above
 	enum ElemTransValues
