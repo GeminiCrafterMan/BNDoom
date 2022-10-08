@@ -53,6 +53,7 @@ class ShanghaiBuster : MegaBuster
 			{
 				A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "Flash");	// Flash layer
 				break;
 			}
 		}
@@ -103,7 +104,7 @@ class ShanghaiBuster : MegaBuster
 				}
 				NBST C 1 Bright;
 				NBST D 1 Bright;
-				NBST E 1;
+				NBST A 1;
 			Goto Ready;
 		FireChargeShot:	// have to fucking redefine this or else she drops back into mega's colors and charge shot
 			NBST A 1 {
@@ -112,7 +113,9 @@ class ShanghaiBuster : MegaBuster
 			}
 			NBST B 1 Bright A_FireChargeShot;
 			Goto Fired;
-
+		Flash: // same here...
+			BSFL ABCD 1 Bright A_SetElementTranslation;
+			Stop;
 
 			//Subroutine for charge sound
 		ChargeSoundFunction:
