@@ -4,3 +4,8 @@ gameinfo
 	ChatSound = "menu/text"
 	AddEventHandlers = "PauseSoundHandler"
 }
+
+DamageType Wind
+{
+	Obituary = "%k was blown away by %o"
+}

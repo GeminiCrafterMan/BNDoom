@@ -159,41 +159,6 @@ class ShanghaiBuster : MegaBuster
 				let shai = ShanghaiPlayer(self);
 				if (shai) {
 					switch (shai.curElement) {
-						case ShanghaiPlayer.Elem_Normal:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Heat;
-							break;
-						}
-						case ShanghaiPlayer.Elem_Heat:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Wood;
-							break;
-						}
-						case ShanghaiPlayer.Elem_Wood:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Electric;
-							break;
-						}
-						case ShanghaiPlayer.Elem_Electric:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Aqua;
-							break;
-						}
-						case ShanghaiPlayer.Elem_Aqua:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Ground;
-							break;
-						}
-						case ShanghaiPlayer.Elem_Ground:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Poison;
-							break;
-						}
-						case ShanghaiPlayer.Elem_Poison:
-						{
-							shai.curElement = ShanghaiPlayer.Elem_Extra;
-							break;
-						}
 						case ShanghaiPlayer.Elem_Extra:
 						{
 							shai.curElement = ShanghaiPlayer.Elem_Normal;
@@ -201,7 +166,26 @@ class ShanghaiBuster : MegaBuster
 						}
 						default:
 						{
-							A_StartSound("menu/error");
+							shai.curElement++;
+							break;
+						}
+					}
+				}
+			}
+		Reload:
+			NBST A 10 {
+				// Cast and null-check the class:
+				let shai = ShanghaiPlayer(self);
+				if (shai) {
+					switch (shai.curStyleType) {
+						case ShanghaiPlayer.Style_Witch:
+						{
+							shai.curStyleType = ShanghaiPlayer.Style_None;
+							break;
+						}
+						default:
+						{
+							shai.curStyleType++;
 							break;
 						}
 					}

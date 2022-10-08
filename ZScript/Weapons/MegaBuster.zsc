@@ -4,33 +4,33 @@ class Firing : Inventory {Default {Inventory.MaxAmount 1;}}
 
 class MegaBuster : Weapon
 {
-    action void A_SetElementTranslation(int flags = 0) 
-    {
-        // Cast and null-check the class:
-        let mman = MegaManPlayer(self);
-        if (!mman)
-            return;
-        
-        if (mman.curStyleType == MegaManPlayer.Style_Bug)
-        {
-            A_OverlayTranslation(OverlayID(), MegaManPlayer.BugElementTranslations[mman.curElement]);
-            return;
-        }
-        
-        if (mman.curStyleType == MegaManPlayer.Style_Hub) 
-        {
-            A_OverlayTranslation(OverlayID(), "MMHubStyl"); // Set translation
-            return;
-        }
-        
-        A_OverlayTranslation(OverlayID(), MegaManPlayer.ElementTranslations[mman.curElement]);
-    }
+	action void A_SetElementTranslation(int flags = 0) 
+	{
+		// Cast and null-check the class:
+		let mman = MegaManPlayer(self);
+		if (!mman)
+			return;
+		
+		if (mman.curStyleType == MegaManPlayer.Style_Bug)
+		{
+			A_OverlayTranslation(OverlayID(), MegaManPlayer.BugElementTranslations[mman.curElement]);
+			return;
+		}
+		
+		if (mman.curStyleType == MegaManPlayer.Style_Hub) 
+		{
+			A_OverlayTranslation(OverlayID(), "MMHubStyl"); // Set translation
+			return;
+		}
+		
+		A_OverlayTranslation(OverlayID(), MegaManPlayer.ElementTranslations[mman.curElement]);
+	}
 	action void A_EmotionCheck(int flags = 0)
 	{
-        // Cast and null-check the class:
-        let mman = MegaManPlayer(self);
-        if (!mman)
-            return;
+		// Cast and null-check the class:
+		let mman = MegaManPlayer(self);
+		if (!mman)
+			return;
 
 		switch (mman.curEmotion) {
 			case MegaManPlayer.Emotion_Evil:
@@ -58,10 +58,10 @@ class MegaBuster : Weapon
 	}
 	action void A_FireChargeShot(int flags = 0)
 	{
-        // Cast and null-check the class:
-        let mman = MegaManPlayer(self);
-        if (!mman)
-            return;
+		// Cast and null-check the class:
+		let mman = MegaManPlayer(self);
+		if (!mman)
+			return;
 		
 		switch (mman.curElement) {
 			case MegaManPlayer.Elem_Electric:
@@ -238,41 +238,6 @@ class MegaBuster : Weapon
 				let mman = MegaManPlayer(self);
 				if (mman) {
 					switch (mman.curElement) {
-						case MegaManPlayer.Elem_Normal:
-						{
-							mman.curElement = MegaManPlayer.Elem_Heat;
-							break;
-						}
-						case MegaManPlayer.Elem_Heat:
-						{
-							mman.curElement = MegaManPlayer.Elem_Wood;
-							break;
-						}
-						case MegaManPlayer.Elem_Wood:
-						{
-							mman.curElement = MegaManPlayer.Elem_Electric;
-							break;
-						}
-						case MegaManPlayer.Elem_Electric:
-						{
-							mman.curElement = MegaManPlayer.Elem_Aqua;
-							break;
-						}
-						case MegaManPlayer.Elem_Aqua:
-						{
-							mman.curElement = MegaManPlayer.Elem_Ground;
-							break;
-						}
-						case MegaManPlayer.Elem_Ground:
-						{
-							mman.curElement = MegaManPlayer.Elem_Poison;
-							break;
-						}
-						case MegaManPlayer.Elem_Poison:
-						{
-							mman.curElement = MegaManPlayer.Elem_Extra;
-							break;
-						}
 						case MegaManPlayer.Elem_Extra:
 						{
 							mman.curElement = MegaManPlayer.Elem_Normal;
@@ -280,7 +245,26 @@ class MegaBuster : Weapon
 						}
 						default:
 						{
-							A_StartSound("menu/error");
+							mman.curElement++;
+							break;
+						}
+					}
+				}
+			}
+		Reload:
+			NBST A 10 {
+				// Cast and null-check the class:
+				let mman = MegaManPlayer(self);
+				if (mman) {
+					switch (mman.curStyleType) {
+						case MegaManPlayer.Style_Bug:
+						{
+							mman.curStyleType = MegaManPlayer.Style_None;
+							break;
+						}
+						default:
+						{
+							mman.curStyleType++;
 							break;
 						}
 					}

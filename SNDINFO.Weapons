@@ -27,3 +27,4 @@ $limit	weapons/buster/sh-charged	0
 // -----------------------------------------------------------------------------------------
 // Chip attacks
 weapons/thunder				"Sounds/Weapons/thunder.ogg"						// Thunder ball
+weapons/crack               "Sounds/Weapons/crack.ogg"                          // Panel or object cracking/breaking
