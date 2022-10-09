@@ -71,3 +71,44 @@ class ElectricDamageEffect : Actor
 			stop;
 	}
 }
+
+class ConfusionEffect : Actor
+{
+	Default
+	{
+		Projectile;
+		Scale 1.75;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_Jumpifinventory("Primarycharge",8,"Death");
+			BNCF ABCDEFGH 3 Bright //hi, this has no sprites and i'm dumb, so fuck
+			{
+				if (master != null)
+				{
+					if (master.Health > 0)
+						{
+							master.bFrightened = true;
+						}
+					else {master.bFrightened = false;}
+				}
+				else {}
+			}
+			TNT1 A 0 A_Giveinventory("Primarycharge",1);
+			loop;
+		
+		Death:
+			BNCF ABCDEFGH 3 Bright
+			{
+				if (master != null)
+					if (master.Health > 0)
+						{
+							master.bFrightened = true;
+						}
+					else {master.bFrightened = false;}
+				else {}
+			}
+			stop;
+	}
+}

@@ -10,7 +10,7 @@ class RockCube : ExplosiveBarrel
 		+DONTTHRUST
 		-MISSILE
 		Obituary "%o got a RockCube shoved in %p face by %k.";
-		DeathSound "weapons/crack";
+		DeathSound "weapons/break";
 	}
 	States
 	{
