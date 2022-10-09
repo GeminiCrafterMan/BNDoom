@@ -1,8 +1,10 @@
 gameinfo
 {
-    PlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
+    AddPlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
 	ChatSound = "menu/text"
 	AddEventHandlers = "PauseSoundHandler"
+	ForceTextInMenus = true
+	ENDOOM = "ENDBNETW"
 }
 
 DamageType Wind
