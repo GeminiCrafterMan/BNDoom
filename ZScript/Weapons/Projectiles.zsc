@@ -238,9 +238,9 @@ class ZapRing1 : Actor
 	}
 }
 
-class ZapRing2 : ZapRing1 {Default {DamageFunction: 30;}}
+class ZapRing2 : ZapRing1 {Default {DamageFunction 30;}}
 
-class ZapRing3 : ZapRing1 {Default {DamageFunction: 40;}}
+class ZapRing3 : ZapRing1 {Default {DamageFunction 40;}}
 
 class ThunderBall : Actor
 {
