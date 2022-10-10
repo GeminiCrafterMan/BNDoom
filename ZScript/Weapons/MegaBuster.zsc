@@ -290,15 +290,21 @@ class MegaBuster : Weapon
 			}
 			Goto Ready;
 		SwordBlade:
-			TNT1 A 0 A_OverlayPivotAlign(OverlayID(), PSPA_RIGHT, PSPA_BOTTOM);
-			TNT1 A 0 A_OverlayRotate(OverlayID(), 90);
+			TNT1 A 0 {
+				A_OverlayPivotAlign(OverlayID(), PSPA_RIGHT, PSPA_BOTTOM);
+				A_OverlayRotate(OverlayID(), 90);
+			}
 			SWSL A 2 Bright A_OverlayTranslation(PSP_FLASH, "Sword");
 			SWSL AAAAAAAAAAA 1 Bright A_OverlayRotate(OverlayID(), -30,WOF_ADD|WOF_INTERPOLATE);
 			TNT1 A 0 A_OverlayRotate(OverlayID(), 0, WOF_INTERPOLATE);
 			Stop;
 		SwordSwing:
-			TNT1 A 0 A_OverlayPivotAlign(OverlayID(), PSPA_RIGHT, PSPA_BOTTOM);
-			TNT1 A 0 A_OverlayRotate(OverlayID(), 90);
+			TNT1 A 0 {
+				A_OverlayPivotAlign(OverlayID(), PSPA_RIGHT, PSPA_BOTTOM);
+				A_OverlayRotate(OverlayID(), 90);
+				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+			}
 			NSRD A 2 A_CustomPunch(80, true, CPF_NOTURN, "BulletPuff", 128, 0, 0, "ArmorBonus", "weapons/hit");
 			NSRD AAAAAAAAAAAAA 1 A_OverlayRotate(OverlayID(), -30,WOF_ADD|WOF_INTERPOLATE);
 			TNT1 A 0 A_OverlayRotate(OverlayID(), 0, WOF_INTERPOLATE);
