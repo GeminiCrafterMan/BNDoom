@@ -42,13 +42,13 @@ class ShanghaiBuster : MegaBuster
         if (!shai)
             return;
 		
-		switch (shai.curElement) {
-//			case ShanghaiPlayer.Elem_Electric:
-//			{
-//				A_FireProjectile("ThunderBall");
-//				A_StartSound("weapons/thunder", CHAN_WEAPON);
-//				break;
-//			}
+		switch (shai.curElement) {	// will be shai.curStyleType when we get styles properly working
+			case ShanghaiPlayer.Elem_Electric:	// temp
+			{
+				A_FireProjectile("ThunderBall");
+				A_StartSound("weapons/thunder", CHAN_WEAPON);
+				break;
+			}
 			default:
 			{
 				A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));

@@ -118,10 +118,11 @@ class NetNaviPlayer : PlayerPawn
 		CopyDmg, LifeSync,
 		AtkPlus10, AtkPlus30, NaviPlus20,
 		ColorPt, DblPoint,
+		ZapRing1, ZapRing2, ZapRing3,
 	// Shanghai chips confirmed to be in
 		ElChain1, ElChain2, ElChain3,
 		DustBomb, MagiBomb, StarBomb,
-		StepCros, // could be considered a BN chip... it existed in earlier games
+		StepCros, // could be considered a BN chip... it existed in earlier games, but I think the Shanghai chip art for it is BN6-size...?
 		AuraSrd1, AuraSrd2, AuraSrd3,
 		TimeStop // turns all chips into screendims if used with them
 	}

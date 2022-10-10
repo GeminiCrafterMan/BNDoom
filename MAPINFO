@@ -1,6 +1,6 @@
 gameinfo
 {
-    AddPlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
+    PlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
 	ChatSound = "menu/text"
 	AddEventHandlers = "PauseSoundHandler"
 	ForceTextInMenus = true

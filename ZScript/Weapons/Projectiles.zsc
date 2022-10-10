@@ -193,6 +193,55 @@ class ElecPuff : BusterPuffBase
 class DeathTimer : Inventory {Default {Inventory.MaxAmount 300;}}
 
 // Chip attacks
+class ZapRing1 : Actor
+{
+	actor victim;
+	Default
+	{
+		+FORCEXYBILLBOARD
+		Radius 8;
+		Height 8;
+		Speed 50;
+		DamageFunction 20;
+		Projectile;
+		DamageType "Electric";
+		DeathSound "weapons/hit";
+	}
+	override int SpecialMissileHit(actor victim) // An actor it hits is labelled "victim".
+    {
+        if (!self.victim && victim.bSHOOTABLE && victim != target && victim.bDORMANT == 0)
+		{
+		if (victim.health <= Damage)
+			{
+				victim.A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
+				victim.A_Die("electric");
+				return 1;
+			}
+		victim.A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
+		}
+        return -1; // 1 to keep going on, -1 to die the appropriate death (XDeath in this case, since ideally it hit a bleeding actor)
+    }
+	States
+	{
+		Spawn:
+			BNZR A 4 Bright;
+			TNT1 A 2;
+			BNZR B 3 Bright;
+			TNT1 A 2;
+			BNZR CD 2 Bright;
+			BNZR E 3 Bright;
+			TNT1 A 2;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItemEx("ElecPuff");
+			Stop;
+	}
+}
+
+class ZapRing2 : ZapRing1 {Default {DamageFunction: 30;}}
+
+class ZapRing3 : ZapRing1 {Default {DamageFunction: 40;}}
+
 class ThunderBall : Actor
 {
 	actor victim;

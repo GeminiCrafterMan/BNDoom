@@ -66,8 +66,8 @@ class MegaBuster : Weapon
 		switch (mman.curElement) {
 			case MegaManPlayer.Elem_Electric:
 			{
-				A_FireProjectile("ThunderBall");
-				A_StartSound("weapons/thunder", CHAN_WEAPON);
+				A_FireProjectile("ZapRing1");
+				A_StartSound("weapons/groundwave", CHAN_WEAPON);
 				break;
 			}
 			default:
