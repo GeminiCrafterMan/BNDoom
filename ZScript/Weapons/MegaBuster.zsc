@@ -76,6 +76,8 @@ class MegaBuster : Weapon
 			{
 				A_FireProjectile("ZapRing1");
 				A_StartSound("weapons/groundwave");
+				player.SetPSprite(OverlayID(), ResolveState("Arm"));
+				player.SetPSprite(PSP_FLASH, ResolveState("ZapRingFire"));
 				break;
 			}
 			default:
@@ -249,6 +251,19 @@ class MegaBuster : Weapon
 		LayerFire:
 			NBST BCDE 1;
 			goto TopLayer;
+		
+		Arm:
+			TNT1 A 0 A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+			TNT1 A 0 A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+			BNAR AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			BNAR AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			goto Ready;
+		
+		ZapRingFire:
+			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			goto TopLayer;
+
 		Zoom:
 			NBST A 10 {
 				// Cast and null-check the class:
