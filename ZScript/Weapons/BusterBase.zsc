@@ -1,0 +1,249 @@
+//FLAGS
+class PrimaryCharge : Inventory {Default {Inventory.MaxAmount 100;}}
+class Firing : Inventory {Default {Inventory.MaxAmount 1;}}
+
+class BusterBase : Weapon
+{
+	action void A_EmotionCheck(int flags = 0)
+	{
+		// Cast and null-check the class:
+		let mman = MegaManPlayer(self);
+		if (!mman)
+			return;
+
+		switch (mman.curEmotion) {
+			case MegaManPlayer.Emotion_Evil:
+			{
+				if (mman.curStyleType == MegaManPlayer.Style_Hub)
+					break;
+				else
+				{
+					A_OverlayTranslation(99, "DarkSoul");
+					A_OverlayRenderStyle(99, STYLE_SUBTRACT);
+					A_OverlayAlpha(99, 0.50);
+					break;
+				}
+			}
+			case MegaManPlayer.Emotion_FullSynchro:
+			{
+				A_OverlayTranslation(99, "FullSynchro");
+				A_OverlayRenderStyle(99, STYLE_ADD);
+				A_OverlayAlpha(99, 0.25);
+				break;
+			}
+			default:
+				break;
+		}
+	}
+	Default
+	{
+		Weapon.SelectionOrder 3700;
+		Obituary "Test obituary: %o killed %k.";
+		+WEAPON.WIMPY_WEAPON;
+		+INVENTORY.UNTOSSABLE;
+		Inventory.Pickupmessage "You shouldn't be seeing this.";
+		Tag "Buster Base";
+	}
+	States
+	{
+		Ready:
+			NBST A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD);
+			Loop;
+		Select:
+			NBST A 1 A_Raise;
+			Loop;
+		Deselect:
+			NBST A 1 A_Lower;
+			Loop;
+		Fire:
+			NBST A 0 {
+				A_OverlayFlags(5, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
+				A_OverlayFlags(-1, PSPF_POWDOUBLE|PSPF_CVARFAST, true);
+				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+			}
+			Charge:
+				NBST A 1 A_GiveInventory("PrimaryCharge", 1);
+				NBST A 0 A_Refire("Charge");
+				NBST A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
+				NBST A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
+				Goto FireNormalShot;
+		AltFire:
+		FireNormalShot:
+			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
+			NBST B 1 Bright {
+				A_FireProjectile("UnchargedBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+			}
+			Fired:
+			NBST A 0 {
+				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+				A_TakeInventory("Firing", 1);
+			}
+			NBST C 1 Bright;
+			NBST D 1 Bright;
+			NBST A 1;
+			Goto Ready;
+		FireMidChargeShot:
+			NBST A 1 A_SetInventory("PrimaryCharge", 0);
+			NBST A 0 A_GiveInventory("Firing", 1);
+			NBST B 1 Bright {
+				A_FireProjectile("MidChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+			}
+			Goto Fired;
+		Spawn:
+			SHTG A -1;
+			Stop;
+			
+			//Subroutine for charge sound
+		ChargeSoundFunction:
+			TNT1 A 1;
+			//If charge is full, don't play any sound
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",100,"ChargeSoundFunction");
+			//Upon reaching 99 charge, play chargesound3
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",99,"ChargeSound3");
+			//with 50 or more, stay silent.
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",50,"ChargeSoundFunction");
+			//Upon reaching 49 charge, play chargesound2
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",49,"ChargeSound2");
+			//With 5 or more, stay silent.
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",4,"ChargeSoundFunction");
+			//Upon reaching 3 charge, play chargesound1
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",3,"ChargeSound1");
+			//If there's any charge, restart.
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",1,"ChargeSoundFunction");
+			stop;
+			
+			ChargeSound1:
+				TNT1 A 0 A_StartSound("weapons/buster/charging", CHAN_WEAPON);
+				goto ChargeSoundFunction;
+
+			ChargeSound2:
+				TNT1 A 0 A_StartSound("weapons/buster/midcharged", CHAN_WEAPON);
+				goto ChargeSoundFunction;
+			
+			ChargeSound3:
+				TNT1 A 0 A_StartSound("weapons/buster/charged", CHAN_WEAPON);
+				goto ChargeSoundFunction;
+		
+			// Subroutine for charge effect
+		ChargeEffectFunction:
+			TNT1 A 1;
+			// if charge is full, play fully-charged animation
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",100,"FullChargeAnim");
+			// if charge is half, play half-charged animation
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",50,"HalfChargeAnim");
+			// if charge is starting, play not-charged animation
+			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",1,"StartChargeAnim");
+			stop;
+
+			FullChargeAnim:
+				BCH0 UV 1 Bright;
+				BCH0 W 2 Bright;
+				BCH0 XY 1 Bright;
+				BCH0 Z 2 Bright;
+				BCH1 AB 1 Bright;
+				BCH1 C 2 Bright;
+				BCH1 DE 1 Bright;
+				BCH1 F 2 Bright;
+				goto ChargeEffectFunction;
+
+			HalfChargeAnim:
+				BCH0 IJ 1 Bright;
+				BCH0 K 2 Bright;
+				BCH0 LM 1 Bright;
+				BCH0 N 2 Bright;
+				BCH0 OP 1 Bright;
+				BCH0 Q 2 Bright;
+				BCH0 RS 1 Bright;
+				BCH0 T 2 Bright;
+				goto ChargeEffectFunction;
+
+			StartChargeAnim:
+				BCH0 ABCDEFGH 2 Bright;
+				goto ChargeEffectFunction;
+
+		TopLayer:
+			NBST A 1 {
+				A_JumpIfInventory("Firing",1,"LayerFire");
+				A_OverlayFlags(99, PSPF_ALPHA|PSPF_RENDERSTYLE, true);
+				A_EmotionCheck();
+				}
+			loop;
+
+		LayerFire:
+			NBST BCDE 1;
+			goto TopLayer;
+		
+		Arm:
+			TNT1 A 0 A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+			TNT1 A 0 A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+			BNAR AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			BNAR AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			goto Ready;
+		
+		ZapRingFire:
+			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			Stop;
+
+		Zoom:
+			NBST A 10 {
+				// Cast and null-check the class:
+				let mman = MegaManPlayer(self);
+				if (mman) {
+					switch (mman.curElement) {
+						case MegaManPlayer.Elem_Extra:
+						{
+							mman.curElement = MegaManPlayer.Elem_Normal;
+							break;
+						}
+						default:
+						{
+							mman.curElement++;
+							break;
+						}
+					}
+				}
+			}
+			Goto Ready;
+		Reload:
+			NBST A 10 {
+				// Cast and null-check the class:
+				let mman = MegaManPlayer(self);
+				if (mman) {
+					switch (mman.curStyleType) {
+						case MegaManPlayer.Style_Bug:
+						{
+							mman.curStyleType = MegaManPlayer.Style_None;
+							break;
+						}
+						default:
+						{
+							mman.curStyleType++;
+							break;
+						}
+					}
+				}
+			}
+			Goto Ready;
+		SwordBlade:
+			SWSL A 2 Bright A_OverlayTranslation(PSP_FLASH, "Sword");
+			SWSL BCDE 2 Bright;
+			Stop;
+		SwordSwing:
+			TNT1 A 0 {
+				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
+				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
+			}
+			NSRD AB 2;
+			TNT1 A 0 A_CustomPunch(80, true, CPF_NOTURN, "BulletPuff", 128, 0, 0, "ArmorBonus", "weapons/hit");
+			NSRD CDE 2;
+			Goto Select;
+	}
+}

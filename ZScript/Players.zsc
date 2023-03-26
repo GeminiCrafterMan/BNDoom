@@ -175,6 +175,7 @@ class NetNaviPlayer : PlayerPawn
 		Player.Colorset 6, "Light Red",		0xB0, 0xBF,  0xB2;
 		Player.Colorset 7, "Light Blue",	0xC0, 0xCF,  0xC2;
 	}
+	// To do: Reset charge on level start
 }
 
 class MegaManPlayer : NetNaviPlayer
