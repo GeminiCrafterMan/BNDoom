@@ -192,17 +192,12 @@ class ElecPuff : BusterPuffBase
 
 class DeathTimer : Inventory {Default {Inventory.MaxAmount 300;}}
 
-// Chip attacks
-class ZapRing1 : Actor
+// Generic projectile templates
+class ElecProjectile : Actor
 {
 	actor victim;
 	Default
 	{
-		+FORCEXYBILLBOARD
-		Radius 8;
-		Height 8;
-		Speed 50;
-		DamageFunction 20;
 		Projectile;
 		DamageType "Electric";
 		DeathSound "weapons/hit";
@@ -221,6 +216,26 @@ class ZapRing1 : Actor
 		}
         return -1; // 1 to keep going on, -1 to die the appropriate death (XDeath in this case, since ideally it hit a bleeding actor)
     }
+	States
+	{
+
+		Death:
+			TNT1 A 0 A_SpawnItemEx("ElecPuff");
+			Stop;
+	}
+}
+
+// Chip attacks
+class ZapRing1 : ElecProjectile
+{
+	Default
+	{
+		+FORCEXYBILLBOARD
+		Radius 8;
+		Height 8;
+		Speed 50;
+		DamageFunction 20;
+	}
 	States
 	{
 		Spawn:
@@ -232,9 +247,6 @@ class ZapRing1 : Actor
 			BNZR E 3 Bright;
 			TNT1 A 2;
 			Loop;
-		Death:
-			TNT1 A 0 A_SpawnItemEx("ElecPuff");
-			Stop;
 	}
 }
 
@@ -242,9 +254,8 @@ class ZapRing2 : ZapRing1 {Default {DamageFunction 30;}}
 
 class ZapRing3 : ZapRing1 {Default {DamageFunction 40;}}
 
-class ThunderBall : Actor
+class ThunderBall : ElecProjectile
 {
-	actor victim;
 	Default
 	{
 		+FORCEXYBILLBOARD
@@ -252,24 +263,7 @@ class ThunderBall : Actor
 		Height 8;
 		Speed 2;
 		DamageFunction 40;
-		Projectile;
-		DamageType "Electric";
-		DeathSound "weapons/hit";
 	}
-	override int SpecialMissileHit(actor victim) // An actor it hits is labelled "victim".
-    {
-        if (!self.victim && victim.bSHOOTABLE && victim != target && victim.bDORMANT == 0)
-		{
-		if (victim.health <= Damage)
-			{
-				victim.A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
-				victim.A_Die("electric");
-				return 1;
-			}
-		victim.A_Spawnitemex("ElectricDamageEffect",0,0,20,0,0,0,0,SXF_SETMASTER);
-		}
-        return -1; // 1 to keep going on, -1 to die the appropriate death (XDeath in this case, since ideally it hit a bleeding actor)
-    }
 	States
 	{
 		Spawn:
@@ -279,12 +273,118 @@ class ThunderBall : Actor
 				A_SeekerMissile(0, 45, SMF_LOOK|SMF_PRECISE);
 			}
 			Loop;
-		Death:
-			TNT1 A 0 A_SpawnItemEx("ElecPuff");
-			Stop;
 		Dissipate:
 			BNTH ABCD 2 Bright;
 			BNTH IJK 1 Bright;
+			Stop;
+	}
+}
+
+class ElChain1 : ElecProjectile
+{
+	action void A_LoremasterChain ()
+	{
+		A_StartSound("loremaster/active", CHAN_BODY);
+		Spawn("ElChain1Trail", Pos, ALLOW_REPLACE);
+		Spawn("ElChain1Trail", Vec3Offset(-Vel.x/2., -Vel.y/2., -Vel.z/2.), ALLOW_REPLACE);
+		Spawn("ElChain1Trail", Vec3Offset(-Vel.x, -Vel.y, -Vel.z), ALLOW_REPLACE);
+	}
+	override int DoSpecialDamage (Actor victim, int damage, Name damagetype)
+	{
+		if (victim != NULL && target != NULL && !victim.bDontThrust)
+		{
+			Vector3 thrust = victim.Vec3To(target);
+			victim.Vel += thrust.Unit() * (255. * 50 / max(victim.Mass, 1));
+		}
+		return damage;
+	}
+	Default
+	{
+		+FORCEXYBILLBOARD
+		Speed 20;
+		Height 14;
+		Radius 10;
+		DamageFunction 30;
+		MaxStepHeight 4;
+		SeeSound "loremaster/chain";
+		ActiveSound "loremaster/swish";
+	}
+	States
+	{
+		Spawn:
+			SHEC B 2 Bright A_LoremasterChain;
+			Loop;
+	}
+}
+
+class ElChain1Trail : LoreShot2
+{
+	States
+	{
+		Spawn:
+			SHEC A 20;
+			Stop;
+	}
+}
+
+class ElChain2 : ElChain1
+{
+	action void A_LoremasterChain ()
+	{
+		A_StartSound("loremaster/active", CHAN_BODY);
+		Spawn("ElChain2Trail", Pos, ALLOW_REPLACE);
+		Spawn("ElChain2Trail", Vec3Offset(-Vel.x/2., -Vel.y/2., -Vel.z/2.), ALLOW_REPLACE);
+		Spawn("ElChain2Trail", Vec3Offset(-Vel.x, -Vel.y, -Vel.z), ALLOW_REPLACE);
+	}
+	Default
+	{
+		DamageFunction 70;
+	}
+	States
+	{
+		Spawn:
+			SHEC D 2 Bright A_LoremasterChain;
+			Loop;
+	}
+}
+
+class ElChain2Trail : LoreShot2
+{
+	States
+	{
+		Spawn:
+			SHEC C 20;
+			Stop;
+	}
+}
+
+class ElChain3 : ElChain1
+{
+	action void A_LoremasterChain ()
+	{
+		A_StartSound("loremaster/active", CHAN_BODY);
+		Spawn("ElChain3Trail", Pos, ALLOW_REPLACE);
+		Spawn("ElChain3Trail", Vec3Offset(-Vel.x/2., -Vel.y/2., -Vel.z/2.), ALLOW_REPLACE);
+		Spawn("ElChain3Trail", Vec3Offset(-Vel.x, -Vel.y, -Vel.z), ALLOW_REPLACE);
+	}
+	Default
+	{
+		DamageFunction 110;
+	}
+	States
+	{
+		Spawn:
+			SHEC F 2 Bright A_LoremasterChain;
+			Loop;
+	}
+}
+
+class ElChain3Trail : LoreShot2
+{
+	States
+	{
+		Spawn:
+			SHEC E 20;
 			Stop;
 	}
 }

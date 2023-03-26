@@ -65,6 +65,7 @@ class MegaBuster : BusterBase
 			A_StartSound("weapons/sword");
 			player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
 			player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+			A_OverlayTranslation(PSP_FLASH, "ProtoSword");
 			return;
 		}
 		switch (mman.curElement) {

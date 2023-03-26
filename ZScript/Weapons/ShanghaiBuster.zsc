@@ -45,7 +45,8 @@ class ShanghaiBuster : BusterBase
 		switch (shai.curElement) {	// will be shai.curStyleType when we get styles properly working
 			case ShanghaiPlayer.Elem_Electric:	// temp
 			{
-				A_FireProjectile("ThunderBall");
+//				A_FireProjectile("ThunderBall");
+				A_FireProjectile("ElChain3");
 				A_StartSound("weapons/thunder", CHAN_WEAPON);
 				break;
 			}

@@ -233,8 +233,7 @@ class BusterBase : Weapon
 			}
 			Goto Ready;
 		SwordBlade:
-			SWSL A 2 Bright A_OverlayTranslation(PSP_FLASH, "Sword");
-			SWSL BCDE 2 Bright;
+			SWSL ABCDE 2 Bright;
 			Stop;
 		SwordSwing:
 			TNT1 A 0 {
