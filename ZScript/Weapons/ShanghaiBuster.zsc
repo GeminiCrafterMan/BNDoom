@@ -46,7 +46,7 @@ class ShanghaiBuster : BusterBase
 			case ShanghaiPlayer.Elem_Electric:	// temp
 			{
 //				A_FireProjectile("ThunderBall");
-				A_FireProjectile("ElChain3");
+				A_FireProjectile("ElChain1");
 				A_StartSound("weapons/thunder", CHAN_WEAPON);
 				break;
 			}
