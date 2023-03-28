@@ -21,3 +21,28 @@ class PauseSoundHandler : EventHandler
 		}
 	}
 }
+
+// Low-health beep handler
+class HealthBeepHandler : EventHandler
+{
+	private transient ui int lowHealthTimer;
+	override void UITick()
+	{
+		if (lowHealthTimer > 0)
+			--lowHealthTimer;
+
+		double multi = double(statusBar.cPlayer.health) / statusBar.cPlayer.mo.GetMaxHealth(true);
+		if (multi > 0 && multi <= 0.3333)
+		{
+			if (lowHealthTimer <= 0)
+			{
+				lowHealthTimer = gameTicRate * 0.8; // 0.8 second delay
+				S_StartSound("player/lowhealth", CHAN_BODY, CHANF_UI, attenuation: ATTN_NONE);
+			}
+		}
+		else
+		{
+			lowHealthTimer = 0;
+		}
+	}
+}

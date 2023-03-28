@@ -28,3 +28,5 @@ $playersounddup	shanghai	male	*land		*grunt
 $playersound	shanghai	male	*jump		dsjump
 $playersound	shanghai	male	*fist		dspunch
 $playersound	shanghai	male	*usefail	"Sounds/Players/sh-noway.wav"
+
+player/lowhealth	"Sounds/Players/health_alert.ogg"

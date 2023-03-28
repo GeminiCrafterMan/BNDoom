@@ -279,7 +279,6 @@ class ShanghaiPlayer : NetNaviPlayer
 		"SHWoodStyl",
 		"SHElecStyl",
 		"SHAquaStyl",
-	// these are for placeholder purposes
 		"SHGrndStyl",
 		"SHPoisStyl",
 		"SHNormStyl"

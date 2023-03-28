@@ -3,7 +3,7 @@ GameInfo
 	StatusBarClass = "BNStatusBar"
     PlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
 	ChatSound = "menu/text"
-	AddEventHandlers = "PauseSoundHandler"
+	AddEventHandlers = "PauseSoundHandler", "HealthBeepHandler"
 	ForceTextInMenus = true
 	ENDOOM = "ENDBNETW"
 }

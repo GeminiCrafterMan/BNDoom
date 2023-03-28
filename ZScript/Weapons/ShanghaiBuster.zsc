@@ -41,13 +41,271 @@ class ShanghaiBuster : BusterBase
         let shai = ShanghaiPlayer(self);
         if (!shai)
             return;
-		
-		switch (shai.curElement) {	// will be shai.curStyleType when we get styles properly working
-			case ShanghaiPlayer.Elem_Electric:	// temp
+/*
+	Okay, so, this function is a TOTAL MESS.
+	BUT.
+	I have absolutely no clue how else I'd accomplish this.
+	Shanghai's styles shoot *elemental* projectiles,
+	with unique animations for each style.
+	Thus, this monstrous switch block.
+*/
+		switch (shai.curStyleType) {
+			case ShanghaiPlayer.Style_Doctor:
 			{
-//				A_FireProjectile("ThunderBall");
-				A_FireProjectile("ElChain1");
-				A_StartSound("weapons/thunder", CHAN_WEAPON);
+				switch (shai.curElement) {
+					case ShanghaiPlayer.Elem_Heat:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Wood:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Electric:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Aqua:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Ground:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Poison:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					default:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+				}
+				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				break;
+			}
+			case ShanghaiPlayer.Style_Fighter:
+			{
+				switch (shai.curElement) {
+					case ShanghaiPlayer.Elem_Heat:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Wood:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Electric:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Aqua:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Ground:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Poison:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					default:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+				}
+				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				break;
+			}
+			case ShanghaiPlayer.Style_Gaia:
+			{
+				switch (shai.curElement) {
+					case ShanghaiPlayer.Elem_Heat:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Wood:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Electric:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Aqua:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Ground:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Poison:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					default:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+				}
+				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				break;
+			}
+			case ShanghaiPlayer.Style_Shinobi:
+			{
+				switch (shai.curElement) {
+					case ShanghaiPlayer.Elem_Heat:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Wood:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Electric:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Aqua:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Ground:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Poison:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					default:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+				}
+				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				break;
+			}
+			case ShanghaiPlayer.Style_Wing:
+			{
+				switch (shai.curElement) {
+					case ShanghaiPlayer.Elem_Heat:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Wood:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Electric:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Aqua:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Ground:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Poison:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					default:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+				}
+				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				break;
+			}
+			case ShanghaiPlayer.Style_Witch:
+			{
+				switch (shai.curElement) {
+					case ShanghaiPlayer.Elem_Heat:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Wood:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Electric:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Aqua:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Ground:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					case ShanghaiPlayer.Elem_Poison:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+					default:
+					{
+						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						break;
+					}
+				}
+				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(1000, "ChargedFlash");	// Flash layer
 				break;
 			}
 			default:
