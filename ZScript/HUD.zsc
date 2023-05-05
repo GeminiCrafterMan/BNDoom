@@ -28,13 +28,13 @@ class BNStatusBar : DoomStatusBar
     {
         let player = NetNaviPlayer(CPlayer.mo);
         DrawImage("EMWIN"..player.curEmotion, (43, 32), DI_SCREEN_LEFT_TOP, 1., (-1, -1), (2, 2));
-        DrawImage("MMFAC"..player.curEmotion, (43, 32), DI_SCREEN_LEFT_TOP, 1., (-1, -1), (2, 2));
+        DrawImage(player.EmotionFace..player.curEmotion, (43, 32), DI_SCREEN_LEFT_TOP, 1., (-1, -1), (2, 2));
     }
 
     protected void DrawEmotionWindowStatus () 
     {
         let player = NetNaviPlayer(CPlayer.mo);
         DrawImage("EMWIN"..player.curEmotion, (44, 171), DI_ITEM_OFFSETS);
-        DrawImage("MMFAC"..player.curEmotion, (44, 171), DI_ITEM_OFFSETS);
+        DrawImage(player.EmotionFace..player.curEmotion, (44, 171), DI_ITEM_OFFSETS);
     }
 }

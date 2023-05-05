@@ -9,6 +9,9 @@ class Zenny : Inventory
 
 class NetNaviPlayer : PlayerPawn
 {
+// emotion window face sprite
+	string EmotionFace;
+	property EmotionFace: EmotionFace;
 // style change and emotions
 	int curElement; 	// field containing current element
 	int curStyleType;	// field containing current style type
@@ -128,7 +131,7 @@ class NetNaviPlayer : PlayerPawn
 		"TimeStop" // turns all chips into screendims if used with them
 	}
 */
-	// An enum where each number corresponds to a position in the array above
+	// An enum where each number corresponds to a position in the array of translations
 	enum ElemTransValues
 	{
 		Elem_Normal,
@@ -164,7 +167,7 @@ class NetNaviPlayer : PlayerPawn
 		Mass 100;
 		PainChance 256;
 		Player.ViewHeight 30;
-		
+		NetNaviPlayer.EmotionFace "";
 		Player.ColorRange 112, 127;
 		Player.Colorset 0, "Green",			0x70, 0x7F,  0x72;
 		Player.Colorset 1, "Gray",			0x60, 0x6F,  0x62;
@@ -176,7 +179,6 @@ class NetNaviPlayer : PlayerPawn
 		Player.Colorset 6, "Light Red",		0xB0, 0xBF,  0xB2;
 		Player.Colorset 7, "Light Blue",	0xC0, 0xCF,  0xC2;
 	}
-	// To do: Reset charge on level start
 }
 
 class MegaManPlayer : NetNaviPlayer
@@ -222,6 +224,7 @@ class MegaManPlayer : NetNaviPlayer
 	}
 	Default
 	{
+		NetNaviPlayer.EmotionFace "MMFAC";
 		Player.DisplayName "MegaMan";
 		Player.StartItem "MegaBuster";
 		Player.WeaponSlot 1, "MegaBuster";
@@ -297,6 +300,7 @@ class ShanghaiPlayer : NetNaviPlayer
 	}
 	Default
 	{
+		NetNaviPlayer.EmotionFace "SHFAC";
 		Player.DisplayName "Shanghai";
 		Player.StartItem "ShanghaiBuster";
 		Player.WeaponSlot 1, "ShanghaiBuster";
