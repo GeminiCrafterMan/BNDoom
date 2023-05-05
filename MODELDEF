@@ -3,58 +3,69 @@
 //////////////////
 
 Model UnchargedBusterTracer // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "tracer1.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 4.5 5 5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex BNTR A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model MidChargeBusterTracer // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "tracer2.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 4.5 5 5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex BNTR B 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model MaxChargeBusterTracer // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "tracer3.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 4.5 5 5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex BNTR C 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model UnchargedBusterTracerSH // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "tracer4.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 4.5 5 5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex BNTR D 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model MaxChargeBusterTracerSH // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "tracer5.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 4.5 5 5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex BNTR E 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model BlitzBusterShot1
+{
+   Path "Models/Projectiles" // Path to model in PK3
+   SKIN 0 "blitz.png" // Model index, model file
+   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+   Scale 4.5 5 5 // Scale values L/W/H
+   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+
+   FrameIndex BNTR F 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 ////////////////
@@ -62,68 +73,68 @@ Model MaxChargeBusterTracerSH // Name of actor
 ////////////////
 
 Model ElChain1 // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "elchain1head.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 0.05 0.75 0.75 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex SHEC B 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model ElChain1Trail // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "elchain1body.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 0.125 0.5 0.5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex SHEC A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model ElChain2 // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "elchain2head.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 0.05 0.75 0.75 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex SHEC D 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model ElChain2Trail // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "elchain2body.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 0.125 0.5 0.5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex SHEC C 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model ElChain3 // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "elchain3head.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 0.05 0.75 0.75 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex SHEC F 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model ElChain3Trail // Name of actor
-{ 
+{
    Path "Models/Projectiles" // Path to model in PK3
    SKIN 0 "elchain3body.png" // Model index, model file
    MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
    Scale 0.125 0.5 0.5 // Scale values L/W/H
    USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   
+
    FrameIndex SHEC E 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 

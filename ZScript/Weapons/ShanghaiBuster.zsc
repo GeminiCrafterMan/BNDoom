@@ -332,6 +332,7 @@ class ShanghaiBuster : BusterBase
 		Select:
 			TNT1 A 0 A_Overlay(99,"LayerChecker");
 			TNT1 A 0 A_SetElementTranslation();	// Set translation
+			TNT1 A 0 A_SetInventory("PrimaryCharge", 0);
 			NBST A 1 A_Raise;
 			Loop;
 		Fire:

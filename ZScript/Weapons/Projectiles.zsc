@@ -127,7 +127,6 @@ class MaxChargeBusterTracer : UnchargedBusterTracer
 	}
 }
 
-
 class UnchargedBusterTracerSH : UnchargedBusterTracer
 {
 	Default
@@ -180,6 +179,20 @@ class MaxChargeBusterPuffSH : BusterPuffBase
 			BNP4 AB 1 Bright;
 			BNP4 CDEF 2 Bright;
 			Stop;
+	}
+}
+
+class BlitzBusterShot1 : UnchargedBusterTracerSH
+{
+	Default
+	{
+		Speed 70;
+	}
+	States
+	{
+		Spawn:
+			BNTR F 1 Bright;
+			Loop;
 	}
 }
 
