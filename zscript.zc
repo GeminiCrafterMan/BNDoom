@@ -1,11 +1,12 @@
 version "4.1.0" // updated to 4.1.0, because i'm pretty sure all mobile ports of gzdoom are semi-up-to-date
+
 #include "ZScript/Players.zsc"
 #include "ZScript/EventHandlers.zsc"
 
 #include "ZScript/Weapons/Projectiles.zsc"
 #include "ZScript/Weapons/BusterBase.zsc"
 #include "ZScript/Weapons/MegaBuster.zsc"
-#include "ZScript/Weapons/ShanghaiBuster.zsc"
+//#include "ZScript/Weapons/ShanghaiBuster.zsc"
 
 #include "ZScript/Generic Effects.zsc"
 
