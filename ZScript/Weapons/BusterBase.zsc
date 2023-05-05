@@ -1,3 +1,5 @@
+#include "ZScript/Weapons/Chips/Sword.zsc"
+
 //FLAGS
 class PrimaryCharge : Inventory {Default {Inventory.MaxAmount 100;}}
 class Firing : Inventory {Default {Inventory.MaxAmount 1;}}
@@ -232,17 +234,5 @@ class BusterBase : Weapon
 				}
 			}
 			Goto Ready;
-		SwordBlade:
-			SWSL ABCDE 2 Bright;
-			Stop;
-		SwordSwing:
-			TNT1 A 0 {
-				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
-				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
-			}
-			NSRD AB 2;
-			TNT1 A 0 A_CustomPunch(80, true, CPF_NOTURN, "BulletPuff", 128, 0, 0, "ArmorBonus", "weapons/hit");
-			NSRD CDE 2;
-			Goto Select;
 	}
 }
