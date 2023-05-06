@@ -533,8 +533,6 @@ class Barrier : Actor
 		+SHOOTABLE
 		+SOLID
 		+NOBLOOD
-//		+NOTELESTOMP
-//		+THRUACTORS
 		+NOTIMEFREEZE
 		+NEVERTARGET
 		+DONTRIP
@@ -548,15 +546,13 @@ class Barrier : Actor
 	{
 		Spawn:
 			TNT1 A 1;
-			BAR1 A 3 Bright;
+			BARA A 3 Bright;
 			TNT1 A 1;
-			BAR1 B 3 Bright;
+			BARA B 3 Bright;
 			TNT1 A 1;
-			BAR1 C 3 Bright;
+			BARA C 3 Bright;
 			TNT1 A 1;
-			BAR1 D 3 Bright;
+			BARA D 3 Bright;
 			Loop;
-		Death:
-			Stop;
 	}
 }
