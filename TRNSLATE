@@ -6,9 +6,9 @@
 // 3. First two letters of weapon name...? BS = Buster
 // Example: GMBS = (G)uts/(M)egaMan/(B)u(s)ter, GMFT = (G)uts/(M)egaMan/(F)is(t)
 
-DarkSoul = "0:255=@100[0,51,0]"
-
 FullSynchro = "0:255=@25[0,127,255]"
+DarkSoul = "0:255=@100[0,51,0]"
+Anger = "0:255=@100[255,0,0]"
 
 Paralyzed = "0:255=231:231"
 

@@ -1,0 +1,9 @@
+extend class BusterBase {
+	States {
+		ZapRingFire:
+			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			BNZR FF 2;
+			Stop;
+	}
+}

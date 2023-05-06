@@ -1,4 +1,5 @@
 #include "ZScript/Weapons/Chips/Sword.zsc"
+#include "ZScript/Weapons/Chips/ZapRing.zsc"
 
 //FLAGS
 class PrimaryCharge : Inventory {Default {Inventory.MaxAmount 100;}}
@@ -6,34 +7,62 @@ class Firing : Inventory {Default {Inventory.MaxAmount 1;}}
 
 class BusterBase : Weapon
 {
-	action void A_EmotionCheck(int flags = 0)
+	action void A_CycleElements()
 	{
 		// Cast and null-check the class:
-		let mman = MegaManPlayer(self);
-		if (!mman)
-			return;
-
-		switch (mman.curEmotion) {
-			case MegaManPlayer.Emotion_Evil:
-			{
-				if (mman.curStyleType == MegaManPlayer.Style_Hub)
+		let navi = NetNaviPlayer(self);
+		if (navi) {
+			switch (navi.curElement) {
+				case NetNaviPlayer.Elem_Extra:
+					navi.curElement = NetNaviPlayer.Elem_Normal;
 					break;
-				else
-				{
-					A_OverlayTranslation(99, "DarkSoul");
-					A_OverlayRenderStyle(99, STYLE_SUBTRACT);
-					A_OverlayAlpha(99, 0.50);
+				default:
+					navi.curElement++;
 					break;
-				}
 			}
-			case MegaManPlayer.Emotion_FullSynchro:
-			{
+		}
+	}
+	action void A_CycleEmotions()
+	{
+		// Cast and null-check the class:
+		let navi = NetNaviPlayer(self);
+		if (navi) {
+			switch (navi.curEmotion) {
+				case NetNaviPlayer.Emotion_Happy:
+					navi.curEmotion = NetNaviPlayer.Emotion_Normal;
+					break;
+				default:
+					navi.curEmotion++;
+					break;
+			}
+		}
+	}
+	action void A_EmotionCheck()
+	{
+        // Cast and null-check the class:
+        let navi = NetNaviPlayer(self);
+        if (!navi)
+            return;
+
+		switch (navi.curEmotion) {
+			case NetNaviPlayer.Emotion_Evil:
+				A_OverlayTranslation(99, "DarkSoul");
+				A_OverlayRenderStyle(99, STYLE_SUBTRACT);
+				A_OverlayAlpha(99, 0.50);
+				break;
+			case NetNaviPlayer.Emotion_FullSynchro:
 				A_OverlayTranslation(99, "FullSynchro");
 				A_OverlayRenderStyle(99, STYLE_ADD);
 				A_OverlayAlpha(99, 0.25);
 				break;
-			}
+			case NetNaviPlayer.Emotion_Angry:
+				A_OverlayTranslation(99, "Anger");
+				A_OverlayRenderStyle(99, STYLE_ADD);
+				A_OverlayAlpha(99, 0.25);
+				break;
 			default:
+				A_OverlayRenderStyle(99, STYLE_ADD);
+				A_OverlayAlpha(99, 0);
 				break;
 		}
 	}
@@ -48,10 +77,14 @@ class BusterBase : Weapon
 	}
 	States
 	{
+		Spawn:	// You really shouldn't be seeing this thing on the floor.
+			SHTG A -1;
+			Stop;
 		Ready:
-			NBST A 1 A_WeaponReady(WRF_ALLOWZOOM|WRF_ALLOWRELOAD);
+			NBST A 1 A_WeaponReady(WRF_ALLOWUSER1);
 			Loop;
 		Select:
+			TNT1 A 0 A_SetInventory("PrimaryCharge", 0);
 			NBST A 1 A_Raise;
 			Loop;
 		Deselect:
@@ -64,12 +97,13 @@ class BusterBase : Weapon
 				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
 				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
 			}
+			TNT1 A 0 { return ResolveState("Charge"); }
 			Charge:
 				NBST A 1 A_GiveInventory("PrimaryCharge", 1);
 				NBST A 0 A_Refire("Charge");
 				NBST A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
 				NBST A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
-				Goto FireNormalShot;
+				TNT1 A 0 { return ResolveState("FireNormalShot"); }
 		AltFire:
 		FireNormalShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
@@ -88,7 +122,7 @@ class BusterBase : Weapon
 			NBST C 1 Bright;
 			NBST D 1 Bright;
 			NBST A 1;
-			Goto Ready;
+			TNT1 A 0 { return ResolveState("Ready"); }
 		FireMidChargeShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);
 			NBST A 0 A_GiveInventory("Firing", 1);
@@ -98,9 +132,6 @@ class BusterBase : Weapon
 				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
 			}
 			Goto Fired;
-		Spawn:
-			SHTG A -1;
-			Stop;
 			
 			//Subroutine for charge sound
 		ChargeSoundFunction:
@@ -170,69 +201,32 @@ class BusterBase : Weapon
 				BCH0 ABCDEFGH 2 Bright;
 				goto ChargeEffectFunction;
 
-		TopLayer:
-			NBST A 1 {
-				A_JumpIfInventory("Firing",1,"LayerFire");
-				A_OverlayFlags(99, PSPF_ALPHA|PSPF_RENDERSTYLE, true);
-				A_EmotionCheck();
-				}
-			loop;
-
-		LayerFire:
-			NBST BCDE 1;
-			goto TopLayer;
-		
 		Arm:
 			TNT1 A 0 A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
 			TNT1 A 0 A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
 			BNAR AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
 			BNAR AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
-			goto Ready;
-		
-		ZapRingFire:
-			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
-			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
-			Stop;
-
+			BNAR AA 2;
+			TNT1 A 0 { return ResolveState("Ready"); }
 		Zoom:
-			NBST A 10 {
-				// Cast and null-check the class:
-				let mman = MegaManPlayer(self);
-				if (mman) {
-					switch (mman.curElement) {
-						case MegaManPlayer.Elem_Extra:
-						{
-							mman.curElement = MegaManPlayer.Elem_Normal;
-							break;
-						}
-						default:
-						{
-							mman.curElement++;
-							break;
-						}
-					}
+			NBST A 10 A_CycleElements;
+			TNT1 A 0 { return ResolveState("Ready"); }
+		User1:
+			NBST A 10 A_CycleEmotions;
+			TNT1 A 0 { return ResolveState("Ready"); }
+
+		TopLayer:
+			NBST A 1 {
+				let pss = player.FindPSprite(OverlayID());
+				let psp = player.FindPSprite(PSP_WEAPON);
+				if (pss && psp)
+				{
+					pss.sprite = psp.sprite;
+					pss.frame = psp.frame;
 				}
+				A_OverlayFlags(OverlayID(), PSPF_ALPHA|PSPF_RENDERSTYLE, true);
+				A_EmotionCheck();
 			}
-			Goto Ready;
-		Reload:
-			NBST A 10 {
-				// Cast and null-check the class:
-				let mman = MegaManPlayer(self);
-				if (mman) {
-					switch (mman.curStyleType) {
-						case MegaManPlayer.Style_Bug:
-						{
-							mman.curStyleType = MegaManPlayer.Style_None;
-							break;
-						}
-						default:
-						{
-							mman.curStyleType++;
-							break;
-						}
-					}
-				}
-			}
-			Goto Ready;
+			Loop;
 	}
 }

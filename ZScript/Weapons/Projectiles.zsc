@@ -448,9 +448,10 @@ class HelzRolling : Actor
 		+SCREENSEEKER
 		DamageFunction (0);	// Damage is handled by SpecialMissileHit, so it can pierce without doing RIPPER damage.
 		Radius 4;
-		Height 42;
+		Height 24;
 		Speed 45;
 		Obituary "%o was sliced in half by %k's Helz Rolling.";
+		SeeSound "weapons/helzrolling";
 		DeathSound "weapons/hit";
 	}
 	States
