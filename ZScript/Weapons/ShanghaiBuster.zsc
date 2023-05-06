@@ -1,6 +1,6 @@
 class ShanghaiBuster : BusterBase
 {
-    action void A_SetElementTranslation(int flags = 0) 
+    action void A_SetElementTranslation(int flags = 0)
     {
         // Cast and null-check the class:
         let shai = ShanghaiPlayer(self);
@@ -275,15 +275,15 @@ class ShanghaiBuster : BusterBase
 			//If there's any charge, restart.
 			TNT1 A 0 A_JumpIfInventory("PrimaryCharge",1,"ChargeSoundFunction");
 			stop;
-			
+
 			ChargeSound1:
 				TNT1 A 0 A_StartSound("weapons/buster/sh-charging", CHAN_WEAPON);
 				goto ChargeSoundFunction;
-			
+
 			ChargeSound2:
 				TNT1 A 0 A_StartSound("weapons/buster/sh-charged", CHAN_WEAPON);
 				goto ChargeSoundFunction;
-		
+
 			// Subroutine for charge effect
 		ChargeEffectFunction:
 			TNT1 A 1;
