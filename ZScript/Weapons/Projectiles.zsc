@@ -432,7 +432,7 @@ class SwordSlash : Actor
 		if (hitList.Find(victim) == hitList.Size() && !self.victim && victim.bSHOOTABLE && victim != target && victim.bDORMANT == 0)
 		{
 			victim.DamageMobj(self,target,80,"MOD_CHAINSAW");
-			A_StartSound("weapons/hit");
+			self.A_Scream();
 			hitlist.Push(victim);
 		}
 		return 1;
@@ -457,9 +457,6 @@ class SwordSlash : Actor
 		Spawn:
 			SLAS AAAABBBCCC 1;
 			Stop;
-//		Death:
-//			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuff");
-//			Stop;
 	}
 }
 
@@ -510,6 +507,56 @@ class HelzRolling : Actor
 			Stop;
 		Death:
 			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuff");
+			Stop;
+	}
+}
+
+class Barrier : Actor
+{
+	override void Tick()
+	{
+		Super.Tick();
+		if (master)
+			SetOrigin(master.pos, true);
+	}
+	override bool CanCollideWith(Actor other, bool passive)
+	{
+		if (other && other.bMISSILE && other.target != master)
+			return true;
+
+		return false;
+	}
+	Default
+	{
+		+NOGRAVITY
+		+DONTSPLASH
+		+SHOOTABLE
+		+SOLID
+		+NOBLOOD
+//		+NOTELESTOMP
+//		+THRUACTORS
+		+NOTIMEFREEZE
+		+NEVERTARGET
+		+DONTRIP
+		+MASTERNOSEE
+		+NOTRIGGER
+		Health 1;
+		Radius 17;
+		Height 43;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 1;
+			BAR1 A 3 Bright;
+			TNT1 A 1;
+			BAR1 B 3 Bright;
+			TNT1 A 1;
+			BAR1 C 3 Bright;
+			TNT1 A 1;
+			BAR1 D 3 Bright;
+			Loop;
+		Death:
 			Stop;
 	}
 }

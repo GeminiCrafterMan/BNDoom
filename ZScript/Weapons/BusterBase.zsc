@@ -1,5 +1,6 @@
 #include "ZScript/Weapons/Chips/Sword.zsc"
 #include "ZScript/Weapons/Chips/ZapRing.zsc"
+#include "ZScript/Weapons/Chips/Barrier.zsc"
 
 //FLAGS
 class PrimaryCharge : Inventory {Default {Inventory.MaxAmount 100;}}

@@ -66,10 +66,15 @@ class MegaBuster : BusterBase
 
 		if (mman.curStyleType == MegaManPlayer.Style_Team)
 		{
-			A_StartSound("weapons/sword");
 			player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
 			player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
 			A_OverlayTranslation(PSP_FLASH, "Sword");
+			return;
+		}
+
+		if (mman.curStyleType == MegaManPlayer.Style_Shield)
+		{
+			player.SetPSprite(OverlayID(), ResolveState("Barrier"));
 			return;
 		}
 		switch (mman.curElement) {
