@@ -538,9 +538,11 @@ class Barrier : Actor
 		+DONTRIP
 		+MASTERNOSEE
 		+NOTRIGGER
+		RenderStyle "Add";
+		Alpha 0.5;
 		Health 1;
-		Radius 17;
-		Height 43;
+		Radius 36;
+		Height 48;
 	}
 	States
 	{
@@ -553,6 +555,22 @@ class Barrier : Actor
 			BARA C 3 Bright;
 			TNT1 A 1;
 			BARA D 3 Bright;
+			Loop;
+		Pain.Wind:
+			Stop;
+	}
+}
+
+class LifeAura : Barrier
+{
+	Default
+	{
+		Health 200;
+	}
+	States
+	{
+		Spawn:
+			LFEA ABC 3 Bright A_ResetHealth;
 			Loop;
 	}
 }
