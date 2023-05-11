@@ -49,7 +49,7 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
 				break;
 			case ShanghaiPlayer.Style_Fighter:
 				switch (shai.curElement) {
@@ -76,7 +76,7 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
 				break;
 			case ShanghaiPlayer.Style_Gaia:
 				switch (shai.curElement) {
@@ -103,37 +103,51 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
 				break;
 			case ShanghaiPlayer.Style_Shinobi:
 				switch (shai.curElement) {
 					case ShanghaiPlayer.Elem_Heat:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 					case ShanghaiPlayer.Elem_Wood:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 					case ShanghaiPlayer.Elem_Electric:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 					case ShanghaiPlayer.Elem_Aqua:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 					case ShanghaiPlayer.Elem_Ground:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 					case ShanghaiPlayer.Elem_Poison:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 					default:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
+						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
+						A_OverlayTranslation(PSP_FLASH, "Sword");
 						break;
 				}
-				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
 				break;
 			case ShanghaiPlayer.Style_Wing:
 				switch (shai.curElement) {
+/*
 					case ShanghaiPlayer.Elem_Heat:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -152,12 +166,17 @@ class ShanghaiBuster : BusterBase
 					case ShanghaiPlayer.Elem_Poison:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
+*/
 					default:
-						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_FireProjectile("AirShot1");
+						A_StartSound("weapons/spreader");
+						player.SetPSprite(OverlayID(), ResolveState("AirShotArm"));
+						player.SetPSprite(PSP_FLASH, ResolveState("AirShotFire"));
 						break;
 				}
-				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+/*				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
+				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+*/
 				break;
 			case ShanghaiPlayer.Style_Witch:
 				switch (shai.curElement) {
@@ -184,12 +203,12 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
 				break;
 			default:
 				A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(1000, "ChargedFlash");	// Flash layer
+				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
 				break;
 		}
 	}

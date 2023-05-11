@@ -138,7 +138,6 @@ Model ElChain3Trail // Name of actor
    FrameIndex SHEC E 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
-
 Model HelzRolling
 {
    Path "Models/Projectiles" // Path to model in PK3
@@ -197,6 +196,39 @@ Model HelzRolling
    ZOffset 25  // Z-axis offset
 
    FrameIndex HELZ E 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model AirShot1 // Name of actor
+{
+   Path "Models/Projectiles" // Path to model in PK3
+   SKIN 0 "airshot.png" // Model index, model file
+   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+   Scale 0.25 1.5 1.5 // Scale values L/W/H
+   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+
+   FrameIndex BNTR A 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model AirShot2 // Name of actor
+{
+   Path "Models/Projectiles" // Path to model in PK3
+   SKIN 0 "airshot.png" // Model index, model file
+   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+   Scale 2.5 1.25 1.25 // Scale values L/W/H
+   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+
+   FrameIndex BNTR A 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model AirShot3 // Name of actor
+{
+   Path "Models/Projectiles" // Path to model in PK3
+   SKIN 0 "airshot.png" // Model index, model file
+   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+   Scale 3.5 2.25 2.25 // Scale values L/W/H
+   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+
+   FrameIndex BNTR A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 /////////////

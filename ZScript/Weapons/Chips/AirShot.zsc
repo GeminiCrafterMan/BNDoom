@@ -1,11 +1,11 @@
 extend class BusterBase {
 	States {
-		ZapRingFire:
-			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
-			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
-			BNZR F 4;
+		AirShotFire:
+			BNAS BB 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			BNAS BB 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			BNAS B 4;
 			Stop;
-		ZapRingArm:
+		AirShotArm:
 			TNT1 A 0 {
 				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
 				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect

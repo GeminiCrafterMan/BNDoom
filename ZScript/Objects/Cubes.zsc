@@ -10,7 +10,7 @@ class RockCube : ExplosiveBarrel
 		+DONTTHRUST
 		-MISSILE
 		Obituary "%o got a RockCube shoved in %p face by %k.";
-		DeathSound "weapons/break";
+		DeathSound "weapons/break_object";
 	}
 	States
 	{
@@ -21,6 +21,7 @@ class RockCube : ExplosiveBarrel
 			BNOB A 1 {
 				bDontThrust = false;
 				bMissile = true;
+				bStepMissile = true;
 			}
 			BNOB A 0 A_FaceTarget;
 			Goto Moving;
@@ -28,8 +29,7 @@ class RockCube : ExplosiveBarrel
 			BNOB A 1 A_ChangeVelocity(-20, 0, 0, CVF_RELATIVE|CVF_REPLACE);
 			Loop;
 		Death:
-			TNT1 A 0 {
-				A_Scream();
+			TNT1 A 1 {
 				A_SpawnItemEx("RockCubeHalf1", 0, 0, 0, frandom(0,5), frandom(0,5), 7.5);
 				A_SpawnItemEx("RockCubeHalf2", 0, 0, 0, frandom(-5,0), frandom(-5,0), 7.5);
 			}
@@ -54,6 +54,7 @@ class MetalCube : RockCube
 			BNOB D 1 {
 				bDontThrust = false;
 				bMissile = true;
+				bStepMissile = true;
 			}
 			BNOB D 0 A_FaceTarget;
 			Goto Moving;
@@ -61,8 +62,7 @@ class MetalCube : RockCube
 			BNOB D 1 A_ChangeVelocity(-20, 0, 0, CVF_RELATIVE|CVF_REPLACE);
 			Loop;
 		Death:
-			TNT1 A 0 {
-				A_Scream();
+			TNT1 A 1 {
 				A_SpawnItemEx("MetalCubeHalf1", 0, 0, 0, frandom(0,5), frandom(0,5), 7.5);
 				A_SpawnItemEx("MetalCubeHalf2", 0, 0, 0, frandom(-5,0), frandom(-5,0), 7.5);
 			}

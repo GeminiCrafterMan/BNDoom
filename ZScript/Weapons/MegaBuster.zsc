@@ -66,9 +66,10 @@ class MegaBuster : BusterBase
 
 		if (mman.curStyleType == MegaManPlayer.Style_Team)
 		{
-			player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
+			A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
 			player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
 			A_OverlayTranslation(PSP_FLASH, "Sword");
+			player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
 			return;
 		}
 
@@ -91,7 +92,7 @@ class MegaBuster : BusterBase
 			case MegaManPlayer.Elem_Electric:
 				A_FireProjectile("ZapRing1");
 				A_StartSound("weapons/groundwave");
-				player.SetPSprite(OverlayID(), ResolveState("Arm"));
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
 				player.SetPSprite(PSP_FLASH, ResolveState("ZapRingFire"));
 				break;
 			case MegaManPlayer.Elem_Aqua:

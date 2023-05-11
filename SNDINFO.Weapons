@@ -35,3 +35,5 @@ weapons/groundwave			"Sounds/Weapons/ground_wave.ogg"					// Ground wave move / 
 weapons/helzrolling			"Sounds/Weapons/helz_rolling.wav"					// Helz Rolling shot
 weapons/gun					"Sounds/Weapons/gun.wav"							// Heavy gun (Vulcan, etc)
 weapons/chain				"Sounds/Weapons/chain.wav"							// ElChain spawned
+weapons/barrier				"Sounds/Weapons/barrier.ogg"						// Barrier spawned
+weapons/spreader			"Sounds/Weapons/spreader.ogg"						// Spreader, AirShot, Shotgun

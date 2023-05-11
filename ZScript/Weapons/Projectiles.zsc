@@ -449,7 +449,6 @@ class SwordSlash : Actor
 		Height 4;
 		Speed 0;
 		Obituary "%o was sliced in half by %k's Sword.";
-		SeeSound "weapons/sword";
 		DeathSound "weapons/hit";
 	}
 	States
@@ -543,6 +542,7 @@ class Barrier : Actor
 		Health 1;
 		Radius 36;
 		Height 48;
+		SeeSound "weapons/barrier";
 	}
 	States
 	{
@@ -572,5 +572,43 @@ class LifeAura : Barrier
 		Spawn:
 			LFEA ABC 3 Bright A_ResetHealth;
 			Loop;
+	}
+}
+
+class AirShot1 : UnchargedBusterTracer
+{
+	Default
+	{
+		Scale 1;
+		DamageFunction 20;
+		DamageType "Wind";
+		Obituary "%o was unable to handle the gentle breeze from %k's AirShot1.";
+	}
+	States
+	{
+		Spawn:
+			BNTR A 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 1 A_RadiusThrust(5000, 8, 0);
+			Stop;
+	}
+}
+
+class AirShot2 : AirShot1
+{
+	Default
+	{
+		DamageFunction 30;
+		Obituary "%o was unable to handle the breeze from %k's AirShot2.";
+	}
+}
+
+class AirShot3 : AirShot1
+{
+	Default
+	{
+		DamageFunction 40;
+		Obituary "%o was unable to handle the breeze from %k's AirShot2.";
 	}
 }
