@@ -587,10 +587,10 @@ class AirShot1 : UnchargedBusterTracer
 	States
 	{
 		Spawn:
-			BNTR A 1 Bright;
+			BNAS A 1 Bright;
 			Loop;
 		Death:
-			TNT1 A 1 A_RadiusThrust(5000, 8, 0);
+			TNT1 A 1 A_RadiusThrust(5000, 8, RTF_NOIMPACTDAMAGE);
 			Stop;
 	}
 }

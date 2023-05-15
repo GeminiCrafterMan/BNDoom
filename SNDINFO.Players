@@ -2,10 +2,10 @@
 // BNDOOM by Gemini0, Mengo, Inkticious, and KCEXE - SNDINFO - Player sounds
 // =========================================================================================
 // MegaMan
-$playersound	megaman		male	*death		"Sounds/Players/mm-deleted.ogg"
+$playersound	megaman		male	*death		"Sounds/Players/mm-deleted.wav"
 $playersounddup	megaman		male	*xdeath		*death
 $playersound	megaman		male	*gibbed		dsslop
-$playersound	megaman		male	*pain100	"Sounds/Players/mm-hurt.ogg"
+$playersound	megaman		male	*pain100	"Sounds/Players/mm-hurt.wav"
 $playersounddup	megaman		male	*pain75		*pain100
 $playersounddup	megaman		male	*pain50		*pain100
 $playersounddup	megaman		male	*pain25		*pain100
@@ -13,20 +13,20 @@ $playersound	megaman		male	*grunt		dsoof
 $playersounddup	megaman		male	*land		*grunt
 $playersound	megaman		male	*jump		dsjump
 $playersound	megaman		male	*fist		dspunch
-$playersound	megaman		male	*usefail	"Sounds/Players/mm-noway.ogg"
+$playersound	megaman		male	*usefail	"Sounds/Players/mm-noway.wav"
 
 // Shanghai
-$playersound	shanghai	male	*death		"Sounds/Players/sh-deleted.wav"
-$playersounddup	shanghai	male	*xdeath		*death
-$playersound	shanghai	male	*gibbed		dsslop
-$playersound	shanghai	male	*pain100	"Sounds/Players/sh-hurt.wav"
-$playersounddup	shanghai	male	*pain75		*pain100
-$playersounddup	shanghai	male	*pain50		*pain100
-$playersounddup	shanghai	male	*pain25		*pain100
-$playersound	shanghai	male	*grunt		dsoof
-$playersounddup	shanghai	male	*land		*grunt
-$playersound	shanghai	male	*jump		dsjump
-$playersound	shanghai	male	*fist		dspunch
-$playersound	shanghai	male	*usefail	"Sounds/Players/sh-noway.wav"
+$playersound	shanghai	female	*death		"Sounds/Players/sh-deleted.wav"
+$playersounddup	shanghai	female	*xdeath		*death
+$playersound	shanghai	female	*gibbed		dsslop
+$playersound	shanghai	female	*pain100	"Sounds/Players/sh-hurt.wav"
+$playersounddup	shanghai	female	*pain75		*pain100
+$playersounddup	shanghai	female	*pain50		*pain100
+$playersounddup	shanghai	female	*pain25		*pain100
+$playersound	shanghai	female	*grunt		dsoof
+$playersounddup	shanghai	female	*land		*grunt
+$playersound	shanghai	female	*jump		dsjump
+$playersound	shanghai	female	*fist		dspunch
+$playersound	shanghai	female	*usefail	"Sounds/Players/sh-noway.wav"
 
-player/lowhealth	"Sounds/Players/health_alert.ogg"
+player/lowhealth	"Sounds/Players/health_alert.wav"

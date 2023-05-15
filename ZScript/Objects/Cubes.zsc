@@ -3,9 +3,9 @@ class RockCube : ExplosiveBarrel
 	Default
 	{
 		PainChance 256;
-		Health 200;
 		Radius 24;
 		Height 40;
+		Health 200;
 		Damage 200;
 		+DONTTHRUST
 		-MISSILE

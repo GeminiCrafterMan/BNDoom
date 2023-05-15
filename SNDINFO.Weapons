@@ -2,19 +2,19 @@
 // BNDOOM by Gemini0, Mengo, Inkticious, and KCEXE - SNDINFO - Weapon sounds
 // =========================================================================================
 // Generic
-weapons/hit			"Sounds/Weapons/MMDSDamage.wav"	// Hit opponent (replace with GBA version later...)
-weapons/shanghit	"Sounds/Weapons/SHDamage.wav"		// Hit opponent
+weapons/hit			"Sounds/Weapons/mm-damage.wav"	// Hit opponent
+weapons/shanghit	"Sounds/Weapons/sh-damage.wav"	// Hit opponent
 
 $limit	weapons/hit			0
 $limit	weapons/shanghit	0
 // -----------------------------------------------------------------------------------------
 // Busters
-weapons/buster/pew			"Sounds/Weapons/Buster/mm-pew.ogg"					// Buster shot
+weapons/buster/pew			"Sounds/Weapons/Buster/mm-pew.wav"					// Buster shot
 weapons/buster/sh-pew		"Sounds/Weapons/Buster/sh-pew.wav"					// Buster shot
 weapons/buster/charging		"Sounds/Weapons/Buster/mm-buster_charging.wav"		// Buster charging
 weapons/buster/sh-charging	"Sounds/Weapons/Buster/sh-buster_charging.wav"		// Buster charging
-weapons/buster/midcharged	"Sounds/Weapons/Buster/mm-buster_mid-charged.ogg"	// Buster mid charged
-weapons/buster/charged		"Sounds/Weapons/Buster/mm-buster_charged.ogg"		// Buster charged
+weapons/buster/midcharged	"Sounds/Weapons/Buster/mm-buster_mid-charged.wav"	// Buster mid charged
+weapons/buster/charged		"Sounds/Weapons/Buster/mm-buster_charged.wav"		// Buster charged
 weapons/buster/sh-charged	"Sounds/Weapons/Buster/sh-buster_charged.wav"		// Buster charged
 
 $limit	weapons/buster/pew			0
@@ -26,14 +26,14 @@ $limit	weapons/buster/charged		0
 $limit	weapons/buster/sh-charged	0
 // -----------------------------------------------------------------------------------------
 // Chip attacks
-weapons/thunder				"Sounds/Weapons/thunder.ogg"						// Thunder ball
-weapons/crack               "Sounds/Weapons/crack.ogg"                          // Panel cracking
-weapons/break_object		"Sounds/Weapons/break_object.ogg"					// Object breaking
-weapons/toss				"Sounds/Weapons/toss.ogg"							// Toss item
-weapons/sword				"Sounds/Weapons/sword.ogg"							// Sword swing
-weapons/groundwave			"Sounds/Weapons/ground_wave.ogg"					// Ground wave move / ZapRing toss
-weapons/helzrolling			"Sounds/Weapons/helz_rolling.wav"					// Helz Rolling shot
-weapons/gun					"Sounds/Weapons/gun.wav"							// Heavy gun (Vulcan, etc)
-weapons/chain				"Sounds/Weapons/chain.wav"							// ElChain spawned
-weapons/barrier				"Sounds/Weapons/barrier.ogg"						// Barrier spawned
-weapons/spreader			"Sounds/Weapons/spreader.ogg"						// Spreader, AirShot, Shotgun
+weapons/thunder				"Sounds/Weapons/mm-thunder.wav"						// Thunder ball
+weapons/crack				"Sounds/Weapons/mm-crack.wav"						// Panel cracking
+weapons/break_object		"Sounds/Weapons/mm-breakobject.wav"					// Object breaking
+weapons/toss				"Sounds/Weapons/mm-toss.wav"						// Toss item
+weapons/sword				"Sounds/Weapons/mm-sword.wav"						// Sword swing
+weapons/groundwave			"Sounds/Weapons/mm-groundwave.wav"					// Ground wave move / ZapRing toss
+weapons/helzrolling			"Sounds/Weapons/mm-helzrolling.wav"					// Helz Rolling thrown
+weapons/gun					"Sounds/Weapons/mm-gun.wav"							// Heavy gun (Vulcan, etc)
+weapons/chain				"Sounds/Weapons/sh-chain.wav"						// ElChain spawned
+weapons/barrier				"Sounds/Weapons/mm-barrier.wav"						// Barrier spawned
+weapons/spreader			"Sounds/Weapons/mm-spreader.wav"					// Spreader, AirShot, Shotgun, CrossGun...
