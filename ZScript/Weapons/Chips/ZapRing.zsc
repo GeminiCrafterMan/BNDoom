@@ -1,5 +1,12 @@
 extend class BusterBase {
 	States {
+		Chip.ZapRing1:
+			TNT1 A 0 {
+				A_FireProjectile("ZapRing1");
+				A_StartSound("weapons/groundwave");
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
+				player.SetPSprite(PSP_FLASH, ResolveState("ZapRingFire"));
+			}
 		ZapRingFire:
 			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
 			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
@@ -10,9 +17,37 @@ extend class BusterBase {
 				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
 				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
 			}
-			BNAR AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
-			BNAR AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
-			BNAR A 4;
+			NARM AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			NARM AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			NARM A 4;
 			TNT1 A 0 { return ResolveState("Ready"); }
 	}
 }
+
+class ZapRing1 : ElecProjectile
+{
+	Default
+	{
+		+FORCEXYBILLBOARD
+		Radius 8;
+		Height 8;
+		Speed 50;
+		DamageFunction 20;
+	}
+	States
+	{
+		Spawn:
+			BNZR A 4 Bright;
+			TNT1 A 2;
+			BNZR B 3 Bright;
+			TNT1 A 2;
+			BNZR CD 2 Bright;
+			BNZR E 3 Bright;
+			TNT1 A 2;
+			Loop;
+	}
+}
+
+class ZapRing2 : ZapRing1 {Default {DamageFunction 30;}}
+
+class ZapRing3 : ZapRing1 {Default {DamageFunction 40;}}

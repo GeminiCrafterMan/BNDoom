@@ -49,6 +49,7 @@ class MaxChargeBusterPuff : BusterPuffBase
 	}
 }
 
+// Problem: This needs to be able to activate things like SIGIL's eye shootables.
 class UnchargedBusterTracer : FastProjectile
 {
 	override void PostBeginPlay()
@@ -248,34 +249,6 @@ class ElecProjectile : Actor
 }
 
 // Chip attacks
-class ZapRing1 : ElecProjectile
-{
-	Default
-	{
-		+FORCEXYBILLBOARD
-		Radius 8;
-		Height 8;
-		Speed 50;
-		DamageFunction 20;
-	}
-	States
-	{
-		Spawn:
-			BNZR A 4 Bright;
-			TNT1 A 2;
-			BNZR B 3 Bright;
-			TNT1 A 2;
-			BNZR CD 2 Bright;
-			BNZR E 3 Bright;
-			TNT1 A 2;
-			Loop;
-	}
-}
-
-class ZapRing2 : ZapRing1 {Default {DamageFunction 30;}}
-
-class ZapRing3 : ZapRing1 {Default {DamageFunction 40;}}
-
 class ThunderBall : ElecProjectile
 {
 	Default
@@ -422,43 +395,6 @@ class ElChain3Trail : ElChain1Trail
 	}
 }
 
-class SwordSlash : Actor
-{
-	actor victim;
-	array<actor> hitList;
-
-	override int SpecialMissileHit(actor victim)
-	{
-		if (hitList.Find(victim) == hitList.Size() && !self.victim && victim.bSHOOTABLE && victim != target && victim.bDORMANT == 0)
-		{
-			victim.DamageMobj(self,target,80,"MOD_CHAINSAW");
-			self.A_Scream();
-			hitlist.Push(victim);
-		}
-		return 1;
-	}
-	Default
-	{
-		Projectile;
-		+RANDOMIZE
-		+DONTSPLASH
-		+RIPPER
-		+FLATSPRITE
-		DamageFunction (0);	// Damage is handled by SpecialMissileHit, so it can pierce without doing RIPPER damage.
-		Radius 10;
-		Height 4;
-		Speed 0;
-		Obituary "%o was sliced in half by %k's Sword.";
-		DeathSound "weapons/hit";
-	}
-	States
-	{
-		Spawn:
-			SLAS AAAABBBCCC 1;
-			Stop;
-	}
-}
-
 class HelzRolling : Actor
 {
 	actor victim;
@@ -507,108 +443,5 @@ class HelzRolling : Actor
 		Death:
 			TNT1 A 0 A_SpawnItemEx("MaxChargeBusterPuff");
 			Stop;
-	}
-}
-
-class Barrier : Actor
-{
-	override void Tick()
-	{
-		Super.Tick();
-		if (master)
-			SetOrigin(master.pos, true);
-	}
-	override bool CanCollideWith(Actor other, bool passive)
-	{
-		if (other && other.bMISSILE && other.target != master)
-			return true;
-
-		return false;
-	}
-	Default
-	{
-		+NOGRAVITY
-		+DONTSPLASH
-		+SHOOTABLE
-		+SOLID
-		+NOBLOOD
-		+NOTIMEFREEZE
-		+NEVERTARGET
-		+DONTRIP
-		+MASTERNOSEE
-		+NOTRIGGER
-		RenderStyle "Add";
-		Alpha 0.5;
-		Health 1;
-		Radius 36;
-		Height 48;
-		SeeSound "weapons/barrier";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			BARA A 3 Bright;
-			TNT1 A 1;
-			BARA B 3 Bright;
-			TNT1 A 1;
-			BARA C 3 Bright;
-			TNT1 A 1;
-			BARA D 3 Bright;
-			Loop;
-		Pain.Wind:
-			Stop;
-	}
-}
-
-class LifeAura : Barrier
-{
-	Default
-	{
-		Health 200;
-	}
-	States
-	{
-		Spawn:
-			LFEA ABC 3 Bright A_ResetHealth;
-			Loop;
-	}
-}
-
-class AirShot1 : UnchargedBusterTracer
-{
-	Default
-	{
-		Scale 1;
-		DamageFunction 20;
-		DamageType "Wind";
-		Obituary "%o was unable to handle the gentle breeze from %k's AirShot1.";
-	}
-	States
-	{
-		Spawn:
-			BNAS A 1 Bright;
-			Loop;
-		Death:
-			TNT1 A 1 A_RadiusThrust(5000, 8, RTF_NOIMPACTDAMAGE);
-			Stop;
-	}
-}
-
-class AirShot2 : AirShot1
-{
-	Default
-	{
-		DamageFunction 30;
-		Obituary "%o was unable to handle the breeze from %k's AirShot2.";
-	}
-}
-
-class AirShot3 : AirShot1
-{
-	Default
-	{
-		DamageFunction 40;
-		Obituary "%o was unable to handle the breeze from %k's AirShot2.";
 	}
 }

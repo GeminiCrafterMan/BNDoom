@@ -1,0 +1,56 @@
+extend class NetNaviPlayer {
+	Array<string> standardChips;
+	void initStandardChips() {
+		// TODO: rewrite all descriptions that mention panels to mention equivalent effects
+		// also add codes for chips that still need them... how is the fucking wiki this bad
+		// Format: "Name|Code|Element|Damage|Desc"
+		standardChips.Push("Cannon|ABC*|Null|40|Cannon attack to 1 enemy");
+		standardChips.Push("HiCannon|LMN*|Null|100|Cannon attack to 1 enemy");
+		standardChips.Push("M-Cannon|RST*|Null|180|Cannon attack to 1 enemy");
+		standardChips.Push("AirShot|*|Wind|20|Knock enmy back 1 square");
+		standardChips.Push("Vulcan1|BDS*|Null|10|3-shot to pierce 1 panel!");
+		standardChips.Push("Vulcan2|DFL|Null|15|4-shot to pierce 1 panel!");
+		standardChips.Push("Vulcan3|AGR|Null|20|5-shot to pierce 1 panel!");
+		standardChips.Push("SuprVulc|V|Null|20|10-shot vulcan cannon!");
+		standardChips.Push("Spreadr1|LMN*|Null|30|Spreads damg to adj panels");
+		standardChips.Push("Spreadr2|ABC*|Null|60|Spreads damg to adj panels");
+		standardChips.Push("Spreadr3|QRS*|Null|90|Spreads damg to adj panels");
+		standardChips.Push("TankCan1|AGR|Null|120|3sqr blst if hits end row");
+		standardChips.Push("TankCan2|LSV|Null|160|3sqr blst if hits end row");
+		standardChips.Push("TankCan3|BMP|Null|200|3sqr blst if hits end row");
+		standardChips.Push("GunDelS1|CMT*|Null|-|Hits row 2pnl ahd w/sunshne");
+		standardChips.Push("GunDelS2|BER|Null|-|Hits row 2pnl ahd w/sunshne");
+/*		standardChips.Push("GunDelS3||Null|-|Hits row 2pnl ahd w/sunshne");
+		standardChips.Push("YoYo||Null|50|YoYo atk reaches 3sq ahead");
+		standardChips.Push("FireBrn1||Heat|70|Crcks 3 sqrs ahd with fire");
+		standardChips.Push("FireBrn2||Heat|110|Crcks 3 sqrs ahd with fire");
+		standardChips.Push("FireBrn3||Heat|150|Crcks 3 sqrs ahd with fire"); */
+		standardChips.Push("WideSht|PQR|Aqua|100|Fires 3sq shotgun blast!");
+		standardChips.Push("TrnArrw1|AFK|Aqua|30|Hits enmy w/arrow. Use dstnc");
+/*		standardChips.Push("TrnArrw2||Aqua|40|Hits enmy w/arrow. Use dstnc");
+		standardChips.Push("TrnArrw3||Aqua|50|Hits enmy w/arrow. Use dstnc");
+		standardChips.Push("BblStar1||Aqua|60|Seals an enemy in a bubble.");
+		standardChips.Push("BblStar2||Aqua|80|Seals an enemy in a bubble.");
+		standardChips.Push("BblStar3||Aqua|100|Seals an enemy in a bubble."); */
+		standardChips.Push("Thunder|BS*|Elec|40|Pralyzing electric attack!");
+/*		standardChips.Push("DolThndr1");
+		standardChips.Push("DolThndr2");
+		standardChips.Push("DolThndr3");
+		standardChips.Push("ElcPuls1");
+		standardChips.Push("ElcPuls2");
+		standardChips.Push("ElcPuls3");
+		standardChips.Push("CornSht1");
+		standardChips.Push("CornSht2");
+		standardChips.Push("CornSht3");
+		standardChips.Push("RskyHny1");
+		standardChips.Push("RskyHny2");
+		standardChips.Push("RskyHny3");
+		standardChips.Push("RlngLog1");
+		standardChips.Push("RlngLog2");
+		standardChips.Push("RlngLog3");
+		standardChips.Push("IronShl1");
+		standardChips.Push("IronShl2");
+		standardChips.Push("IronShl3"); */
+		standardChips.Push("Buster|A|Null|9999|Get closer to hit faster"); // debug chip
+	}
+}

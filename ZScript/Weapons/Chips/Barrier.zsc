@@ -1,8 +1,80 @@
 extend class BusterBase {
 	States {
-		Barrier:
-//			NBST A 1 A_SpawnItemEx("Barrier", flags:SXF_SETMASTER);
+		Chip.Barrier:
+			NBST A 1 A_SpawnItemEx("Barrier", flags:SXF_SETMASTER);
+			TNT1 A 0 { return ResolveState("Ready"); }
+
+		Chip.LifeAura:
 			NBST A 1 A_SpawnItemEx("LifeAura", flags:SXF_SETMASTER);
 			TNT1 A 0 { return ResolveState("Ready"); }
+	}
+}
+
+class Barrier : Actor
+{
+	override void BeginPlay()
+	{
+		Super.BeginPlay();
+		A_StartSound("weapons/barrier");
+	}
+	override void Tick()
+	{
+		Super.Tick();
+		if (master)
+			SetOrigin(master.pos, true);
+	}
+	override bool CanCollideWith(Actor other, bool passive)
+	{
+		if (other && other.bMISSILE && other.target != master)
+			return true;
+
+		return false;
+	}
+	Default
+	{
+		+NOGRAVITY
+		+DONTSPLASH
+		+SHOOTABLE
+		+SOLID
+		+NOBLOOD
+		+NOTIMEFREEZE
+		+NEVERTARGET
+		+DONTRIP
+		+MASTERNOSEE
+		+NOTRIGGER
+		RenderStyle "Add";
+		Alpha 0.5;
+		Health 1;
+		Radius 36;
+		Height 48;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 1;
+			BARA A 3 Bright;
+			TNT1 A 1;
+			BARA B 3 Bright;
+			TNT1 A 1;
+			BARA C 3 Bright;
+			TNT1 A 1;
+			BARA D 3 Bright;
+			Loop;
+		Pain.Wind:
+			Stop;
+	}
+}
+
+class LifeAura : Barrier
+{
+	Default
+	{
+		Health 200;
+	}
+	States
+	{
+		Spawn:
+			LFEA ABC 3 Bright A_ResetHealth;
+			Loop;
 	}
 }

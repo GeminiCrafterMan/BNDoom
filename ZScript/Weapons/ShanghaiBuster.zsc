@@ -108,42 +108,27 @@ class ShanghaiBuster : BusterBase
 			case ShanghaiPlayer.Style_Shinobi:
 				switch (shai.curElement) {
 					case ShanghaiPlayer.Elem_Heat:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 					case ShanghaiPlayer.Elem_Wood:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 					case ShanghaiPlayer.Elem_Electric:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 					case ShanghaiPlayer.Elem_Aqua:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 					case ShanghaiPlayer.Elem_Ground:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 					case ShanghaiPlayer.Elem_Poison:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 					default:
-						A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-						player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-						A_OverlayTranslation(PSP_FLASH, "Sword");
+						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 						break;
 				}
-				player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
 				break;
 			case ShanghaiPlayer.Style_Wing:
 				switch (shai.curElement) {
@@ -168,10 +153,7 @@ class ShanghaiBuster : BusterBase
 						break;
 */
 					default:
-						A_FireProjectile("AirShot1");
-						A_StartSound("weapons/spreader");
-						player.SetPSprite(OverlayID(), ResolveState("AirShotArm"));
-						player.SetPSprite(PSP_FLASH, ResolveState("AirShotFire"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.AirShot"));
 						break;
 				}
 /*				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);

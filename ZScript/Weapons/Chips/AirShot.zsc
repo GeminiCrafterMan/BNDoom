@@ -1,5 +1,12 @@
 extend class BusterBase {
 	States {
+		Chip.AirShot:
+			TNT1 A 0 {
+				A_FireProjectile("AirShot");
+				A_StartSound("weapons/spreader");
+				player.SetPSprite(OverlayID(), ResolveState("AirShotArm"));
+				player.SetPSprite(PSP_FLASH, ResolveState("AirShotFire"));
+			}
 		AirShotFire:
 			BNAS BB 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
 			BNAS BB 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
@@ -10,9 +17,29 @@ extend class BusterBase {
 				A_Overlay(5,"ChargeSoundFunction"); //Starts charge sound.
 				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
 			}
-			BNAR AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
-			BNAR AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
-			BNAR A 4;
+			NARM AA 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			NARM AA 1 A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			NARM A 4;
 			TNT1 A 0 { return ResolveState("Ready"); }
+	}
+}
+
+class AirShot : UnchargedBusterTracer
+{
+	Default
+	{
+		Scale 1;
+		DamageFunction 20;
+		DamageType "Wind";
+		Obituary "%o was unable to handle the gentle breeze from %k's AirShot1.";
+	}
+	States
+	{
+		Spawn:
+			BNAS A 1 Bright;
+			Loop;
+		Death:
+			TNT1 A 1 A_RadiusThrust(5000, 8, RTF_NOIMPACTDAMAGE);
+			Stop;
 	}
 }

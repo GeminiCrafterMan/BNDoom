@@ -63,60 +63,50 @@ class MegaBuster : BusterBase
 		let mman = MegaManPlayer(self);
 		if (!mman)
 			return;
-
-		if (mman.curStyleType == MegaManPlayer.Style_Team)
-		{
-			A_SpawnItemEx("SwordSlash", -8, -32, 24, 0, 0, 0, -90);	// Now it's a projectile, so it can be a small AoE thing.
-			player.SetPSprite(PSP_FLASH, ResolveState("SwordBlade"));
-			A_OverlayTranslation(PSP_FLASH, "Sword");
-			player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
-			return;
-		}
-
-		if (mman.curStyleType == MegaManPlayer.Style_Shield)
-		{
-			player.SetPSprite(OverlayID(), ResolveState("Barrier"));
-			return;
-		}
-		switch (mman.curElement) {
-			case MegaManPlayer.Elem_Heat:
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+		switch (mman.curStyleType) {
+			case MegaManPlayer.Style_Team:
+				player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 				break;
-			case MegaManPlayer.Elem_Wood:
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
-				break;
-			case MegaManPlayer.Elem_Electric:
-				A_FireProjectile("ZapRing1");
-				A_StartSound("weapons/groundwave");
-				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
-				player.SetPSprite(PSP_FLASH, ResolveState("ZapRingFire"));
-				break;
-			case MegaManPlayer.Elem_Aqua:
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
-				break;
-			case MegaManPlayer.Elem_Ground:
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
-				break;
-			case MegaManPlayer.Elem_Poison:
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+			case MegaManPlayer.Style_Shield: // remove later
+				player.SetPSprite(OverlayID(), ResolveState("Chip.Barrier"));
 				break;
 			default:
-				A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
-				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
-				break;
+				switch (mman.curElement) {
+					case MegaManPlayer.Elem_Heat:
+						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						break;
+					case MegaManPlayer.Elem_Wood:
+						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						break;
+					case MegaManPlayer.Elem_Electric:
+						player.SetPSprite(OverlayID(), ResolveState("Chip.ZapRing1"));
+						break;
+					case MegaManPlayer.Elem_Aqua:
+						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						break;
+					case MegaManPlayer.Elem_Ground:
+						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						break;
+					case MegaManPlayer.Elem_Poison:
+						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						break;
+					default:
+						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
+						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
+						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						break;
+				}
 		}
-		return;
 	}
 	Default
 	{
