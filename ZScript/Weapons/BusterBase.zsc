@@ -90,6 +90,7 @@ class BusterBase : Weapon
 			NBST A 1 A_Raise;
 			Loop;
 		Deselect:
+			TNT1 A 0 A_SetInventory("PrimaryCharge", 0);
 			NBST A 1 A_Lower;
 			Loop;
 		Fire:
