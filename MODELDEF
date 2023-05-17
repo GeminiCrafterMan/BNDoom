@@ -4,68 +4,80 @@
 
 Model UnchargedBusterTracer // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "tracer1.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 4.5 5 5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRA3A7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 4.5 5 5 // Scale values L/W/H
 
-   FrameIndex BNTR A 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNTR A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model MidChargeBusterTracer // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "tracer2.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 4.5 5 5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRB3B7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 4.5 5 5 // Scale values L/W/H
 
-   FrameIndex BNTR B 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNTR B 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model MaxChargeBusterTracer // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "tracer3.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 4.5 5 5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRC3C7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 4.5 5 5 // Scale values L/W/H
 
-   FrameIndex BNTR C 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNTR C 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model UnchargedBusterTracerSH // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "tracer4.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 4.5 5 5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRD3D7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 4.5 5 5 // Scale values L/W/H
 
-   FrameIndex BNTR D 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNTR D 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model MaxChargeBusterTracerSH // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "tracer5.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 4.5 5 5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRE3E7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 4.5 5 5 // Scale values L/W/H
 
-   FrameIndex BNTR E 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNTR E 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model BlitzBusterShot1
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "blitz.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 4.5 5 5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRF3F7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 4.5 5 5 // Scale values L/W/H
 
-   FrameIndex BNTR F 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNTR F 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 ////////////////
@@ -74,139 +86,274 @@ Model BlitzBusterShot1
 
 Model ElChain1 // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "elchain1head.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.05 0.75 0.75 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SHECB0" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.05 0.75 0.75 // Scale values L/W/H
 
-   FrameIndex SHEC B 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex SHEC B 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model ElChain1Trail // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "elchain1body.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.125 0.5 0.5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SHECA0" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.125 0.5 0.5 // Scale values L/W/H
 
-   FrameIndex SHEC A 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex SHEC A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model ElChain2 // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "elchain2head.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.05 0.75 0.75 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SHECD0" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.05 0.75 0.75 // Scale values L/W/H
 
-   FrameIndex SHEC D 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex SHEC D 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model ElChain2Trail // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "elchain2body.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.125 0.5 0.5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SHECC0" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.125 0.5 0.5 // Scale values L/W/H
 
-   FrameIndex SHEC C 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex SHEC C 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model ElChain3 // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "elchain3head.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.05 0.75 0.75 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SHECF0" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.05 0.75 0.75 // Scale values L/W/H
 
-   FrameIndex SHEC F 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex SHEC F 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model ElChain3Trail // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "elchain3body.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.125 0.5 0.5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SHECE0" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.125 0.5 0.5 // Scale values L/W/H
 
-   FrameIndex SHEC E 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex SHEC E 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model HelzRolling
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "HELZA0.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.5 0.25 8 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   ZOffset 25  // Z-axis offset
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "HELZA0"
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.5 0.25 8 // Scale values L/W/H
+	ZOffset 25 // Z-axis offset
 
-   FrameIndex HELZ A 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex HELZ A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model HelzRolling
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "HELZB0.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.5 0.25 8 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   ZOffset 25  // Z-axis offset
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "HELZB0"
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.5 0.25 8 // Scale values L/W/H
+	ZOffset 25 // Z-axis offset
 
-   FrameIndex HELZ B 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex HELZ B 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model HelzRolling
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "HELZC0.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.5 0.25 8 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   ZOffset 25  // Z-axis offset
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "HELZC0"
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.5 0.25 8 // Scale values L/W/H
+	ZOffset 25 // Z-axis offset
 
-   FrameIndex HELZ C 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex HELZ C 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model HelzRolling
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "HELZD0.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.5 0.25 8 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   ZOffset 25  // Z-axis offset
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "HELZD0"
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.25 0.125 9 // Scale values L/W/H
+	ZOffset 35 // Z-axis offset
 
-   FrameIndex HELZ D 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex HELZ D 0 0 // The sprite lump, sprite frame, model index, frame number
 }
-
 Model HelzRolling
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "HELZE0.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.5 0.25 8 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
-   ZOffset 25  // Z-axis offset
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "HELZE0"
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.15 0.0625 10 // Scale values L/W/H
+	ZOffset 45 // Z-axis offset
 
-   FrameIndex HELZ E 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex HELZ E 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 Model AirShot // Name of actor
 {
-   Path "Models/Projectiles" // Path to model in PK3
-   SKIN 0 "airshot.png" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 0.25 1.5 1.5 // Scale values L/W/H
-   USEACTORPITCH // A flag that will fix the model pitch for projectiles
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNASA3A7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 0.25 1.5 1.5 // Scale values L/W/H
 
-   FrameIndex BNAS A 0 0 // The sprite lump, sprite frame, model index, frame number
+	FrameIndex BNAS A 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model SwordSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASA0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 10 10 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS A 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model SwordSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASB0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 10 10 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS B 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model SwordSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASC0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 10 10 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS C 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model WideSwrdSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASD0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 10 30 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS D 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model WideSwrdSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASE0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 10 30 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS E 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model WideSwrdSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASF0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 10 30 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS F 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
+Model LongSwrdSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASG0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 20 10 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS G 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model LongSwrdSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASH0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 20 10 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS H 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model LongSwrdSlash // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "SLASI0" // Model index, model file
+	Model 0 "1x1plane.obj" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 20 10 1 // Scale values L/W/H
+	ZOffset 5 // Z-axis offset
+
+	FrameIndex SLAS I 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
 /////////////
@@ -215,18 +362,18 @@ Model AirShot // Name of actor
 
 Model RockCube // Name of actor
 {
-   Path "Models/Objects" // path to model
-   Skin 0 "RockCube.png" // model index, model file
-   Model 0 "Cube.md2" // model index
-   Scale 3 3 3 // Scale values L/W/H
-   FrameIndex BNOB A 0 0 // Sprite lump, sprite frame, model index
+	Path "Models/Objects" // path to model
+	Skin 0 "RockCube.png" // model index, model file
+	Model 0 "Cube.md2" // model index
+	Scale 3 3 3 // Scale values L/W/H
+	FrameIndex BNOB A 0 0 // Sprite lump, sprite frame, model index
 }
 
 Model MetalCube // Name of actor
 {
-   Path "Models/Objects" // path to model
-   Skin 0 "MetalCube.png" // model index, model file
-   Model 0 "Cube.md2" // model index
-   Scale 3 3 3 // Scale values L/W/H
-   FrameIndex BNOB D 0 0 // Sprite lump, sprite frame, model index
+	Path "Models/Objects" // path to model
+	Skin 0 "MetalCube.png" // model index, model file
+	Model 0 "Cube.md2" // model index
+	Scale 3 3 3 // Scale values L/W/H
+	FrameIndex BNOB D 0 0 // Sprite lump, sprite frame, model index
 }

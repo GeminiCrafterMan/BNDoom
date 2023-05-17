@@ -163,10 +163,11 @@ class UnchargedBusterTracerSH : UnchargedBusterTracer
 	}
 }
 
-class MaxChargeBusterTracerSH : MaxChargeBusterTracer
+class MaxChargeBusterTracerSH : MidChargeBusterTracer
 {
 	Default
 	{
+		Obituary "%o was sniped by %k's fully-charged buster shot.";
 		DeathSound "weapons/shanghit";
 	}
 	States

@@ -2,8 +2,23 @@ extend class BusterBase {
 	States {
 		Chip.Sword:
 			TNT1 A 0 {
-//				A_FireProjectile("SwordSlash", -90, 0, -7);
-				A_SpawnItemEx("SwordSlash", 24, 0, 30-(pitch/2), 0, 0, 0, 0, SXF_TRANSFERPITCH|SXF_TRANSFERROLL);	// Now it's a projectile, so it can be a small AoE thing.
+				A_FireProjectile("SwordSlash");	// Now it's a projectile, so it can be a small AoE thing.
+				player.SetPSprite(-3, ResolveState("SwordBlade"));
+				A_OverlayTranslation(-3, "Sword");
+				player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
+			}
+		Chip.WideSwrd:
+			TNT1 A 0 {
+				A_FireProjectile("WideSwrdSlash");	// Now it's a projectile, so it can be a small AoE thing.
+				A_FireProjectile("WideSwrdHitbox", spawnofs_xy: -32);
+				A_FireProjectile("WideSwrdHitbox", spawnofs_xy: 32);
+				player.SetPSprite(-3, ResolveState("SwordBlade"));
+				A_OverlayTranslation(-3, "Sword");
+				player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
+			}
+		Chip.LongSwrd:
+			TNT1 A 0 {
+				A_FireProjectile("LongSwrdSlash");	// Now it's a projectile, so it can be a small AoE thing.
 				player.SetPSprite(-3, ResolveState("SwordBlade"));
 				A_OverlayTranslation(-3, "Sword");
 				player.SetPSprite(OverlayID(), ResolveState("SwordSwing"));
@@ -28,10 +43,10 @@ class SwordSlash : Actor
 	actor victim;
 	array<actor> hitList;
 
-	override void BeginPlay()
+	override void PostBeginPlay()
 	{
-		Super.BeginPlay();
-		A_StartSound("weapons/sword");
+		Super.PostBeginPlay();
+		A_FaceMovementDirection();
 	}
 	override int SpecialMissileHit(actor victim)
 	{
@@ -49,17 +64,70 @@ class SwordSlash : Actor
 		+RANDOMIZE
 		+DONTSPLASH
 		+RIPPER
-		+FLATSPRITE
 		DamageFunction (0);	// Damage is handled by SpecialMissileHit, so it can pierce without doing RIPPER damage.
-		Radius 10;
-		Height 4;
+		Radius 32;
+		Height 10;
+		Speed 4;
+		SeeSound "weapons/sword";
 		Obituary "%o was sliced in half by %k's Sword.";
 		DeathSound "weapons/hit";
 	}
 	States
 	{
 		Spawn:
-			SLAS AAAABBBCCC 1;
+			SLAS AAAABBBCC 1;
+			Stop;
+	}
+}
+
+class WideSwrdSlash : SwordSlash
+{
+	Default
+	{
+		Obituary "%o was diced by %k's WideSwrd.";
+	}
+	States
+	{
+		Spawn:
+			SLAS DDDDEEEFF 1;
+			Stop;
+	}
+}
+class WideSwrdHitbox : SwordSlash
+{
+	Default
+	{
+		Obituary "%o was diced by %k's WideSwrd.";
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 9; // same time as the main slash
+			Stop;
+	}
+}
+
+class LongSwrdSlash : SwordSlash
+{
+	override int SpecialMissileHit(actor victim)
+	{
+		if (hitList.Find(victim) == hitList.Size() && !self.victim && victim.bSHOOTABLE && victim != target && victim.bDORMANT == 0)
+		{
+			victim.DamageMobj(self,target,100,"MOD_CHAINSAW");
+			self.A_Scream();
+			hitlist.Push(victim);
+		}
+		return 1;
+	}
+	Default
+	{
+		Speed 8;
+		Obituary "%o was divided by %k's LongSwrd.";
+	}
+	States
+	{
+		Spawn:
+			SLAS GGGGHHHII 1;
 			Stop;
 	}
 }

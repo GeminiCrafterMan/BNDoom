@@ -128,25 +128,25 @@ class ShanghaiBuster : BusterBase
 			case ShanghaiPlayer.Style_Shinobi:
 				switch (shai.curElement) {
 					case ShanghaiPlayer.Elem_Heat:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 					case ShanghaiPlayer.Elem_Wood:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 					case ShanghaiPlayer.Elem_Electric:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 					case ShanghaiPlayer.Elem_Aqua:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 					case ShanghaiPlayer.Elem_Ground:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 					case ShanghaiPlayer.Elem_Poison:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 					default:
-						player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
+						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
 				}
 				break;
