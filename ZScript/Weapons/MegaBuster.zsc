@@ -75,12 +75,12 @@ class MegaBuster : BusterBase
 					case MegaManPlayer.Elem_Heat:
 						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						A_Overlay(-3, "Flash");	// Flash layer
 						break;
 					case MegaManPlayer.Elem_Wood:
 						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						A_Overlay(-3, "Flash");	// Flash layer
 						break;
 					case MegaManPlayer.Elem_Electric:
 						player.SetPSprite(OverlayID(), ResolveState("Chip.ZapRing1"));
@@ -88,22 +88,22 @@ class MegaBuster : BusterBase
 					case MegaManPlayer.Elem_Aqua:
 						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						A_Overlay(-3, "Flash");	// Flash layer
 						break;
 					case MegaManPlayer.Elem_Ground:
 						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						A_Overlay(-3, "Flash");	// Flash layer
 						break;
 					case MegaManPlayer.Elem_Poison:
 						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						A_Overlay(-3, "Flash");	// Flash layer
 						break;
 					default:
 						A_FireProjectile("MaxChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-						A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+						A_Overlay(-3, "Flash");	// Flash layer
 						break;
 				}
 		}

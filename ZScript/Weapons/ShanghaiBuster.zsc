@@ -69,7 +69,7 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+				A_Overlay(-3, "ChargedFlash");	// Flash layer
 				break;
 			case ShanghaiPlayer.Style_Fighter:
 				switch (shai.curElement) {
@@ -96,7 +96,7 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+				A_Overlay(-3, "ChargedFlash");	// Flash layer
 				break;
 			case ShanghaiPlayer.Style_Gaia:
 				switch (shai.curElement) {
@@ -123,7 +123,7 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+				A_Overlay(-3, "ChargedFlash");	// Flash layer
 				break;
 			case ShanghaiPlayer.Style_Shinobi:
 				switch (shai.curElement) {
@@ -177,7 +177,7 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 /*				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+				A_Overlay(-3, "ChargedFlash");	// Flash layer
 */
 				break;
 			case ShanghaiPlayer.Style_Witch:
@@ -205,12 +205,12 @@ class ShanghaiBuster : BusterBase
 						break;
 				}
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+				A_Overlay(-3, "ChargedFlash");	// Flash layer
 				break;
 			default:
 				A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "ChargedFlash");	// Flash layer
+				A_Overlay(-3, "ChargedFlash");	// Flash layer
 				break;
 		}
 	}
@@ -252,7 +252,7 @@ class ShanghaiBuster : BusterBase
 			#### B 1 Bright {
 				A_FireProjectile("UnchargedBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_StartSound("weapons/buster/sh-pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+				A_Overlay(-3, "Flash");	// Flash layer
 			}
 			Fired:
 			#### A 0 {

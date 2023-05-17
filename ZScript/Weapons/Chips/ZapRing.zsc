@@ -5,7 +5,7 @@ extend class BusterBase {
 				A_FireProjectile("ZapRing1");
 				A_StartSound("weapons/groundwave");
 				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
-				player.SetPSprite(PSP_FLASH, ResolveState("ZapRingFire"));
+				player.SetPSprite(-3, ResolveState("ZapRingFire"));
 			}
 		ZapRingFire:
 			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);

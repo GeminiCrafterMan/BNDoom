@@ -5,7 +5,7 @@ extend class BusterBase {
 				A_FireProjectile("AirShot");
 				A_StartSound("weapons/spreader");
 				player.SetPSprite(OverlayID(), ResolveState("AirShotArm"));
-				player.SetPSprite(PSP_FLASH, ResolveState("AirShotFire"));
+				player.SetPSprite(-3, ResolveState("AirShotFire"));
 			}
 		AirShotFire:
 			BNAS BB 1 A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);

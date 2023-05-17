@@ -114,7 +114,7 @@ class BusterBase : Weapon
 			NBST B 1 Bright {
 				A_FireProjectile("UnchargedBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+				A_Overlay(-3, "Flash");	// Flash layer
 			}
 			Fired:
 			NBST A 0 {
@@ -132,7 +132,7 @@ class BusterBase : Weapon
 			NBST B 1 Bright {
 				A_FireProjectile("MidChargeBusterTracer", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 				A_StartSound("weapons/buster/pew", CHAN_WEAPON);
-				A_Overlay(PSP_FLASH, "Flash");	// Flash layer
+				A_Overlay(-3, "Flash");	// Flash layer
 			}
 			TNT1 A 0 { return ResolveState("Fired"); }
 
