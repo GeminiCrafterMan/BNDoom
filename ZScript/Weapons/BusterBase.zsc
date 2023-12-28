@@ -79,6 +79,9 @@ class BusterBase : Weapon
 	}
 	States
 	{
+		Null:
+			TNT1 A 1;
+			Stop;
 		Spawn:	// You really shouldn't be seeing this thing on the floor.
 			SHTG A -1;
 			Stop;
@@ -91,6 +94,7 @@ class BusterBase : Weapon
 			Loop;
 		Deselect:
 			TNT1 A 0 A_SetInventory("PrimaryCharge", 0);
+			TNT1 A 0 A_Overlay(99, "Null");
 			NBST A 1 A_Lower;
 			Loop;
 		Fire:
