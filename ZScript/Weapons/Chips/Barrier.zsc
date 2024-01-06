@@ -12,9 +12,9 @@ extend class BusterBase {
 
 class Barrier : Actor
 {
-	override void BeginPlay()
+	override void PostBeginPlay()
 	{
-		Super.BeginPlay();
+		Super.PostBeginPlay();
 		A_StartSound("weapons/barrier");
 	}
 	override void Tick()

@@ -5,7 +5,21 @@ extend class BusterBase {
 				A_FireProjectile("ZapRing1");
 				A_StartSound("weapons/groundwave");
 				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
-				player.SetPSprite(-3, ResolveState("ZapRingFire"));
+				player.SetPSprite(3, ResolveState("ZapRingFire"));
+			}
+		Chip.ZapRing2:
+			TNT1 A 0 {
+				A_FireProjectile("ZapRing2");
+				A_StartSound("weapons/groundwave");
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
+				player.SetPSprite(3, ResolveState("ZapRingFire"));
+			}
+		Chip.ZapRing3:
+			TNT1 A 0 {
+				A_FireProjectile("ZapRing3");
+				A_StartSound("weapons/groundwave");
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
+				player.SetPSprite(3, ResolveState("ZapRingFire"));
 			}
 		ZapRingFire:
 			BNZR FF 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);

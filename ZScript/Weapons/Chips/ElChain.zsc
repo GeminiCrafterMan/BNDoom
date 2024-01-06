@@ -1,0 +1,145 @@
+extend class BusterBase {
+	States {
+		Chip.ElChain1:
+			TNT1 A 0 {
+				A_FireProjectile("ElChain1");
+				A_StartSound("weapons/chain");
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
+				player.SetPSprite(3, ResolveState("ElChainFire"));
+			}
+		Chip.ElChain2:
+			TNT1 A 0 {
+				A_FireProjectile("ElChain2");
+				A_StartSound("weapons/chain");
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
+				player.SetPSprite(3, ResolveState("ElChainFire"));
+			}
+		Chip.ElChain3:
+			TNT1 A 0 {
+				A_FireProjectile("ElChain3");
+				A_StartSound("weapons/chain");
+				player.SetPSprite(OverlayID(), ResolveState("ZapRingArm"));
+				player.SetPSprite(3, ResolveState("ElChainFire"));
+			}
+		ElChainFire:
+			SHEC GG 1 Bright A_OverlayOffset(OverlayID(), 2, 2, WOF_ADD);
+			SHEC GG 1 Bright A_OverlayOffset(OverlayID(), -2, -2, WOF_ADD);
+			SHEC G 4;
+			Stop;
+	}
+}
+
+class ElChain1 : ElecProjectile
+{
+	action void A_ElChainSpawn ()
+	{
+		let trl = Spawn("ElChain1Trail", Vec3Offset(-Vel.x/2., -Vel.y/2., -Vel.z/2.));
+		let trl2 = Spawn("ElChain1Trail", Vec3Offset(-Vel.x, -Vel.y, -Vel.z));
+		trl.angle = angle;
+		trl.pitch = pitch;
+		trl2.angle = angle;
+		trl2.pitch = pitch;
+	}
+	override int DoSpecialDamage (Actor victim, int damage, Name damagetype)
+	{
+		if (victim != NULL && target != NULL && !victim.bDontThrust)
+		{
+			Vector3 thrust = victim.Vec3To(target);
+			victim.Vel += thrust.Unit() * (255. * 50 / max(victim.Mass, 1));
+		}
+		return damage;
+	}
+	Default
+	{
+		+FORCEXYBILLBOARD
+		Speed 20;
+		Height 14;
+		Radius 10;
+		DamageFunction 30;
+		MaxStepHeight 4;
+		SeeSound "weapons/chain";
+	}
+	States
+	{
+		Spawn:
+			SHEC BBBBBBBBBB 1 Bright A_ElChainSpawn; // 10 tics
+			SHEC B 0 Bright A_ChangeVelocity(-Vel.X,-Vel.Y,-Vel.Z, CVF_REPLACE); // go back
+			SHEC BBBBBBBBBBB 1 Bright A_ElChainSpawn; // 11 tics, just to be safe
+			Stop;
+	}
+}
+class ElChain1Trail : LoreShot2
+{
+	States
+	{
+		Spawn:
+			SHEC A 10;
+			Stop;
+	}
+}
+class ElChain2 : ElChain1
+{
+	action void A_ElChainSpawn ()
+	{
+		let trl = Spawn("ElChain2Trail", Vec3Offset(-Vel.x/2., -Vel.y/2., -Vel.z/2.));
+		let trl2 = Spawn("ElChain2Trail", Vec3Offset(-Vel.x, -Vel.y, -Vel.z));
+		trl.angle = angle;
+		trl.pitch = pitch;
+		trl2.angle = angle;
+		trl2.pitch = pitch;
+	}
+	Default
+	{
+		DamageFunction 70;
+	}
+	States
+	{
+		Spawn:
+			SHEC DDDDDDDDDD 1 Bright A_ElChainSpawn; // 10 tics
+			SHEC D 0 Bright A_ChangeVelocity(-Vel.X,-Vel.Y,-Vel.Z, CVF_REPLACE); // go back
+			SHEC DDDDDDDDDDD 1 Bright A_ElChainSpawn; // 11 tics, just to be safe
+			Stop;
+	}
+}
+class ElChain2Trail : ElChain1Trail
+{
+	States
+	{
+		Spawn:
+			SHEC C 10;
+			Stop;
+	}
+}
+class ElChain3 : ElChain1
+{
+	action void A_ElChainSpawn ()
+	{
+		let trl = Spawn("ElChain3Trail", Vec3Offset(-Vel.x/2., -Vel.y/2., -Vel.z/2.));
+		let trl2 = Spawn("ElChain3Trail", Vec3Offset(-Vel.x, -Vel.y, -Vel.z));
+		trl.angle = angle;
+		trl.pitch = pitch;
+		trl2.angle = angle;
+		trl2.pitch = pitch;
+	}
+	Default
+	{
+		DamageFunction 110;
+	}
+	States
+	{
+		Spawn:
+			SHEC FFFFFFFFFF 1 Bright A_ElChainSpawn; // 10 tics
+			SHEC F 0 Bright A_ChangeVelocity(-Vel.X,-Vel.Y,-Vel.Z, CVF_REPLACE); // go back
+			SHEC FFFFFFFFFFF 1 Bright A_ElChainSpawn; // 11 tics, just to be safe
+			Stop;
+	}
+}
+class ElChain3Trail : ElChain1Trail
+{
+	States
+	{
+		Spawn:
+			SHEC E 10;
+			Stop;
+	}
+}

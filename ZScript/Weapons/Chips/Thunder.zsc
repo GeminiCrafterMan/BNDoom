@@ -1,0 +1,36 @@
+extend class BusterBase {
+	States {
+		Chip.Thunder:
+			TNT1 A 0 {
+				A_FireProjectile("ThunderBall");
+				A_StartSound("weapons/thunder");
+				player.SetPSprite(OverlayID(), ResolveState("FireNothing"));
+			}
+	}
+}
+
+class ThunderBall : ElecProjectile
+{
+	Default
+	{
+		+FORCEXYBILLBOARD
+		Radius 8;
+		Height 8;
+		Speed 2;
+		DamageFunction 40;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIfInventory("DeathTimer", 300, "Dissipate");
+			BNTH ABCDEFGH 2 Bright {
+				A_GiveInventory("DeathTimer", 2);
+				A_SeekerMissile(0, 45, SMF_LOOK|SMF_PRECISE);
+			}
+			Loop;
+		Dissipate:
+			BNTH ABCD 2 Bright;
+			BNTH IJK 1 Bright;
+			Stop;
+	}
+}

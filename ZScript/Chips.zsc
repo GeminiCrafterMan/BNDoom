@@ -3,6 +3,7 @@ extend class NetNaviPlayer {
 	void initStandardChips() {
 		// TODO: rewrite all descriptions that mention panels to mention equivalent effects
 		// also add codes for chips that still need them... how is the fucking wiki this bad
+		// 2024 Gem here. It's still that bad.
 		// Format: "Name|Code|Element|Damage|Desc"
 		standardChips.Push("Cannon|ABC*|Null|40|Cannon attack to 1 enemy");
 		standardChips.Push("HiCannon|LMN*|Null|100|Cannon attack to 1 enemy");
@@ -33,24 +34,24 @@ extend class NetNaviPlayer {
 		standardChips.Push("BblStar2||Aqua|80|Seals an enemy in a bubble.");
 		standardChips.Push("BblStar3||Aqua|100|Seals an enemy in a bubble."); */
 		standardChips.Push("Thunder|BS*|Elec|40|Pralyzing electric attack!");
-/*		standardChips.Push("DolThndr1");
-		standardChips.Push("DolThndr2");
-		standardChips.Push("DolThndr3");
-		standardChips.Push("ElcPuls1");
-		standardChips.Push("ElcPuls2");
-		standardChips.Push("ElcPuls3");
-		standardChips.Push("CornSht1");
-		standardChips.Push("CornSht2");
-		standardChips.Push("CornSht3");
-		standardChips.Push("RskyHny1");
-		standardChips.Push("RskyHny2");
-		standardChips.Push("RskyHny3");
-		standardChips.Push("RlngLog1");
-		standardChips.Push("RlngLog2");
-		standardChips.Push("RlngLog3");
-		standardChips.Push("IronShl1");
-		standardChips.Push("IronShl2");
-		standardChips.Push("IronShl3"); */
+/*		standardChips.Push("DolThndr1||Elec|120|A piercng thunder attack!");
+		standardChips.Push("DolThndr2||Elec|150|A piercng thunder attack!");
+		standardChips.Push("DolThndr3||Elec|180|A piercng thunder attack!");
+		standardChips.Push("ElcPuls1||Elec|100|Sprd elec puls that paralyzes");
+		standardChips.Push("ElcPuls2||Elec|120|Sprd elec pulse. Pul enemy in.");
+		standardChips.Push("ElcPuls3||Elec|140|Sprd elec puls. Hit w/HP bug.");
+		standardChips.Push("CornSht1||Wood|50|Damages enemies w/corn");
+		standardChips.Push("CornSht2||Wood|60|Damages enemies w/corn");
+		standardChips.Push("CornSht3||Wood|70|Damages enemies w/corn");
+		standardChips.Push("RskyHny1||Wood|10|Bees attk whle hive defending");
+		standardChips.Push("RskyHny2||Wood|15|Bees attk whle hive defending");
+		standardChips.Push("RskyHny3||Wood|20|Bees attk whle hive defending");
+		standardChips.Push("RlngLog1||");
+		standardChips.Push("RlngLog2||");
+		standardChips.Push("RlngLog3||");
+		standardChips.Push("IronShl1||");
+		standardChips.Push("IronShl2||");
+		standardChips.Push("IronShl3||"); */
 		standardChips.Push("Buster|A|Null|9999|Get closer to hit faster"); // debug chip
 	}
 }

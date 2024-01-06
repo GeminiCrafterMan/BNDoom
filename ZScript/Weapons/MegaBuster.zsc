@@ -67,9 +67,6 @@ class MegaBuster : BusterBase
 			case MegaManPlayer.Style_Team:
 				player.SetPSprite(OverlayID(), ResolveState("Chip.Sword"));
 				break;
-			case MegaManPlayer.Style_Shield: // remove later
-				player.SetPSprite(OverlayID(), ResolveState("Chip.Barrier"));
-				break;
 			default:
 				switch (mman.curElement) {
 					case MegaManPlayer.Elem_Heat:
@@ -110,7 +107,7 @@ class MegaBuster : BusterBase
 	}
 	Default
 	{
-		Tag "MegaBuster";
+		Tag "Mega Buster";
 	}
 	States
 	{
@@ -121,10 +118,12 @@ class MegaBuster : BusterBase
 			}
 			Loop;
 		Select:
-			TNT1 A 0 A_Overlay(99,"TopLayer");
-			TNT1 A 0 A_SetElementTranslation();	// Set translation
-			TNT1 A 0 A_SetInventory("PrimaryCharge", 0);
-			NBST A 1 A_Raise;
+			TNT1 A 0 {
+				A_Overlay(99,"TopLayer");
+				A_SetElementTranslation();	// Set translation
+				A_SetInventory("PrimaryCharge", 0);
+			}
+			NBST A 1 A_Raise(12);
 			Loop;
 		Fire:
 			NBST A 0 {

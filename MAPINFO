@@ -3,12 +3,12 @@ GameInfo
 	StatusBarClass = "BNStatusBar"
     PlayerClasses = "MegaManPlayer", "ShanghaiPlayer"
 	ChatSound = "menu/text"
-	AddEventHandlers = "PauseSoundHandler", "HealthBeepHandler"
+	AddEventHandlers = "PauseSoundHandler", "HealthBeepHandler", "DebugChipHandler"
 	ForceTextInMenus = true
 	ENDOOM = "ENDBNETW"
 }
 
 DamageType Wind
 {
-	Obituary = "%k was blown away by %o"
+	Obituary = "%k was blown away by %o."
 }

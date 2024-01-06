@@ -2,10 +2,10 @@ class ShanghaiBuster : BusterBase
 {
 	action void A_ShanghaiStyleArms(int flags = 0)
 	{
-        // Cast and null-check the class:
-        let shai = ShanghaiPlayer(self);
-        if (!shai)
-            return;
+		// Cast and null-check the class:
+		let shai = ShanghaiPlayer(self);
+		if (!shai)
+			return;
 
 		let psp = player.FindPSprite(OverlayID());
 		if (psp)
@@ -20,21 +20,21 @@ class ShanghaiBuster : BusterBase
 			}
 		}
 	}
-    action void A_SetElementTranslation(int flags = 0)
-    {
-        // Cast and null-check the class:
-        let shai = ShanghaiPlayer(self);
-        if (!shai)
-            return;
+	action void A_SetElementTranslation(int flags = 0)
+	{
+		// Cast and null-check the class:
+		let shai = ShanghaiPlayer(self);
+		if (!shai)
+			return;
 
-        A_OverlayTranslation(OverlayID(), ShanghaiPlayer.ElementTranslations[shai.curElement]);
-    }
+		A_OverlayTranslation(OverlayID(), ShanghaiPlayer.ElementTranslations[shai.curElement]);
+	}
 	action void A_FireChargeShot(int flags = 0)
 	{
-        // Cast and null-check the class:
-        let shai = ShanghaiPlayer(self);
-        if (!shai)
-            return;
+		// Cast and null-check the class:
+		let shai = ShanghaiPlayer(self);
+		if (!shai)
+			return;
 /*
 	Okay, so, this function is a TOTAL MESS.
 	BUT.
@@ -46,6 +46,7 @@ class ShanghaiBuster : BusterBase
 		switch (shai.curStyleType) {
 			case ShanghaiPlayer.Style_Doctor:
 				switch (shai.curElement) {
+/*
 					case ShanghaiPlayer.Elem_Heat:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -64,6 +65,7 @@ class ShanghaiBuster : BusterBase
 					case ShanghaiPlayer.Elem_Poison:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
+*/
 					default:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -73,6 +75,7 @@ class ShanghaiBuster : BusterBase
 				break;
 			case ShanghaiPlayer.Style_Fighter:
 				switch (shai.curElement) {
+/*
 					case ShanghaiPlayer.Elem_Heat:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -91,6 +94,7 @@ class ShanghaiBuster : BusterBase
 					case ShanghaiPlayer.Elem_Poison:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
+*/
 					default:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -100,6 +104,7 @@ class ShanghaiBuster : BusterBase
 				break;
 			case ShanghaiPlayer.Style_Gaia:
 				switch (shai.curElement) {
+/*
 					case ShanghaiPlayer.Elem_Heat:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -118,6 +123,7 @@ class ShanghaiBuster : BusterBase
 					case ShanghaiPlayer.Elem_Poison:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
+*/
 					default:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -127,6 +133,7 @@ class ShanghaiBuster : BusterBase
 				break;
 			case ShanghaiPlayer.Style_Shinobi:
 				switch (shai.curElement) {
+/*
 					case ShanghaiPlayer.Elem_Heat:
 						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
@@ -145,6 +152,7 @@ class ShanghaiBuster : BusterBase
 					case ShanghaiPlayer.Elem_Poison:
 						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
+*/
 					default:
 						player.SetPSprite(OverlayID(), ResolveState("Chip.WideSwrd"));
 						break;
@@ -182,6 +190,7 @@ class ShanghaiBuster : BusterBase
 				break;
 			case ShanghaiPlayer.Style_Witch:
 				switch (shai.curElement) {
+/*
 					case ShanghaiPlayer.Elem_Heat:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -200,6 +209,7 @@ class ShanghaiBuster : BusterBase
 					case ShanghaiPlayer.Elem_Poison:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
+*/
 					default:
 						A_FireProjectile("MaxChargeBusterTracerSH", frandom(-1.425, 1.425), 0, 4, 0, 0, frandom(-1.425, 1.425));
 						break;
@@ -237,7 +247,7 @@ class ShanghaiBuster : BusterBase
 				A_SetInventory("PrimaryCharge", 0);
 				A_ShanghaiStyleArms();
 			}
-			#### A 1 A_Raise;
+			#### A 1 A_Raise(12);
 			Loop;
 			Charge:
 				TNT1 A 0 A_ShanghaiStyleArms;

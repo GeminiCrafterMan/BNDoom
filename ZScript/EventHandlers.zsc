@@ -46,3 +46,44 @@ class HealthBeepHandler : EventHandler
 		}
 	}
 }
+
+// Debug Chip code executor (for the command "usechip")
+class DebugChipHandler : EventHandler
+{
+	override void NetworkProcess (ConsoleEvent e)
+	{
+		if (e.Name ~== "usechip")
+		{
+			if ((G_SkillPropertyInt(SKILLP_DisableCheats) || netgame || deathmatch) && (!sv_cheats))
+			{
+				if (e.Player == consoleplayer)
+				{
+					// print this message for the local player only
+					Console.Printf("sv_cheats must be true to enable this command.");
+				}
+			}
+			else
+			{
+				if (e.Args[0] && e.Args[0] >= 0)
+				{
+					if (PlayerInGame[e.Player])
+					{
+						PlayerInfo plr = players[e.Player];
+						static const StateLabel ChipStates[] = {
+							"Chip.AirShot",
+							"Chip.Thunder",
+							"Chip.Barrier", "Chip.LifeAura",
+							"Chip.Sword", "Chip.WideSwrd", "Chip.LongSwrd", "Chip.StepSwrd",
+							"Chip.ZapRing1", "Chip.ZapRing2", "Chip.ZapRing3",
+							"Chip.ElChain1", "Chip.ElChain2", "Chip.ElChain3"
+						};
+						if (plr.ReadyWeapon)
+						{
+							plr.SetPSprite(1, plr.ReadyWeapon.ResolveState(ChipStates[e.Args[0]-1]));
+						}
+					}
+				}
+			}
+		}
+	}
+}
