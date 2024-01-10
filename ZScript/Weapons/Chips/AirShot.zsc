@@ -31,7 +31,7 @@ class AirShot : UnchargedBusterTracer
 		Scale 1;
 		DamageFunction 20;
 		DamageType "Wind";
-		Obituary "%o was unable to handle the gentle breeze from %k's AirShot1.";
+		Obituary "%o was unable to handle the gentle breeze from %k's AirShot.";
 	}
 	States
 	{

@@ -1,0 +1,74 @@
+extend class BusterBase {
+	States {
+		Recover.Generic:
+			TNT1 A 0
+			{
+				A_SpawnItemEx("RecoveryEffect");
+				A_StartSound("weapons/recovery");
+				return ResolveState("Ready");
+			}
+		Chip.Recov10:
+			TNT1 A 0
+			{
+				A_DamageSelf(-10);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov30:
+			TNT1 A 0
+			{
+				A_DamageSelf(-30);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov50:
+			TNT1 A 0
+			{
+				A_DamageSelf(-50);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov80:
+			TNT1 A 0
+			{
+				A_DamageSelf(-80);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov120:
+			TNT1 A 0
+			{
+				A_DamageSelf(-120);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov150:
+			TNT1 A 0
+			{
+				A_DamageSelf(-150);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov200:
+			TNT1 A 0
+			{
+				A_DamageSelf(-200);
+				return ResolveState("Recover.Generic");
+			}
+		Chip.Recov300:
+			TNT1 A 0
+			{
+				A_DamageSelf(-300);
+				return ResolveState("Recover.Generic");
+			}
+	}
+}
+
+class RecoveryEffect : Actor
+{
+	Default
+	{
+		+NOINTERACTION
+	}
+	States
+	{
+		Spawn:
+			BNRC ABCD 2 Bright;
+			BNRC EF 3 Bright;
+			Stop;
+	}
+}

@@ -2,6 +2,8 @@
 #include "ZScript/Weapons/Chips/ZapRing.zsc"
 #include "ZScript/Weapons/Chips/Barrier.zsc"
 #include "ZScript/Weapons/Chips/AirShot.zsc"
+#include "ZScript/Weapons/Chips/Vulcan.zsc"
+#include "ZScript/Weapons/Chips/Recovery.zsc"
 #include "ZScript/Weapons/Chips/Thunder.zsc"
 #include "ZScript/Weapons/Chips/ElChain.zsc"
 
@@ -85,14 +87,14 @@ class BusterBase : Weapon
 			TNT1 A 1;
 			Stop;
 		Spawn:	// You really shouldn't be seeing this thing on the floor.
-			SHTG A -1;
+			UNKN A -1;
 			Stop;
 		Ready:
 			NBST A 1 A_WeaponReady(WRF_ALLOWUSER1);
 			Loop;
 		Select:
 			TNT1 A 0 A_SetInventory("PrimaryCharge", 0);
-			NBST A 1 A_Raise;
+			NBST A 1 A_Raise(12);
 			Loop;
 		Deselect:
 			TNT1 A 0 {

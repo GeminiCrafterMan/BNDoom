@@ -37,3 +37,4 @@ weapons/gun					"Sounds/Weapons/mm-gun.wav"							// Heavy gun (Vulcan, etc)
 weapons/chain				"Sounds/Weapons/sh-chain.wav"						// ElChain spawned
 weapons/barrier				"Sounds/Weapons/mm-barrier.wav"						// Barrier spawned
 weapons/spreader			"Sounds/Weapons/mm-spreader.wav"					// Spreader, AirShot, Shotgun, CrossGun...
+weapons/recovery			"Sounds/Weapons/mm-recovery.wav"					// Recovery items of all kinds

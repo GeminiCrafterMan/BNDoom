@@ -356,6 +356,43 @@ Model LongSwrdSlash // Name of actor
 	FrameIndex SLAS I 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
+Model Vulcan1 // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRF3F7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 1.5 2 2 // Scale values L/W/H
+
+	FrameIndex BNTR F 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model Vulcan2 // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRF3F7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 2.5 3 3 // Scale values L/W/H
+
+	FrameIndex BNTR F 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+Model Vulcan3 // Name of actor
+{
+	CorrectPixelStretch
+	UseActorRoll
+	UseActorPitch
+	Path "Models/Projectiles" // Path to model in PK3
+	Skin 0 "BNTRF3F7" // Model index, model file
+	Model 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
+	Scale 3.5 4 4 // Scale values L/W/H
+
+	FrameIndex BNTR F 0 0 // The sprite lump, sprite frame, model index, frame number
+}
+
 /////////////
 //OBSTACLES//
 /////////////

@@ -75,7 +75,9 @@ class DebugChipHandler : EventHandler
 							"Chip.Barrier", "Chip.LifeAura",
 							"Chip.Sword", "Chip.WideSwrd", "Chip.LongSwrd", "Chip.StepSwrd",
 							"Chip.ZapRing1", "Chip.ZapRing2", "Chip.ZapRing3",
-							"Chip.ElChain1", "Chip.ElChain2", "Chip.ElChain3"
+							"Chip.ElChain1", "Chip.ElChain2", "Chip.ElChain3",
+							"Chip.Vulcan1", "Chip.Vulcan2", "Chip.Vulcan3", "Chip.SuprVulc",
+							"Chip.Recov10", "Chip.Recov30", "Chip.Recov50", "Chip.Recov80", "Chip.Recov120", "Chip.Recov150", "Chip.Recov200", "Chip.Recov300"
 						};
 						if (plr.ReadyWeapon)
 						{
