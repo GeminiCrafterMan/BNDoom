@@ -74,7 +74,6 @@ class BusterBase : Weapon
 	}
 	Default
 	{
-		Weapon.SelectionOrder 3700;
 		Obituary "Test obituary: %o killed %k.";
 		+WEAPON.WIMPY_WEAPON;
 		+INVENTORY.UNTOSSABLE;
@@ -111,12 +110,12 @@ class BusterBase : Weapon
 				A_Overlay(-1, "ChargeEffectFunction"); // starts charge effect
 			}
 			TNT1 A 0 { return ResolveState("Charge"); }
-			Charge:
-				NBST A 1 A_GiveInventory("PrimaryCharge", 1);
-				NBST A 0 A_Refire("Charge");
-				NBST A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
-				NBST A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
-				TNT1 A 0 { return ResolveState("FireNormalShot"); }
+		Charge:
+			NBST A 1 A_GiveInventory("PrimaryCharge", 1);
+			NBST A 0 A_Refire("Charge");
+			NBST A 0 A_JumpIfInventory("PrimaryCharge", 100, "FireChargeShot");
+			NBST A 0 A_JumpIfInventory("PrimaryCharge", 50, "FireMidChargeShot");
+			TNT1 A 0 { return ResolveState("FireNormalShot"); }
 		AltFire:
 		FireNormalShot:
 			NBST A 1 A_SetInventory("PrimaryCharge", 0);

@@ -232,13 +232,12 @@ extend class BusterBase {
 	}
 }
 
-class Vulcan1 : MaxChargeBusterTracerSH
+class Vulcan1 : UnchargedBusterTracer
 {
 	Default
 	{
 		DamageFunction 10;
 		Obituary "%o was perforated by %k's Vulcan.";
-		DeathSound "weapons/hit";
 	}
 	States
 	{

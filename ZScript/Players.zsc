@@ -3,7 +3,6 @@ class Zenny : Inventory
 {
 	Default
 	{
-		Inventory.ForbiddenTo "DoomPlayer", "ChexPlayer", "ClericPlayer", "ChickenPlayer", "FighterPlayer", "HereticPlayer", "MagePlayer", "PigPlayer", "StrifePlayer";
 		Inventory.MaxAmount 999999;
 	}
 }

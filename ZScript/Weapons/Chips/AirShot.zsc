@@ -36,7 +36,7 @@ class AirShot : UnchargedBusterTracer
 	States
 	{
 		Spawn:
-			BNAS A 1 Bright;
+			BNAS A 1 Bright {LineAttack(angle, PLAYERMISSILERANGE, pitch, 0, 'Normal', "NullPuff", LAF_TARGETISSOURCE);}
 			Loop;
 		Death:
 			TNT1 A 1 A_RadiusThrust(5000, 8, RTF_NOIMPACTDAMAGE);
